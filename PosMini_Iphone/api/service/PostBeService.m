@@ -41,7 +41,7 @@
     
     id body = [req.responseString JSONValue];
 
-    if (NotNilAndEqualsTo(body, MTP_RESPONSE_CODE, @"1")) {
+    if (NotNilAndEqualsTo(body, MTP_TTY_RESPONSE_CODE, @"1")) {
         [Helper saveValue:[body valueForKey:POSTBE_UID] forKey:POSTBE_UID];
     }
 }

@@ -34,7 +34,7 @@
     
     NSDictionary *body = [[req responseString] JSONValue];
     
-    if (NotNilAndEqualsTo(body, MTP_RESPONSE_CODE, @"1"))
+    if (NotNilAndEqualsTo(body, MTP_TTY_RESPONSE_CODE, @"1"))
     {
         if (NotNilAndEqualsTo(body, @"is_need_update", @"1"))
         {

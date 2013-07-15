@@ -9,7 +9,8 @@
 #ifndef PosMini_Iphone_MTPServer_h
 #define PosMini_Iphone_MTPServer_h
 
-#define MTP_RESPONSE_CODE @"return_code"
+#define MTP_POS_RESPONSE_CODE @"RespCode"
+#define MTP_TTY_RESPONSE_CODE @"return_code"
 #define POSTBE_UID @"uid"
 
 #define POSMINI_MTP_SESSION_NAME @"CHINAPNRJSESSIONID"

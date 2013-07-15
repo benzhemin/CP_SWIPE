@@ -31,8 +31,12 @@
     
     id body = req.responseAsJson;
     
-    if (NotNilAndEqualsTo(body, MTP_RESPONSE_CODE, @"1")) {
-
+    NSLog(@"%@", body);
+    
+    if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"000")) {
+        
+    }else{
+        
     }
 }
 
