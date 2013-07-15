@@ -9,10 +9,13 @@
 #import "LoginService.h"
 #import "PosMiniCPRequest.h"
 #import "Helper.h"
+#import "PosMini.h"
 
 @implementation LoginService
 
 -(void)loginRequest:(NSString *)acct withSecret:(NSString *)secret{
+    [[PosMini sharedInstance] showUIPromptMessage:@"登录中" animated:YES];
+    
     NSString* url = [NSString stringWithFormat:@"/mtp/login"];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:acct forKey:@"LoginId"];
@@ -24,6 +27,8 @@
 }
 
 -(void)loginRequestDidFinished:(PosMiniCPRequest *)req{
+    [[PosMini sharedInstance] hideUIPromptMessage:YES];
+    
     id body = req.responseAsJson;
     
     if (NotNilAndEqualsTo(body, MTP_RESPONSE_CODE, @"1")) {
