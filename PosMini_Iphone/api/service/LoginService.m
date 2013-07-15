@@ -24,8 +24,12 @@
     [dict setValue:[Helper md5_16:[NSString stringWithFormat:@"%@%@",MD5_SEED,secret]] forKey:@"LoginPwd"];
     
     PosMiniCPRequest *posReq = [PosMiniCPRequest postRequestWithPath:url andBody:dict];
-    [posReq.userInfo setObject:acct forKey:POSMINI_LOGIN_ACCOUNT];
-    [posReq.userInfo setObject:secret forKey:POSMINI_LOGIN_PASSWORD];
+    
+    NSMutableDictionary *ui = [[[NSMutableDictionary alloc] init] autorelease];
+    [ui setObject:acct forKey:POSMINI_LOGIN_ACCOUNT];
+    [ui setObject:secret forKey:POSMINI_LOGIN_PASSWORD];
+    posReq.userInfo = ui;
+    
     [posReq onRespondTarget:self selector:@selector(loginRequestDidFinished:)];
     [posReq execute];
 }

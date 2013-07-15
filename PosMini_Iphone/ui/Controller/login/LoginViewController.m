@@ -272,6 +272,21 @@
 
 //登录成功
 -(void)loginDidFinished{
+    //是否记住登录信息
+    if (remAcctSelected) {
+        [Helper saveValue:NSSTRING_YES forKey:ACCOUNT_CHECK_BOX];
+        if (remSecretSelected) {
+            [Helper saveValue:NSSTRING_YES forKey:SECRET_CHECK_BOX];
+        }else{
+            [Helper saveValue:NSSTRING_NO forKey:SECRET_CHECK_BOX];
+        }
+    }
+    else
+    {
+        [Helper saveValue:NSSTRING_NO forKey:ACCOUNT_CHECK_BOX];
+        [Helper saveValue:NSSTRING_NO forKey:SECRET_CHECK_BOX];
+    }
+    
     [(AppDelegate *)[UIApplication sharedApplication].delegate loginSuccess];
 }
 
