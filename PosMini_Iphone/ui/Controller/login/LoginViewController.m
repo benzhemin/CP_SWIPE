@@ -11,6 +11,7 @@
 #import "SFHFKeychainUtils.h"
 #import "NSNotificationCenter+CP.h"
 #import "AppDelegate.h"
+#import "LicenseViewController.h"
 
 @interface LoginViewController ()
 @end
@@ -206,16 +207,14 @@
      */
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated{
     NSString *readLicense = [Helper getValueByKey:POSMINI_HAVE_READ_LICENSE];
     if (readLicense!=nil && [readLicense isEqualToString:@"YES"]) {
         
     }else{
-        /*
-         LicenseViewController *lc = [[LicenseViewController alloc] init];
-         [self presentModalViewController:lc animated:YES];
-         [lc release];
-         */
+        LicenseViewController *lc = [[LicenseViewController alloc] init];
+        [self presentModalViewController:lc animated:YES];
+        [lc release];
     }
 }
 
