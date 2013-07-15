@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import "CPTabBar.h"
+#import "Helper.h"
+#import "PostBeService.h"
 
 #define DEFAULT_NAVIGATION_TITLE_WIDTH 180
-
-
 
 @interface BaseViewController : UIViewController{
     //背景图片
@@ -35,6 +35,8 @@
     //Loading组件
     MBProgressHUD *uiPromptHUD;
     MBProgressHUD *sysPromptHUD;
+    
+    PostBeService *pb;
 }
 
 @property (nonatomic, retain) UIImageView *bgImageView;
@@ -50,6 +52,8 @@
 
 @property (nonatomic, retain) MBProgressHUD *uiPromptHUD;
 @property (nonatomic, retain) MBProgressHUD *sysPromptHUD;
+
+@property (nonatomic, retain) PostBeService *pb;
 
 -(void) hiddenBackButton;
 -(void)setNavigationTitle:(NSString *)title;

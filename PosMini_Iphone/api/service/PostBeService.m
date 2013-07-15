@@ -14,6 +14,7 @@
 #import "PosMini.h"
 #import "Helper.h"
 #import "JSON.h"
+#import "DeviceIntrospection.h"
 
 @implementation PostBeService
 
@@ -21,9 +22,23 @@
     
     NSDateFormatter *_dateFormatter = [[[NSDateFormatter alloc]init]autorelease];
     [_dateFormatter setDateFormat:@"yyyy-MM-dd%20HH:mm:ss"];
-    //NSDate *date = [NSDate date];
+    NSDate *date = [NSDate date];
     
-    //CPRequest *req;
+    
+    NSString *url = [NSString stringWithFormat:@"http://www.ttyfund.com/api/services/postbe.php?act=postbe&key=TTYFUND-CHINAPNR&app_client=minipos_client&app_platform=ios&app_version=%@&id=%@&uid=%@&model=%@&channel=&mail=&date=%@",
+                                                [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"],
+                                                [[DeviceIntrospection sharedInstance] uuid],
+                                                [Helper getValueByKey:@"uid"],
+                                                [[DeviceIntrospection sharedInstance] platformName],
+                                                [_dateFormatter stringFromDate:date]];
+    
+    ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    [req setDidFinishSelector:@selector(postBeDidFinished:)];
+    req.delegate = self;
+    [req startAsynchronous];
+}
+-(void)postBeDidFinished:(ASIHTTPRequest *)req{
+    //NSLog(@"postBe req finished");
 }
 
 -(void)postBeForUID{

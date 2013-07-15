@@ -50,7 +50,7 @@
 	[self setPostFormat:ASIURLEncodedPostFormat];
     [self setPostBodyFormat:ASIURLEncodedPostGeneralFormat];
 	[self setStringEncoding:NSUTF8StringEncoding];
-        [self setRequestMethod:@"POST"];
+    [self setRequestMethod:@"POST"];
 	return self;
 }
 

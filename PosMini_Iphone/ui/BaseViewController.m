@@ -17,6 +17,7 @@
 @synthesize naviBgView, naviTitleLabel, naviBackBtn;
 @synthesize isShowNaviBar, isShowTabBar;
 @synthesize uiPromptHUD, sysPromptHUD;
+@synthesize pb;
 
 -(void)dealloc{
     [bgImageView release];
@@ -30,6 +31,7 @@
     [uiPromptHUD release];
     [sysPromptHUD release];
     
+    [pb release];
     [super dealloc];
 }
 
@@ -48,8 +50,6 @@
     
     CGFloat viewWidth = self.view.frame.size.width;
     CGFloat viewHeight = self.view.frame.size.height;
-    
-    NSLog(@"%.0f, %.0f", viewWidth, viewHeight);
     
     //背景图片
     UIImageView *cusBgImageView = [[UIImageView alloc] init];
@@ -115,6 +115,11 @@
         tabBarHeight = DEFAULT_TAB_BAR_HEIGHT;
     }
     contentView.frame = CGRectMake(0, naviBarHeight, viewWidth, viewHeight-naviBarHeight-tabBarHeight);
+    
+    self.pb = [[[PostBeService alloc] init] autorelease];
+    if (![[self getViewId] isEqualToString:@"0"] && [Helper getValueByKey:POSTBE_UID]) {
+        [pb postBeRequest];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{

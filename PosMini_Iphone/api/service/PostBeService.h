@@ -19,5 +19,6 @@
 -(void)postBeRequest;
 -(void)postBeForUID;
 
+-(void)postBeDidFinished:(ASIHTTPRequest *)req;
 -(void)UIDRequestDidFinished:(ASIHTTPRequest *)req;
 @end
