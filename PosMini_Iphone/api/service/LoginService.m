@@ -44,6 +44,12 @@
                           forServiceName:KEYCHAIN_SFHF_SERVICE
                           updateExisting:YES error:nil];
         [Helper saveValue:[body objectForKey:@"UserName"] forKey:POSMINI_LOGIN_USERNAME];
+        [Helper saveValue:[body valueForKey:@"CustId"] forKey:POSMINI_CUSTOMER_ID];
+        
+        if (NotNil(body, @"SessionId")) {
+            [Helper saveValue:[body valueForKey:@"SessionId"] forKey:POSMINI_LOCAL_SESSION];
+        }
+        
         
     }else{
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[body objectForKey:@"RespDesc"], NOTIFICATION_MESSAGE, nil];
@@ -52,3 +58,10 @@
 }
 
 @end
+
+
+
+
+
+
+

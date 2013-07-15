@@ -265,6 +265,7 @@
     }
     
     self.logService = [[[LoginService alloc] init] autorelease];
+    [logService onRespondTarget:self selector:@selector(loginDidFinished:)];
     [logService loginRequest:accountTextField.text withSecret:pwdTextField.text];
     
     //[self showWaitNotice:@"登录中..."];

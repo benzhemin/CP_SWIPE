@@ -49,7 +49,7 @@ static PosMini *sInstance = nil;
     
     
     //initialize NSDefault settings
-    [Helper saveValue:@"#" forKey:POSMINI_LOCAL_SESSION_NAME ];
+    [Helper saveValue:@"#" forKey:POSMINI_LOCAL_SESSION];
     
     
 	[[NSNotificationCenter defaultCenter] addObserver:instance
@@ -91,11 +91,11 @@ static PosMini *sInstance = nil;
 //Setting global PosMini request　
 -(void)performRequest:(ASIHTTPRequest *)req
 {
-    NSString *sessionStr = [Helper getValueByKey:POSMINI_LOCAL_SESSION_NAME];
+    NSString *sessionStr = [Helper getValueByKey:POSMINI_LOCAL_SESSION];
     if (sessionStr!=nil && ![sessionStr isEqualToString:@"#"])
     {
         NSMutableDictionary *cookieDict = [[[NSMutableDictionary alloc] init] autorelease];
-        [cookieDict setValue:POSMINI_MTP_SESSION_NAME forKey:NSHTTPCookieName];
+        [cookieDict setValue:POSMINI_MTP_SESSION forKey:NSHTTPCookieName];
         [cookieDict setValue:sessionStr forKey:NSHTTPCookieValue];
         [req setUseCookiePersistence:NO];
         [req setRequestCookies:[NSMutableArray arrayWithObject:cookieDict]];
