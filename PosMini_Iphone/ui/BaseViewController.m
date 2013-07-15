@@ -49,6 +49,8 @@
     CGFloat viewWidth = self.view.frame.size.width;
     CGFloat viewHeight = self.view.frame.size.height;
     
+    NSLog(@"%.0f, %.0f", viewWidth, viewHeight);
+    
     //背景图片
     UIImageView *cusBgImageView = [[UIImageView alloc] init];
     self.bgImageView = cusBgImageView;
@@ -112,8 +114,6 @@
         tabBarHeight = DEFAULT_TAB_BAR_HEIGHT;
     }
     contentView.frame = CGRectMake(0, naviBarHeight, viewWidth, viewHeight-naviBarHeight-tabBarHeight);
-    
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -127,6 +127,8 @@
 }
 
 -(void)tabBarAnimation{
+    UIViewController *rootController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
     //以动画形式隐藏或显示下面Tabbar
     if (self.navigationController!=nil) {
         UIView *subView = [self.navigationController.view viewWithTag:CPTABBAR_UIVIEW_TAG];
@@ -137,7 +139,9 @@
             [UIView beginAnimations:@"Dialog" context:context];
             [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
             [UIView setAnimationDuration:0.2];
-            subView.frame = CGRectMake(0, self.view.frame.size.height-30, self.view.frame.size.width, DEFAULT_TAB_BAR_HEIGHT);
+            
+            subView.frame = CGRectMake(0, rootController.view.frame.size.height-DEFAULT_TAB_BAR_HEIGHT,
+                                       self.view.frame.size.width, DEFAULT_TAB_BAR_HEIGHT);
             [UIView commitAnimations];
         }
         else
@@ -146,7 +150,7 @@
             [UIView beginAnimations:@"Dialog" context:context];
             [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
             [UIView setAnimationDuration:0.2];
-            subView.frame = CGRectMake(0, self.view.frame.size.height+20, self.view.frame.size.width, DEFAULT_TAB_BAR_HEIGHT);
+            subView.frame = CGRectMake(0, rootController.view.frame.size.height, self.view.frame.size.width, DEFAULT_TAB_BAR_HEIGHT);
             [UIView commitAnimations];
         }
     }
