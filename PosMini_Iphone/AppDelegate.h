@@ -18,6 +18,7 @@
 #import "DefaultAccountViewController.h"
 #import "DefaultHelpViewController.h"
 #import "CPNavigationController.h"
+#import "LocationService.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CPTabBarDelegate>{
     UIImageView *launchImgView;
@@ -33,6 +34,8 @@
     
     PostBeService *pb;
     VersionService *vp;
+    
+    LocationService *locService;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -46,6 +49,8 @@
 @property (nonatomic, retain) NSArray *naviArray;
 
 @property (nonatomic, retain) CPTabBar *cpTabBar;
+
+@property (nonatomic, retain) LocationService *locService;
 
 -(void)versionReqFinished;
 -(void)loginSuccess;

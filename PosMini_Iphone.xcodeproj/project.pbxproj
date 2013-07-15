@@ -27,6 +27,7 @@
 		8B5527111793F4BA0030ED8D /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527101793F4BA0030ED8D /* LicenseViewController.m */; };
 		8B5527131793F4FC0030ED8D /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B5527121793F4FC0030ED8D /* license.txt */; };
 		8B5527161793F5E70030ED8D /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527151793F5E70030ED8D /* CustomTextView.m */; };
+		8B5527191794146D0030ED8D /* AccountService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527181794146D0030ED8D /* AccountService.m */; };
 		8BC76229178A797700AD74C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC76228178A797700AD74C0 /* UIKit.framework */; };
 		8BC7622B178A797700AD74C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7622A178A797700AD74C0 /* Foundation.framework */; };
 		8BC7622D178A797700AD74C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7622C178A797700AD74C0 /* CoreGraphics.framework */; };
@@ -191,6 +192,8 @@
 		8B5527121793F4FC0030ED8D /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		8B5527141793F5E70030ED8D /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
 		8B5527151793F5E70030ED8D /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
+		8B5527171794146D0030ED8D /* AccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountService.h; sourceTree = "<group>"; };
+		8B5527181794146D0030ED8D /* AccountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountService.m; sourceTree = "<group>"; };
 		8BC76225178A797700AD74C0 /* PosMini_Iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosMini_Iphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC76228178A797700AD74C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BC7622A178A797700AD74C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -379,6 +382,8 @@
 				8B31E864178E9A0700AA5B5F /* VersionService.m */,
 				8B31E88C17900AC600AA5B5F /* LoginService.h */,
 				8B31E88D17900AC700AA5B5F /* LoginService.m */,
+				8B5527171794146D0030ED8D /* AccountService.h */,
+				8B5527181794146D0030ED8D /* AccountService.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1019,6 +1024,7 @@
 				8B55270E1793EC010030ED8D /* QAHelpCell.m in Sources */,
 				8B5527111793F4BA0030ED8D /* LicenseViewController.m in Sources */,
 				8B5527161793F5E70030ED8D /* CustomTextView.m in Sources */,
+				8B5527191794146D0030ED8D /* AccountService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

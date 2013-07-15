@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PosMini.h"
+#import "Helper.h"
 
 BOOL NotNil(NSDictionary *dict, NSString *k);
 BOOL NotNilAndEqualsTo(NSDictionary *dict, NSString *k, NSString *value);

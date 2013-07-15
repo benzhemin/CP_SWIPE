@@ -8,6 +8,21 @@
 
 #import "BaseViewController.h"
 
-@interface DefaultAccountViewController : BaseViewController
+@interface DefaultAccountViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
+    //显示账户信息
+    UITableView *acctInfoTableView;
+    
+    NSMutableDictionary *userInfoDict;
+}
+
+@property (nonatomic, retain) UITableView *acctInfoTableView;
+
+/**
+ 设置取现账户
+ @param bankCardNum 银行卡号
+ */
+-(void) setBankNumString:(NSString *)bankCardNum;
+
+-(void)refreshTableView;
 
 @end
