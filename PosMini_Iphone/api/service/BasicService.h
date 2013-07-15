@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+BOOL NotNil(NSDictionary *dict, NSString *k);
 BOOL NotNilAndEqualsTo(NSDictionary *dict, NSString *k, NSString *value);
 
 @interface BasicService : NSObject{

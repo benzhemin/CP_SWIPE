@@ -8,6 +8,13 @@
 
 #import "BasicService.h"
 
+BOOL NotNil(NSDictionary *dict, NSString *k){
+    if ([dict objectForKey:k] != nil) {
+        return YES;
+    }
+    return NO;
+}
+
 BOOL NotNilAndEqualsTo(NSDictionary *dict, NSString *k, NSString *value){
     if ([dict valueForKey:k]!=nil && [[NSString stringWithFormat:@"%@", [dict valueForKey:k]] isEqualToString:value]) {
         return YES;
