@@ -15,11 +15,21 @@
 
 @synthesize launchImgView, cpTabBar;
 
+@synthesize receiptNaviController, orderNaviController, acctNaviController, helpNaviController;
+@synthesize naviArray;
+
 - (void)dealloc{
     [_window release];
     
     [launchImgView release];
     [cpTabBar release];
+    
+    [receiptNaviController release];
+    [orderNaviController release];
+    [acctNaviController release];
+    [helpNaviController release];
+    
+    [naviArray release];
     
     [pb release];
     [vp release];
@@ -36,13 +46,24 @@
     loginController.isShowTabBar = NO;
     self.window.rootViewController = loginController;
     
-    /*
-    self.cpTabBar = [[[CPTabBar alloc] initWithFrame:CGRectMake(0, baseController.view.frame.size.height-DEFAULT_TAB_BAR_HEIGHT, self.window.frame.size.width, DEFAULT_TAB_BAR_HEIGHT)] autorelease];
-    cpTabBar.delegate = self;
-    [cpTabBar setTabSelected:2];
-    [loginController.view addSubview:cpTabBar];
-    */
-     
+    DefaultReceiptViewController *receiptController = [[DefaultReceiptViewController alloc] init];
+    self.receiptNaviController = [[[CPNavigationController alloc] initWithRootViewController:receiptController] autorelease];
+    [receiptController release];
+    
+    DefaultOrderViewController *orderController = [[DefaultOrderViewController alloc] init];
+    self.orderNaviController = [[[CPNavigationController alloc] initWithRootViewController:orderController] autorelease];
+    [orderController release];
+    
+    DefaultAccountViewController *acctController = [[DefaultAccountViewController alloc] init];
+    self.acctNaviController = [[[CPNavigationController alloc] initWithRootViewController:acctController] autorelease];
+    [acctController release];
+    
+    DefaultHelpViewController *helpController = [[DefaultHelpViewController alloc] init];
+    self.helpNaviController = [[[CPNavigationController alloc] initWithRootViewController:helpController] autorelease];
+    [helpController release];
+    
+    self.naviArray = [NSArray arrayWithObjects:receiptNaviController, orderNaviController, acctNaviController, helpNaviController, nil];
+    
     UIImage *launchImg = IS_IPHONE5 ? [UIImage imageNamed:@"Default-568h.png"]:[UIImage imageNamed:@"Default.png"];
     
     self.launchImgView = [[[UIImageView alloc] initWithImage:launchImg] autorelease];
@@ -61,6 +82,22 @@
     [vp checkForUpdate];
 }
 
+-(void)loginSuccess{
+    self.window.rootViewController = acctNaviController;
+    
+    self.cpTabBar = [[[CPTabBar alloc] initWithFrame:CGRectMake(0, self.window.rootViewController.view.frame.size.height-DEFAULT_TAB_BAR_HEIGHT, self.window.frame.size.width, DEFAULT_TAB_BAR_HEIGHT)] autorelease];
+    cpTabBar.delegate = self;
+    [cpTabBar setTabSelected:2];
+    [self.window.rootViewController.view addSubview:cpTabBar];
+}
+
+-(void)changeToIndex:(int)index
+{
+    [cpTabBar removeFromSuperview];
+    self.window.rootViewController = [naviArray objectAtIndex:index];
+    [self.window.rootViewController.view addSubview:cpTabBar];
+}
+
 -(void)versionReqFinished{
     [launchImgView removeFromSuperview];
     self.launchImgView = nil;
@@ -71,6 +108,8 @@
     [self performApplicationStartupLogic];
     return YES;
 }
+
+
 
 /**
  隐藏下面切换Tab
@@ -88,11 +127,6 @@
 
 {
     [self.window.rootViewController.view addSubview:cpTabBar];
-}
-
--(void)changeToIndex:(int)index
-{
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application{}

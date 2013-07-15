@@ -201,7 +201,7 @@ static PosMini *sInstance = nil;
 	hud.labelText = [notification.userInfo objectForKey:NOTIFICATION_MESSAGE];
 	hud.removeFromSuperViewOnHide = YES;
 	
-	[hud hide:YES afterDelay:2.5];
+	[hud hide:YES afterDelay:2];
 }
 
 -(void) displaySysPromptAutomatically:(NSNotification *)notification
@@ -216,7 +216,7 @@ static PosMini *sInstance = nil;
 	hud.yOffset = 150.f;
 	hud.removeFromSuperViewOnHide = YES;
 	
-	[hud hide:YES afterDelay:2.5];
+	[hud hide:YES afterDelay:2];
 }
 
 -(void)applicationWillTerminate{

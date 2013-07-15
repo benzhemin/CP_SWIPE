@@ -19,6 +19,10 @@
 		8B31E884178FB71100AA5B5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E883178FB71100AA5B5F /* LoginViewController.m */; };
 		8B31E88B178FFE3600AA5B5F /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E88A178FFE3600AA5B5F /* SFHFKeychainUtils.m */; };
 		8B31E88E17900AC800AA5B5F /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E88D17900AC700AA5B5F /* LoginService.m */; };
+		8B31E8C31793B94A00AA5B5F /* DefaultOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8C21793B94A00AA5B5F /* DefaultOrderViewController.m */; };
+		8B31E8C61793B99B00AA5B5F /* DefaultReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */; };
+		8B31E8C91793B9B600AA5B5F /* DefaultAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8C81793B9B600AA5B5F /* DefaultAccountViewController.m */; };
+		8B31E8CC1793B9C800AA5B5F /* DefaultHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */; };
 		8BC76229178A797700AD74C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC76228178A797700AD74C0 /* UIKit.framework */; };
 		8BC7622B178A797700AD74C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7622A178A797700AD74C0 /* Foundation.framework */; };
 		8BC7622D178A797700AD74C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7622C178A797700AD74C0 /* CoreGraphics.framework */; };
@@ -168,6 +172,14 @@
 		8B31E88A178FFE3600AA5B5F /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		8B31E88C17900AC600AA5B5F /* LoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginService.h; sourceTree = "<group>"; };
 		8B31E88D17900AC700AA5B5F /* LoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginService.m; sourceTree = "<group>"; };
+		8B31E8C11793B94A00AA5B5F /* DefaultOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultOrderViewController.h; sourceTree = "<group>"; };
+		8B31E8C21793B94A00AA5B5F /* DefaultOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOrderViewController.m; sourceTree = "<group>"; };
+		8B31E8C41793B99B00AA5B5F /* DefaultReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultReceiptViewController.h; sourceTree = "<group>"; };
+		8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultReceiptViewController.m; sourceTree = "<group>"; };
+		8B31E8C71793B9B600AA5B5F /* DefaultAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultAccountViewController.h; sourceTree = "<group>"; };
+		8B31E8C81793B9B600AA5B5F /* DefaultAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultAccountViewController.m; sourceTree = "<group>"; };
+		8B31E8CA1793B9C800AA5B5F /* DefaultHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultHelpViewController.h; sourceTree = "<group>"; };
+		8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultHelpViewController.m; sourceTree = "<group>"; };
 		8BC76225178A797700AD74C0 /* PosMini_Iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosMini_Iphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC76228178A797700AD74C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BC7622A178A797700AD74C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -396,6 +408,42 @@
 			path = SFHFKeychain;
 			sourceTree = "<group>";
 		};
+		8B31E8BA1793B18C00AA5B5F /* account */ = {
+			isa = PBXGroup;
+			children = (
+				8B31E8C71793B9B600AA5B5F /* DefaultAccountViewController.h */,
+				8B31E8C81793B9B600AA5B5F /* DefaultAccountViewController.m */,
+			);
+			path = account;
+			sourceTree = "<group>";
+		};
+		8B31E8BB1793B18C00AA5B5F /* help */ = {
+			isa = PBXGroup;
+			children = (
+				8B31E8CA1793B9C800AA5B5F /* DefaultHelpViewController.h */,
+				8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */,
+			);
+			path = help;
+			sourceTree = "<group>";
+		};
+		8B31E8BC1793B18C00AA5B5F /* order */ = {
+			isa = PBXGroup;
+			children = (
+				8B31E8C11793B94A00AA5B5F /* DefaultOrderViewController.h */,
+				8B31E8C21793B94A00AA5B5F /* DefaultOrderViewController.m */,
+			);
+			path = order;
+			sourceTree = "<group>";
+		};
+		8B31E8BD1793B18C00AA5B5F /* receipt */ = {
+			isa = PBXGroup;
+			children = (
+				8B31E8C41793B99B00AA5B5F /* DefaultReceiptViewController.h */,
+				8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */,
+			);
+			path = receipt;
+			sourceTree = "<group>";
+		};
 		8BC7621C178A797700AD74C0 = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +641,10 @@
 		8BC7635F178BFF1300AD74C0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8B31E8BD1793B18C00AA5B5F /* receipt */,
+				8B31E8BC1793B18C00AA5B5F /* order */,
+				8B31E8BA1793B18C00AA5B5F /* account */,
+				8B31E8BB1793B18C00AA5B5F /* help */,
 				8B31E881178FB6DE00AA5B5F /* login */,
 			);
 			path = Controller;
@@ -941,6 +993,10 @@
 				8B31E884178FB71100AA5B5F /* LoginViewController.m in Sources */,
 				8B31E88B178FFE3600AA5B5F /* SFHFKeychainUtils.m in Sources */,
 				8B31E88E17900AC800AA5B5F /* LoginService.m in Sources */,
+				8B31E8C31793B94A00AA5B5F /* DefaultOrderViewController.m in Sources */,
+				8B31E8C61793B99B00AA5B5F /* DefaultReceiptViewController.m in Sources */,
+				8B31E8C91793B9B600AA5B5F /* DefaultAccountViewController.m in Sources */,
+				8B31E8CC1793B9C800AA5B5F /* DefaultHelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
