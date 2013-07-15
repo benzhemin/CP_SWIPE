@@ -14,11 +14,20 @@
 
 @implementation PosMiniCPRequest
 
+@synthesize userInfo;
+
+-(void)dealloc{
+    [userInfo release];
+    [super dealloc];
+}
+
 -(id)initWithTarget:(id)_target{
     self = [super init];
     if (self) {
         target = _target;
         selector = @selector(requestFinished:);
+        
+        userInfo = [[NSMutableDictionary alloc] init];
     }
     return self;
 }

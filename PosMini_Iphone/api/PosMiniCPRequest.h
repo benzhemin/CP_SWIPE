@@ -11,7 +11,12 @@
 @interface PosMiniCPRequest : CPRequest <CPResponseJSON, CPResponseText>{
     id target;
     SEL selector;
+    
+    //record request info
+    NSMutableDictionary *userInfo;
 }
+
+@property (nonatomic, retain) NSMutableDictionary *userInfo;
 
 - (id)onRespondTarget:(id)_target selector:(SEL)_selector;
 
