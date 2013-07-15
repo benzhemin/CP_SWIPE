@@ -145,7 +145,7 @@
         else if (acctState!=nil && [acctState isEqualToString:NSSTRING_YES]){
             [remAcctCheckBtn setImage:[UIImage imageNamed:@"check-btn.png"] forState:UIControlStateNormal];
             remAcctSelected = YES;
-            accountTextField.text = [Helper getValueByKey:POSMINI_ACCOUNT_USERNAME];
+            accountTextField.text = [Helper getValueByKey:POSMINI_LOGIN_ACCOUNT];
         }
         
         if (secretState!=nil && [secretState isEqualToString:NSSTRING_NO]) {
@@ -155,7 +155,7 @@
         else if (secretState!=nil && [secretState isEqualToString:NSSTRING_YES]){
             [remSecretCheckBtn setImage:[UIImage imageNamed:@"check-btn.png"] forState:UIControlStateNormal];
             remSecretSelected = YES;
-            NSString *userName = [Helper getValueByKey:POSMINI_ACCOUNT_USERNAME];
+            NSString *userName = [Helper getValueByKey:POSMINI_LOGIN_ACCOUNT];
             NSString *passWord = [SFHFKeychainUtils getPasswordForUsername:userName andServiceName:KEYCHAIN_SFHF_SERVICE error:nil];
             pwdTextField.text = passWord;
         }
