@@ -8,6 +8,11 @@
 
 #import "BaseViewController.h"
 
-@interface DefaultHelpViewController : BaseViewController
+@interface DefaultHelpViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate>{
+    //显示用户帮助信息
+    UITableView *helpTableView;
+}
+
+@property (nonatomic, retain) UITableView *helpTableView;
 
 @end

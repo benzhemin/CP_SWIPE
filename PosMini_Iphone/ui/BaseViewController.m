@@ -107,6 +107,7 @@
         naviTitleLabel.textColor = [UIColor whiteColor];
         naviTitleLabel.backgroundColor = [UIColor clearColor];
         [naviBgView addSubview:naviTitleLabel];
+        naviTitleLabel.center = naviBgView.center;
     }
     
     CGFloat tabBarHeight = 0.0;
