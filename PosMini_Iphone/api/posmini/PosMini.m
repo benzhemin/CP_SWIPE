@@ -11,6 +11,7 @@
 #import "PosMiniSettings.h"
 #import "MBProgressHUD.h"
 #import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 #import "Helper.h"
 
 static PosMini *sInstance = nil;
@@ -91,6 +92,13 @@ static PosMini *sInstance = nil;
 //Setting global PosMini request　
 -(void)performRequest:(ASIHTTPRequest *)req
 {
+    //set CHINAPNR json post
+    if ([req.requestMethod isEqualToString:@"POST"]) {
+        if ([req respondsToSelector:@selector(setPostBodyFormat:)]) {
+            [(ASIFormDataRequest *)req setPostBodyFormat:ASIURLEncodedPostJSONFormat];
+        }
+    }
+    
     NSString *sessionStr = [Helper getValueByKey:POSMINI_LOCAL_SESSION];
     if (sessionStr!=nil && ![sessionStr isEqualToString:@"#"])
     {

@@ -31,12 +31,6 @@
 }
 
 -(void)execute{
-    //set CHINAPNR json post
-    if ([self.request.requestMethod isEqualToString:@"POST"]) {
-        if ([self.request respondsToSelector:@selector(setPostBodyFormat:)]) {
-            [(ASIFormDataRequest *)self.request setPostBodyFormat:ASIURLEncodedPostJSONFormat];
-        }
-    }
     
     [self onRespondJSON:self];
     
