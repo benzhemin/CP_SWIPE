@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "CustomTextView.h"
-#import "RegisterViewController.h"
+//#import "RegisterViewController.h"
 
 @interface LicenseViewController : BaseViewController<UIScrollViewDelegate>
 {

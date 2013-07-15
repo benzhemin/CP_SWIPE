@@ -7,6 +7,9 @@
 //
 
 #import "LicenseViewController.h"
+#import "Helper.h"
+#import "NSNotificationCenter+CP.h"
+
 #define PADDING_BOTTOM 30
 #define SCROLLVIEW_MARGINBOTTOM 50
 
@@ -99,13 +102,14 @@
         */
         
         //返回应用登录页面
-        [Helper saveValues:@"YES" forKey:@"LICENSEAGREED"];
+        [Helper saveValue:NSSTRING_YES forKey:POSMINI_HAVE_READ_LICENSE];
         [self dismissModalViewControllerAnimated:YES];
     }
     else
     {
         //协议没有阅读完成
-        [self showMessage:@"请下滑阅读完所有的许可协议!"];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"请下滑阅读完所有的许可协议!", NOTIFICATION_MESSAGE, nil];
+        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
     }
 
 }

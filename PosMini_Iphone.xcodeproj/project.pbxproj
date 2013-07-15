@@ -23,6 +23,10 @@
 		8B31E8C61793B99B00AA5B5F /* DefaultReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */; };
 		8B31E8C91793B9B600AA5B5F /* DefaultAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8C81793B9B600AA5B5F /* DefaultAccountViewController.m */; };
 		8B31E8CC1793B9C800AA5B5F /* DefaultHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */; };
+		8B55270E1793EC010030ED8D /* QAHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B55270D1793EC010030ED8D /* QAHelpCell.m */; };
+		8B5527111793F4BA0030ED8D /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527101793F4BA0030ED8D /* LicenseViewController.m */; };
+		8B5527131793F4FC0030ED8D /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B5527121793F4FC0030ED8D /* license.txt */; };
+		8B5527161793F5E70030ED8D /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527151793F5E70030ED8D /* CustomTextView.m */; };
 		8BC76229178A797700AD74C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC76228178A797700AD74C0 /* UIKit.framework */; };
 		8BC7622B178A797700AD74C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7622A178A797700AD74C0 /* Foundation.framework */; };
 		8BC7622D178A797700AD74C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7622C178A797700AD74C0 /* CoreGraphics.framework */; };
@@ -180,6 +184,13 @@
 		8B31E8C81793B9B600AA5B5F /* DefaultAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultAccountViewController.m; sourceTree = "<group>"; };
 		8B31E8CA1793B9C800AA5B5F /* DefaultHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultHelpViewController.h; sourceTree = "<group>"; };
 		8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultHelpViewController.m; sourceTree = "<group>"; };
+		8B55270C1793EC010030ED8D /* QAHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAHelpCell.h; sourceTree = "<group>"; };
+		8B55270D1793EC010030ED8D /* QAHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAHelpCell.m; sourceTree = "<group>"; };
+		8B55270F1793F4BA0030ED8D /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
+		8B5527101793F4BA0030ED8D /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
+		8B5527121793F4FC0030ED8D /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		8B5527141793F5E70030ED8D /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		8B5527151793F5E70030ED8D /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 		8BC76225178A797700AD74C0 /* PosMini_Iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosMini_Iphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC76228178A797700AD74C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BC7622A178A797700AD74C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -395,6 +406,8 @@
 			children = (
 				8B31E882178FB71100AA5B5F /* LoginViewController.h */,
 				8B31E883178FB71100AA5B5F /* LoginViewController.m */,
+				8B55270F1793F4BA0030ED8D /* LicenseViewController.h */,
+				8B5527101793F4BA0030ED8D /* LicenseViewController.m */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -495,6 +508,7 @@
 		8BC76245178A7A4200AD74C0 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				8B5527121793F4FC0030ED8D /* license.txt */,
 				8BC76246178A7A4200AD74C0 /* InfoPlist.strings */,
 				8BC76248178A7A4200AD74C0 /* main.m */,
 				8BC76249178A7A4200AD74C0 /* PosMini_Iphone-Info.plist */,
@@ -673,6 +687,10 @@
 				8BC76365178BFF1300AD74C0 /* CPTabBar.h */,
 				8BC76366178BFF1400AD74C0 /* CPTabBar.m */,
 				8BC76367178BFF1400AD74C0 /* CPTabBarDelegate.h */,
+				8B55270C1793EC010030ED8D /* QAHelpCell.h */,
+				8B55270D1793EC010030ED8D /* QAHelpCell.m */,
+				8B5527141793F5E70030ED8D /* CustomTextView.h */,
+				8B5527151793F5E70030ED8D /* CustomTextView.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -948,6 +966,7 @@
 				8BC7632F178A7EB700AD74C0 /* white-bg@2x.png in Resources */,
 				8B31E87F178F934600AA5B5F /* Icon.png in Resources */,
 				8B31E880178F934600AA5B5F /* Icon@2x.png in Resources */,
+				8B5527131793F4FC0030ED8D /* license.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -997,6 +1016,9 @@
 				8B31E8C61793B99B00AA5B5F /* DefaultReceiptViewController.m in Sources */,
 				8B31E8C91793B9B600AA5B5F /* DefaultAccountViewController.m in Sources */,
 				8B31E8CC1793B9C800AA5B5F /* DefaultHelpViewController.m in Sources */,
+				8B55270E1793EC010030ED8D /* QAHelpCell.m in Sources */,
+				8B5527111793F4BA0030ED8D /* LicenseViewController.m in Sources */,
+				8B5527161793F5E70030ED8D /* CustomTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
