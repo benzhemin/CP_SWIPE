@@ -26,8 +26,6 @@
     if (self) {
         target = _target;
         selector = @selector(requestFinished:);
-        
-        userInfo = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
