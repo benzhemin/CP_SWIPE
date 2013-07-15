@@ -12,7 +12,6 @@
 #import "JSON.h"
 #import "NSNotificationCenter+CP.h"
 #import "PosMiniSettings.h"
-#import "PosMini.h"
 
 @interface CPRequest()
 
@@ -262,11 +261,6 @@ static void buildRoot(id<ArgBuilder> builder, NSDictionary *body)
 
 - (void)genRequestWithPath:(NSString*)path andASIClass:(Class)asiHttpRequestSubclass
 {
-    if ([PosMiniSettings instance].isAbsolutePath) {
-        [self genRequestWithURL:[NSURL URLWithString:path] andASIClass:(Class)asiHttpRequestSubclass];
-        return;
-    }
-    
     static NSString* sServerURL = nil;
     if(!sServerURL){
         sServerURL = [[[[NSURL URLWithString:[[PosMiniSettings instance] getSetting:@"server-url"]] standardizedURL] absoluteString] retain];
@@ -475,8 +469,6 @@ static void buildRoot(id<ArgBuilder> builder, NSDictionary *body)
     }
     else
     {
-        [[PosMini sharedInstance] hideUIPromptMessage:YES];
-        
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
         
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"服务器返回异常", NOTIFICATION_MESSAGE, nil];
@@ -492,8 +484,6 @@ static void buildRoot(id<ArgBuilder> builder, NSDictionary *body)
     NSError *error = [request error];
     NSString *description = [error localizedDescription];
     */
-    [[PosMini sharedInstance] hideUIPromptMessage:YES];
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"网络连接失败", NOTIFICATION_MESSAGE, nil];
