@@ -50,7 +50,23 @@ static PosMini *sInstance = nil;
     
     
     //initialize NSDefault settings
-    [Helper saveValue:@"#" forKey:POSMINI_LOCAL_SESSION];
+    //设置session
+    [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_LOCAL_SESSION];
+    //设置刷新账户信息
+    [Helper saveValue:NSSTRING_YES forKey:POSMINI_ACCOUNT_NEED_REFRESH];
+    //设置刷新订单信息
+    [Helper saveValue:NSSTRING_YES forKey:POSMINI_ORDER_NEED_REFRESH];
+    //初始设备号
+    [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_DEVICE_ID];
+    //设置session
+    [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_LOCAL_SESSION];
+    //是否已登陆
+    [Helper saveValue:NSSTRING_NO forKey:POSMINI_LOGIN];
+    
+    //是否需要向下传递用户名
+    
+    //是否让用户输入密码
+    
     
     
 	[[NSNotificationCenter defaultCenter] addObserver:instance

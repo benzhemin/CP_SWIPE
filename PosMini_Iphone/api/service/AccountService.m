@@ -23,9 +23,11 @@
     
 }
 
--(void)userInfoRequestDidFinished:(ASIHTTPRequest *)req{
+-(void)userInfoRequestDidFinished:(PosMiniCPRequest *)req{
+    [[PosMini sharedInstance] showUIPromptMessage:@"载入中..." animated:YES];
     
-    
+    NSDictionary *body = (NSDictionary *) req.responseAsJson;
+    NSLog(@"%@", body);
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "BasicService.h"
-#import "PosMiniCPRequest.h"
+
 
 
 @interface AccountService : BasicService{
@@ -16,6 +16,6 @@
 
 -(void)requestForUserInfo;
 
--(void)userInfoRequestDidFinished:(ASIHTTPRequest *)req;
+-(void)userInfoRequestDidFinished:(PosMiniCPRequest *)req;
 
 @end

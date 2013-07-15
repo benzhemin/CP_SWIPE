@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "PosMini.h"
 #import "Helper.h"
+#import "PosMiniCPRequest.h"
+#import "CPRequest.h"
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 
 BOOL NotNil(NSDictionary *dict, NSString *k);
 BOOL NotNilAndEqualsTo(NSDictionary *dict, NSString *k, NSString *value);
