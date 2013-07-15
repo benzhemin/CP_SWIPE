@@ -10,6 +10,7 @@
 #import "Helper.h"
 #import "SFHFKeychainUtils.h"
 #import "NSNotificationCenter+CP.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 @end
@@ -265,22 +266,13 @@
     }
     
     self.logService = [[[LoginService alloc] init] autorelease];
-    [logService onRespondTarget:self selector:@selector(loginDidFinished:)];
+    [logService onRespondTarget:self selector:@selector(loginDidFinished)];
     [logService loginRequest:accountTextField.text withSecret:pwdTextField.text];
-    
-    //[self showWaitNotice:@"登录中..."];
-    
-    //初始化登录信息，发送登录请求
-    /*
-    NSHttpBlock *httpInfo = [[NSHttpBlock alloc]init];
-    httpInfo.requestUrl= [NSString stringWithFormat:@"%@/mtp/login",HOST_URL];
-    NSMutableDictionary *postDataDictionary = [[[NSMutableDictionary alloc]init]autorelease];
-    [postDataDictionary setValue:accountTextField.text forKey:@"LoginId"];
-    [postDataDictionary setValue:[Helper md5_16:[NSString stringWithFormat:@"%@%@",MD5_SEED,pwdTextField.text]] forKey:@"LoginPwd"];
-    httpInfo.requestKeyValue = postDataDictionary;
-    httpInfo.requestMethod = @"POST";
-    [self sendHttpRequest:httpInfo];
-    */
+}
+
+//登录成功
+-(void)loginDidFinished{
+    [(AppDelegate *)[UIApplication sharedApplication].delegate loginSuccess];
 }
 
 //处理跳转到许可协议
