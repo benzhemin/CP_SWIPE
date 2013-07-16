@@ -82,8 +82,8 @@ static LocationService *sInstance = nil;
         locationManager.distanceFilter = 1000;
         [locationManager stopUpdatingLocation];
         
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"定位中...", NOTIFICATION_MESSAGE, nil];
-        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_UI_AUTO_PROMPT object:nil userInfo:dict];
+        //NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"定位中...", NOTIFICATION_MESSAGE, nil];
+        //[[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_UI_AUTO_PROMPT object:nil userInfo:dict];
         [locationManager startUpdatingLocation];
     }
 }
