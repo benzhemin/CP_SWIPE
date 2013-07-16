@@ -84,10 +84,6 @@
     vp = [[VersionService alloc] init];
     [vp onRespondTarget:self selector:@selector(versionReqFinished)];
     [vp checkForUpdate];
-    
-    //请求定位
-    locService = [[LocationService alloc] init];
-    [locService startToLocateWithAuthentication:NO];
 }
 
 -(void)loginSuccess{
@@ -98,7 +94,9 @@
     [cpTabBar setTabSelected:2];
     [self.window.rootViewController.view addSubview:cpTabBar];
     
-    
+    //请求定位
+    self.locService = [[[LocationService alloc] init] autorelease];
+    [locService startToLocateWithAuthentication:NO];
 }
 
 -(void)changeToIndex:(int)index
