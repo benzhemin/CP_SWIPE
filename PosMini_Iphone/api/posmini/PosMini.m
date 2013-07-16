@@ -50,8 +50,7 @@ static PosMini *sInstance = nil;
     
     
     //initialize NSDefault settings
-    //设置session
-    [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_LOCAL_SESSION];
+    
     //设置刷新账户信息
     [Helper saveValue:NSSTRING_YES forKey:POSMINI_ACCOUNT_NEED_REFRESH];
     //设置刷新订单信息
@@ -115,14 +114,20 @@ static PosMini *sInstance = nil;
         }
     }
     
+    //construct seession cookie
     NSString *sessionStr = [Helper getValueByKey:POSMINI_LOCAL_SESSION];
     if (sessionStr!=nil && ![sessionStr isEqualToString:@"#"])
     {
-        NSMutableDictionary *cookieDict = [[[NSMutableDictionary alloc] init] autorelease];
-        [cookieDict setValue:POSMINI_MTP_SESSION forKey:NSHTTPCookieName];
-        [cookieDict setValue:sessionStr forKey:NSHTTPCookieValue];
+        NSMutableDictionary *properties = [[[NSMutableDictionary alloc] init] autorelease];
+        [properties setValue:POSMINI_MTP_SESSION forKey:NSHTTPCookieName];
+        [properties setValue:sessionStr forKey:NSHTTPCookieValue];
+        [properties setValue:@"\\" forKey:NSHTTPCookiePath];
+        [properties setValue:req.url.host forKey:NSHTTPCookieDomain];
+        
+        NSHTTPCookie *cookie = [[[NSHTTPCookie alloc] initWithProperties:properties] autorelease];
+        
         [req setUseCookiePersistence:NO];
-        [req setRequestCookies:[NSMutableArray arrayWithObject:cookieDict]];
+        [req setRequestCookies:[NSMutableArray arrayWithObject:cookie]];
     }
 }
 
