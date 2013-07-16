@@ -91,8 +91,6 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[body objectForKey:@"RespDesc"], NOTIFICATION_MESSAGE, nil];
         [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
     }
-    
-	
 }
 
 -(void)setDidFinishSelector:(SEL)_selector{
