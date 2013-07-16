@@ -39,29 +39,24 @@
     
     NSDictionary *body = (NSDictionary *)req.responseAsJson;
     
-    if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"000")) {
-        [Helper saveValue:[req.userInfo objectForKey:POSMINI_LOGIN_ACCOUNT] forKey:POSMINI_LOGIN_ACCOUNT];
-        [SFHFKeychainUtils storeUsername:[req.userInfo objectForKey:POSMINI_LOGIN_ACCOUNT]
-                             andPassword:[req.userInfo objectForKey:POSMINI_LOGIN_PASSWORD]
-                          forServiceName:KEYCHAIN_SFHF_SERVICE
-                          updateExisting:YES error:nil];
-        [Helper saveValue:[body objectForKey:@"UserName"] forKey:POSMINI_LOGIN_USERNAME];
-        [Helper saveValue:[body valueForKey:@"CustId"] forKey:POSMINI_CUSTOMER_ID];
-        
-        if (NotNil(body, @"SessionId")) {
-            [Helper saveValue:[body valueForKey:@"SessionId"] forKey:POSMINI_LOCAL_SESSION];
-        }
-        
-        //记录当前登录成功日期
-        NSDateFormatter *formatter = [[[NSDateFormatter alloc]init]autorelease];
-        [formatter setDateFormat:@"yyyyMMdd"];
-        [Helper saveValue:[NSString stringWithFormat:@"%@",[formatter stringFromDate:[NSDate date]]] forKey:POSMINI_LOGIN_DATE];
-        
-        [target performSelector:selector];
-    }else{
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[body objectForKey:@"RespDesc"], NOTIFICATION_MESSAGE, nil];
-        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+    [Helper saveValue:[req.userInfo objectForKey:POSMINI_LOGIN_ACCOUNT] forKey:POSMINI_LOGIN_ACCOUNT];
+    [SFHFKeychainUtils storeUsername:[req.userInfo objectForKey:POSMINI_LOGIN_ACCOUNT]
+                         andPassword:[req.userInfo objectForKey:POSMINI_LOGIN_PASSWORD]
+                      forServiceName:KEYCHAIN_SFHF_SERVICE
+                      updateExisting:YES error:nil];
+    [Helper saveValue:[body objectForKey:@"UserName"] forKey:POSMINI_LOGIN_USERNAME];
+    [Helper saveValue:[body valueForKey:@"CustId"] forKey:POSMINI_CUSTOMER_ID];
+    
+    if (NotNil(body, @"SessionId")) {
+        [Helper saveValue:[body valueForKey:@"SessionId"] forKey:POSMINI_LOCAL_SESSION];
     }
+    
+    //记录当前登录成功日期
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc]init]autorelease];
+    [formatter setDateFormat:@"yyyyMMdd"];
+    [Helper saveValue:[NSString stringWithFormat:@"%@",[formatter stringFromDate:[NSDate date]]] forKey:POSMINI_LOGIN_DATE];
+    
+    [target performSelector:selector];
 }
 
 @end
