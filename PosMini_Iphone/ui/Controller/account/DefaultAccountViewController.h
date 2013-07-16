@@ -7,17 +7,22 @@
 //
 
 #import "BaseViewController.h"
+#import "AccountService.h"
 
 @interface DefaultAccountViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
     //显示账户信息
     UITableView *acctInfoTableView;
     
+    AccountService *acctService;
+    
     NSMutableDictionary *userInfoDict;
-    
-    
 }
 
 @property (nonatomic, retain) UITableView *acctInfoTableView;
+@property (nonatomic, retain) AccountService *acctService;
+@property (nonatomic, retain) NSMutableDictionary *userInfoDict;
+
+-(void)accountRequestDidFinished;
 
 /**
  设置取现账户

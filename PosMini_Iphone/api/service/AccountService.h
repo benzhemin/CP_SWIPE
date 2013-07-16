@@ -8,11 +8,10 @@
 
 #import "BasicService.h"
 
-
-
 @interface AccountService : BasicService{
-    
+    NSMutableDictionary *userInfoDict;
 }
+@property (nonatomic, retain) NSMutableDictionary *userInfoDict;
 
 -(void)requestForUserInfo;
 

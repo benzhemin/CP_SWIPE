@@ -15,10 +15,14 @@
 
 @implementation DefaultAccountViewController
 
-@synthesize acctInfoTableView;
+@synthesize acctInfoTableView, acctService;
+@synthesize userInfoDict;
 
 -(void)dealloc{
     [acctInfoTableView release];
+    [acctService release];
+    
+    [userInfoDict release];
     [super dealloc];
 }
 
@@ -28,13 +32,13 @@
 	[self setNavigationTitle:@"账户信息"];
     
     //设置显示账户信息Table
+    
     self.acctInfoTableView = [[[UITableView alloc]initWithFrame:CGRectMake(0, 15, contentView.frame.size.width,contentView.frame.size.height-15) style:UITableViewStyleGrouped] autorelease];
     acctInfoTableView.backgroundView = nil;
     acctInfoTableView.backgroundColor = [UIColor clearColor];
     acctInfoTableView.delegate = self;
     acctInfoTableView.dataSource = self;
     [contentView addSubview:acctInfoTableView];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -50,10 +54,21 @@
         //当前日期是否等于登录成功日期，如果不是，强制刷新当前页面信息
         loginDateIsCurrentDate = YES;
     }
+    
+    if ([[Helper getValueByKey:POSMINI_ACCOUNT_NEED_REFRESH] isEqualToString:NSSTRING_YES] || !loginDateIsCurrentDate) {
+        self.acctService = [[[AccountService alloc] init] autorelease];
+        [acctService onRespondTarget:self selector:@selector(accountRequestDidFinished)];
+        [acctService requestForUserInfo];
+    }
+}
+
+-(void)accountRequestDidFinished{
+    self.userInfoDict = acctService.userInfoDict;
+    [self refreshTableView];
 }
 
 -(void)refreshTableView{
-    
+    [self.acctInfoTableView reloadData];
 }
 
 #pragma mark UITableViewDataSource Method
@@ -67,6 +82,7 @@
     return 50;
 }
 
+//返回Table的每行Cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"identifier";
@@ -77,7 +93,7 @@
         cell.textLabel.backgroundColor = [UIColor whiteColor];
         
         UILabel *title = [[UILabel alloc]init];
-        title.frame = CGRectMake(20,5, 85, cell.frame.size.height-5);
+        title.frame = CGRectMake(20,5, 105, cell.frame.size.height-5);
         title.textColor = [UIColor colorWithRed:68/255.0 green:68/255.0 blue:68/255.0 alpha:1.0];
         title.backgroundColor = [UIColor clearColor];
         title.font = [UIFont boldSystemFontOfSize:16];
@@ -96,56 +112,64 @@
         [content release];
     }
     cell.accessoryType = UITableViewCellAccessoryNone;
-    UILabel *title = (UILabel *) [cell viewWithTag:UITABLE_VIEW_CELL_TITLE];
-    UILabel *content = (UILabel *) [cell viewWithTag:UITABLE_VIEW_CELL_CONTENT];
+    UILabel *title = (UILabel *)[cell viewWithTag:UITABLE_VIEW_CELL_TITLE];
+    UILabel *content = (UILabel *)[cell viewWithTag:UITABLE_VIEW_CELL_CONTENT];
     switch (indexPath.row) {
         case 0:
             title.text = @"登录账户:";
-            content.text = [NSString stringWithFormat:@"%@(%@)",[Helper getValueByKey:@"userName"],[Helper getValueByKey:@"loginName"]];
+            content.text = [NSString stringWithFormat:@"%@(%@)",[Helper getValueByKey:POSMINI_LOGIN_USERNAME],[Helper getValueByKey:POSMINI_LOGIN_ACCOUNT]];
             break;
         case 1:
             title.text = @"自动取现:";
             if ([userInfoDict valueForKey:@"CashCardNo"]!=nil) {
-                content.text = [userInfoDict valueForKey:@"CashCardNo"];
+                content.text = [userInfoDict valueForKey:ACCOUNT_CASHCARD_NUMBER];
             }
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         case 2:
             title.text = @"当日收款:";
-            if ([userInfoDict valueForKey:@"TotalOrdAmt"]!=nil) {
-                content.text = [NSString stringWithFormat:@"%@元(%@笔)",[userInfoDict valueForKey:@"TotalOrdAmt"],[userInfoDict valueForKey:@"TotalOrdCnt"]];
+            if ([userInfoDict valueForKey:ACCOUNT_TOTAL_ORDER_AMOUNT]!=nil) {
+                content.text = [NSString stringWithFormat:@"%@元(%@笔)",[userInfoDict valueForKey:ACCOUNT_TOTAL_ORDER_AMOUNT],[userInfoDict valueForKey:ACCOUNT_TOTAL_ORDER_COUNT]];
             }
             break;
         case 3:
-            title.text = @"可取现金额:";
-            if ([userInfoDict valueForKey:@"AvailCashAmt"]!=nil) {
-                content.text =[NSString stringWithFormat:@"%@元",[userInfoDict valueForKey:@"AvailCashAmt"]];
+            title.text = @"单笔交易限额:";
+            if (![[Helper getValueByKey:POSMINI_ONE_LIMIT_AMOUNT] isEqualToString:POSMINI_DEFAULT_VALUE]) {
+                content.text =[NSString stringWithFormat:@"%@元",[Helper getValueByKey:POSMINI_ONE_LIMIT_AMOUNT]];
+            }else{
+                content.text = @"元";
             }
             break;
         case 4:
-            title.text = @"待结算金额:";
-            if ([userInfoDict valueForKey:@"NeedLiqAmt"]!=nil) {
-                content.text = [NSString stringWithFormat:@"%@元",[userInfoDict valueForKey:@"NeedLiqAmt"]];
+            title.text = @"每日交易限额:";
+            if (![[Helper getValueByKey:POSMINI_SUM_LIMIT_AMOUNT] isEqualToString:POSMINI_DEFAULT_VALUE]) {
+                content.text = [NSString stringWithFormat:@"%@元",[Helper getValueByKey:POSMINI_SUM_LIMIT_AMOUNT]];
+            }else{
+                content.text = @"元";
             }
             break;
         case 5:
             title.text = @"设备编号:";
-            if ([userInfoDict valueForKey:@"BindedMtId"]!=nil) {
-                content.text = [userInfoDict valueForKey:@"BindedMtId"];
+            if ([userInfoDict valueForKey:ACCOUNT_BINDED_MOUNT_ID]!=nil) {
+                content.text = [userInfoDict valueForKey:ACCOUNT_BINDED_MOUNT_ID];
             }
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
     }
     return cell;
 }
 
 #pragma mark UITableViewDelegate Method
+//选中行事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //do nothing here
+    return;
+    
     if (indexPath.row==1) {
-        if (![[userInfoDict valueForKey:@"CashCardNo"] isEqualToString:BANK_DEFINE]) {
+        if (![[userInfoDict valueForKey:@"CashCardNo"] isEqualToString:@"未设置"]) {
             //提示用户是否重设取现银行
-            UIAlertView *noticeAlert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"是否重新设置银行账户" delegate:self cancelButtonTitle:@"是" otherButtonTitles:@"否", nil];
+            UIAlertView *noticeAlert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"是否重新设置银行账户" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
             noticeAlert.tag = 2;
             [noticeAlert show];
             [noticeAlert release];
@@ -153,16 +177,18 @@
         else
         {
             //设置取现银行
+            /*
             SettingBankViewController *_settingBankViewController = [[SettingBankViewController alloc]init];
             _settingBankViewController.defaultBankAccountString = [userInfoDict valueForKey:@"CashCardNo"];
             [self.navigationController pushViewController:_settingBankViewController animated:YES];
             [_settingBankViewController release];
+            */
         }
         
     }
     if (indexPath.row==5) {
-        if (![[userInfoDict valueForKey:@"BindedMtId"] isEqualToString:BIND_DEFINE]) {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"解绑后该设备将作废，是否确定解绑!" delegate:self cancelButtonTitle:@"是" otherButtonTitles:@"否", nil];
+        if (![[userInfoDict valueForKey:@"BindedMtId"] isEqualToString:@"未绑定"]) {
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"解绑后该设备将作废，是否确定解绑!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
             alertView.tag = 1;
             [alertView show];
             [alertView release];
@@ -170,6 +196,7 @@
         
     }
 }
+ 
 
 /**
  返回用户行为跟踪Id号

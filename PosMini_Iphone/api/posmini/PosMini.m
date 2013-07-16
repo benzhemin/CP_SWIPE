@@ -62,6 +62,11 @@ static PosMini *sInstance = nil;
     //是否已登陆
     [Helper saveValue:NSSTRING_NO forKey:POSMINI_LOGIN];
     
+    //每日交易限额
+    [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_ONE_LIMIT_AMOUNT];
+    //单笔交易限额
+    [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_SUM_LIMIT_AMOUNT];
+    
     //是否需要向下传递用户名
     
     //是否让用户输入密码
