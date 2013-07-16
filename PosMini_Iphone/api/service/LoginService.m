@@ -39,8 +39,6 @@
     
     NSDictionary *body = (NSDictionary *)req.responseAsJson;
     
-    NSLog(@"%@", body);
-    
     if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"000")) {
         [Helper saveValue:[req.userInfo objectForKey:POSMINI_LOGIN_ACCOUNT] forKey:POSMINI_LOGIN_ACCOUNT];
         [SFHFKeychainUtils storeUsername:[req.userInfo objectForKey:POSMINI_LOGIN_ACCOUNT]
