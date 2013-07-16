@@ -20,7 +20,7 @@ BOOL NotNil(id dict, NSString *k){
 }
 
 BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
-    if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] && [dict valueForKey:k]!=nil && [[dict valueForKey:k] isEqualToString:value]) {
+    if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] && [dict valueForKey:k]!=nil && [[NSString stringWithFormat:@"%@", [dict valueForKey:k]] isEqualToString:value]) {
         return YES;
     }
     return NO;
@@ -70,6 +70,7 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
 {
     [self onRespondJSON:nil];
     
+    //统一判断状态码返回
     //状态码返回成功
     if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"000"))
     {
@@ -88,6 +89,8 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
     //返回出错,打印出错信息
     else if (NotNil(body, @"RespDesc"))
     {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
+        
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[body objectForKey:@"RespDesc"], NOTIFICATION_MESSAGE, nil];
         [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
     }
