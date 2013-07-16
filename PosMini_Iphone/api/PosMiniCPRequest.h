@@ -8,6 +8,9 @@
 
 #import "CPRequest.h"
 
+BOOL NotNil(id dict, NSString *k);
+BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value);
+
 @interface PosMiniCPRequest : CPRequest <CPResponseJSON, CPResponseText>{
     id target;
     SEL selector;

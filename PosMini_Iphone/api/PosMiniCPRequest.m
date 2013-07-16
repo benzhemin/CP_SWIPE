@@ -12,6 +12,20 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 
+BOOL NotNil(id dict, NSString *k){
+    if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] && [dict objectForKey:k]!=nil) {
+        return YES;
+    }
+    return NO;
+}
+
+BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
+    if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] && [dict valueForKey:k]!=nil && [[dict valueForKey:k] isEqualToString:value]) {
+        return YES;
+    }
+    return NO;
+}
+
 @implementation PosMiniCPRequest
 
 @synthesize userInfo;
@@ -56,12 +70,22 @@
 {
     [self onRespondJSON:nil];
     
-	if (target && selector)
-	{
-        if ([target respondsToSelector:selector]) {
-            [target performSelector:selector withObject:self];
+    if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"000"))
+    {
+        if (target && selector)
+        {
+            if ([target respondsToSelector:selector]) {
+                [target performSelector:selector withObject:self];
+            }
         }
-	}
+    }
+    else if (NotNil(body, @"RespDesc"))
+    {
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[body objectForKey:@"RespDesc"], NOTIFICATION_MESSAGE, nil];
+        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+    }
+    
+	
 }
 
 -(void)setDidFinishSelector:(SEL)_selector{

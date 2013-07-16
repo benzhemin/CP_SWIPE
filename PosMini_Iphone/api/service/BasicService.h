@@ -14,9 +14,6 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 
-BOOL NotNil(NSDictionary *dict, NSString *k);
-BOOL NotNilAndEqualsTo(NSDictionary *dict, NSString *k, NSString *value);
-
 @interface BasicService : NSObject{
     id target;
     SEL selector;
