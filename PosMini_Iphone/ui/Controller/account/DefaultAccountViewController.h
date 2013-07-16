@@ -13,6 +13,8 @@
     UITableView *acctInfoTableView;
     
     NSMutableDictionary *userInfoDict;
+    
+    
 }
 
 @property (nonatomic, retain) UITableView *acctInfoTableView;

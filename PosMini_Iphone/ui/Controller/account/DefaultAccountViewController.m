@@ -7,6 +7,7 @@
 //
 
 #import "DefaultAccountViewController.h"
+#import "Helper.h"
 
 @interface DefaultAccountViewController ()
 
@@ -80,7 +81,7 @@
         title.textColor = [UIColor colorWithRed:68/255.0 green:68/255.0 blue:68/255.0 alpha:1.0];
         title.backgroundColor = [UIColor clearColor];
         title.font = [UIFont boldSystemFontOfSize:16];
-        title.tag = 1;
+        title.tag = UITABLE_VIEW_CELL_TITLE;
         [cell addSubview:title];
         [title release];
         
@@ -90,13 +91,13 @@
         content.textAlignment = NSTextAlignmentRight;
         content.font = [UIFont systemFontOfSize:16];
         content.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1.0];
-        content.tag = 2;
+        content.tag = UITABLE_VIEW_CELL_CONTENT;
         [cell addSubview:content];
         [content release];
     }
     cell.accessoryType = UITableViewCellAccessoryNone;
-    UILabel *title = (UILabel *)[Helper getViewByTagInSubView:cell tag:1];
-    UILabel *content = (UILabel *)[Helper getViewByTagInSubView:cell tag:2];
+    UILabel *title = (UILabel *) [cell viewWithTag:UITABLE_VIEW_CELL_TITLE];
+    UILabel *content = (UILabel *) [cell viewWithTag:UITABLE_VIEW_CELL_CONTENT];
     switch (indexPath.row) {
         case 0:
             title.text = @"登录账户:";
@@ -104,33 +105,33 @@
             break;
         case 1:
             title.text = @"自动取现:";
-            if ([userInfoDictionary valueForKey:@"CashCardNo"]!=nil) {
-                content.text = [userInfoDictionary valueForKey:@"CashCardNo"];
+            if ([userInfoDict valueForKey:@"CashCardNo"]!=nil) {
+                content.text = [userInfoDict valueForKey:@"CashCardNo"];
             }
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         case 2:
             title.text = @"当日收款:";
-            if ([userInfoDictionary valueForKey:@"TotalOrdAmt"]!=nil) {
-                content.text = [NSString stringWithFormat:@"%@元(%@笔)",[userInfoDictionary valueForKey:@"TotalOrdAmt"],[userInfoDictionary valueForKey:@"TotalOrdCnt"]];
+            if ([userInfoDict valueForKey:@"TotalOrdAmt"]!=nil) {
+                content.text = [NSString stringWithFormat:@"%@元(%@笔)",[userInfoDict valueForKey:@"TotalOrdAmt"],[userInfoDict valueForKey:@"TotalOrdCnt"]];
             }
             break;
         case 3:
             title.text = @"可取现金额:";
-            if ([userInfoDictionary valueForKey:@"AvailCashAmt"]!=nil) {
-                content.text =[NSString stringWithFormat:@"%@元",[userInfoDictionary valueForKey:@"AvailCashAmt"]];
+            if ([userInfoDict valueForKey:@"AvailCashAmt"]!=nil) {
+                content.text =[NSString stringWithFormat:@"%@元",[userInfoDict valueForKey:@"AvailCashAmt"]];
             }
             break;
         case 4:
             title.text = @"待结算金额:";
-            if ([userInfoDictionary valueForKey:@"NeedLiqAmt"]!=nil) {
-                content.text = [NSString stringWithFormat:@"%@元",[userInfoDictionary valueForKey:@"NeedLiqAmt"]];
+            if ([userInfoDict valueForKey:@"NeedLiqAmt"]!=nil) {
+                content.text = [NSString stringWithFormat:@"%@元",[userInfoDict valueForKey:@"NeedLiqAmt"]];
             }
             break;
         case 5:
             title.text = @"设备编号:";
-            if ([userInfoDictionary valueForKey:@"BindedMtId"]!=nil) {
-                content.text = [userInfoDictionary valueForKey:@"BindedMtId"];
+            if ([userInfoDict valueForKey:@"BindedMtId"]!=nil) {
+                content.text = [userInfoDict valueForKey:@"BindedMtId"];
             }
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
@@ -142,7 +143,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row==1) {
-        if (![[userInfoDictionary valueForKey:@"CashCardNo"] isEqualToString:BANK_DEFINE]) {
+        if (![[userInfoDict valueForKey:@"CashCardNo"] isEqualToString:BANK_DEFINE]) {
             //提示用户是否重设取现银行
             UIAlertView *noticeAlert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"是否重新设置银行账户" delegate:self cancelButtonTitle:@"是" otherButtonTitles:@"否", nil];
             noticeAlert.tag = 2;
@@ -153,14 +154,14 @@
         {
             //设置取现银行
             SettingBankViewController *_settingBankViewController = [[SettingBankViewController alloc]init];
-            _settingBankViewController.defaultBankAccountString = [userInfoDictionary valueForKey:@"CashCardNo"];
+            _settingBankViewController.defaultBankAccountString = [userInfoDict valueForKey:@"CashCardNo"];
             [self.navigationController pushViewController:_settingBankViewController animated:YES];
             [_settingBankViewController release];
         }
         
     }
     if (indexPath.row==5) {
-        if (![[userInfoDictionary valueForKey:@"BindedMtId"] isEqualToString:BIND_DEFINE]) {
+        if (![[userInfoDict valueForKey:@"BindedMtId"] isEqualToString:BIND_DEFINE]) {
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"解绑后该设备将作废，是否确定解绑!" delegate:self cancelButtonTitle:@"是" otherButtonTitles:@"否", nil];
             alertView.tag = 1;
             [alertView show];
@@ -187,9 +188,9 @@
 {
     NSLog(@"银行卡号:%@",bankCardNum);
     //重新设置取现银行账户
-    [userInfoDictionary setValue:bankCardNum forKey:@"CashCardNo"];
+    [userInfoDict setValue:bankCardNum forKey:@"CashCardNo"];
     //刷新显示用户信息Table
-    [showAccountInfoTable reloadData];
+    [acctInfoTableView reloadData];
 }
 
 

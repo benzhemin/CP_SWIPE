@@ -17,7 +17,8 @@ typedef enum {
     
     CPTABBAR_UIVIEW_TAG,
     
-    
+    UITABLE_VIEW_CELL_TITLE,
+    UITABLE_VIEW_CELL_CONTENT
 } PosMiniUIViewTag;
 
 
