@@ -70,6 +70,7 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
 {
     [self onRespondJSON:nil];
     
+    //状态码返回成功
     if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"000"))
     {
         if (target && selector)
@@ -79,6 +80,12 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
             }
         }
     }
+    //需要重新登录建立session
+    else if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"899"))
+    {
+        //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REQUIRE_USER_LOGIN object:nil];
+    }
+    //返回出错,打印出错信息
     else if (NotNil(body, @"RespDesc"))
     {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[body objectForKey:@"RespDesc"], NOTIFICATION_MESSAGE, nil];
