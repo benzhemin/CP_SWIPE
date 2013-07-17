@@ -35,7 +35,6 @@
     [[PosMini sharedInstance] hideUIPromptMessage:YES];
     
     NSDictionary *body = (NSDictionary *)req.responseAsJson;
-    NSLog(@"%@", body);
     
     if (NotNil(body, @"SessionId")) {
         [Helper saveValue:[body valueForKey:@"SessionId"] forKey:POSMINI_LOCAL_SESSION];

@@ -39,12 +39,20 @@
 #define NSSTRING_YES @"YES"
 #define NSSTRING_NO @"NO"
 
+#define PARAM_CUSTOMER_ID @"CustId"
+//DefaultOrderController
+#define PARAM_ORDER_TRANS_STATUS @"TransStat"
+#define PARAM_ORDER_BEGIN_DATE @"BeginDate"
+#define PARAM_ORDER_END_DATE @"EndDate"
+#define PARAM_ORDER_PAGE_NUMBER @"PageNum"
+#define PARAM_ORDER_PAGE_SIZE @"PageSize"
+#define PARAM_ORDER_PAGE_SIZE_VALUE @"30"
+
 //DefaultAccountController
 //单笔交易限额
 #define POSMINI_ONE_LIMIT_AMOUNT @"POSMINI_ONE_LIMIT_AMOUNT"
 //每日交易限额
 #define POSMINI_SUM_LIMIT_AMOUNT @"POSMINI_SUM_LIMIT_AMOUNT"
-
 
 //累计收款笔数
 #define ACCOUNT_TOTAL_ORDER_COUNT @"TotalOrdCnt"

@@ -485,6 +485,8 @@ static void buildRoot(id<ArgBuilder> builder, NSDictionary *body)
     NSString *description = [error localizedDescription];
     NSLog(@"%@", description);
     
+    NSLog(@"网络异常　url:%@", request.url);
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"网络连接失败", NOTIFICATION_MESSAGE, nil];

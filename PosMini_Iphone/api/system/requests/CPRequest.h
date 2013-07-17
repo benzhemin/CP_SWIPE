@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define DEFAULT_TIME_OUT_SECONDS 20
-#define DEFAULT_NUMBER_TO_RETRY_ON_TIME_OUT 1
+#define DEFAULT_TIME_OUT_SECONDS 30
+#define DEFAULT_NUMBER_TO_RETRY_ON_TIME_OUT 2
 
 @class CPRequest, ASIHTTPRequest;
 
@@ -81,6 +81,8 @@
 -(void)execute;
 
 -(void)cancel;
+
+- (void) requestFailed:(ASIHTTPRequest *)request;
 
 @end
 

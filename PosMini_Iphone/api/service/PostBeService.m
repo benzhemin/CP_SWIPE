@@ -33,12 +33,16 @@
                                                 [_dateFormatter stringFromDate:date]];
     
     ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    //postbe经常超时,要设置超时时间
+    req.timeOutSeconds = 30;
+    
     [req setDidFinishSelector:@selector(postBeDidFinished:)];
     req.delegate = self;
     [req startAsynchronous];
 }
 -(void)postBeDidFinished:(ASIHTTPRequest *)req{
     //NSLog(@"postBe req finished");
+    
 }
 
 -(void)postBeForUID{
