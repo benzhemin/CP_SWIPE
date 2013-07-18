@@ -49,11 +49,4 @@
  */
 -(void) setShowArrow:(Boolean)isShowArrow;
 
-
-/**
-	处理退款点击事件
-	@param sender 系统参数
- */
--(void) reFund:(id)sender;
-
 @end

@@ -20,6 +20,12 @@ typedef enum _OrderInfoSeq{
     OrderSysTimer
 } OrderInfoSeq;
 
+typedef enum _BtnType{
+    PreDay = 1,
+    CurDay,
+    NextDay
+} BtnType;
+
 @interface DefaultOrderViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
 {
     UIImageView *topNaviBg;
@@ -43,8 +49,6 @@ typedef enum _OrderInfoSeq{
     
     //当前页
     int pageIndex;
-    //所有记录条数
-    int totalOrderCount;
     
     //是否显示更多
     Boolean isShowMore;
@@ -66,6 +70,9 @@ typedef enum _OrderInfoSeq{
 @property (nonatomic, retain) UIButton *curDateBtn;
 @property (nonatomic, retain) UITableView *orderTable;
 
+@property (nonatomic, retain) UIActionSheet *actionSheet;
+@property (nonatomic, retain) UIDatePicker *pickerView;
+
 @property (nonatomic, retain) NSMutableArray *orderList;
 
 @property (nonatomic, retain) NSDate *curDate;
@@ -74,17 +81,16 @@ typedef enum _OrderInfoSeq{
 @property (nonatomic, retain) OrderService *orderService;
 
 
--(void) setNextBtnEnable:(NSDate *)date;
 /**
  响应UISegmentedControl点击
  @param sender 系统参数
  */
--(void)DatePickerDoneClick:(id)sender;
+-(void)datePickerDoneClick:(id)sender;
 
 /**
  通过日期查询当天订单
  @param date 日期
  */
--(void) searchByDate:(NSDate *)date;
+-(void) requestOrderRecordByDate:(NSString *)dateStr;
 
 @end

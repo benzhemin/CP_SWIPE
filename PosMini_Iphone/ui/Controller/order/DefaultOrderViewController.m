@@ -24,19 +24,22 @@
  @param day 日期偏差
  @returns 计算后的日期
  */
--(NSDate *)getPriousDateFromDate:(NSDate *)date withDay:(int)day;
+-(NSDate *)dateFromDate:(NSDate *)date withDay:(int)day;
 
 /**
  根据事件，设置上一天和下一天按钮是否可用
+ 调用之前,一定要设置好curDate
  @param _nowDate 当前选择时间
  */
--(void) setButtonEnable:(NSDate *)_nowDate;
+-(void) setNextBtnEnable;
 @end
 
 @implementation DefaultOrderViewController
 
 @synthesize topNaviBg, preDayBtn, nextDayBtn, curDateBtn;
 @synthesize orderTable;
+@synthesize actionSheet, pickerView;
+
 @synthesize orderList;
 @synthesize orderService;
 @synthesize curDate, mtpCurDate;
@@ -49,6 +52,9 @@
     [curDateBtn release];
     
     [orderTable release];
+    
+    [actionSheet release];
+    [pickerView release];
     
     [orderList release];
 
@@ -77,7 +83,7 @@
     [preDayBtn setTitle:@"< 前一天" forState:UIControlStateNormal];
     preDayBtn.frame = CGRectMake(2, 5, 80, 20);
     [preDayBtn setExclusiveTouch:YES];
-    preDayBtn.tag = 1;
+    preDayBtn.tag = PreDay;
     [preDayBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     preDayBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
     [topNaviBg addSubview:preDayBtn];
@@ -87,7 +93,7 @@
     [curDateBtn setTitle:@"2012年8月21日" forState:UIControlStateNormal];
     curDateBtn.frame = CGRectMake(100, 5, 120, 20);
     [curDateBtn setExclusiveTouch:YES];
-    curDateBtn.tag = 2;
+    curDateBtn.tag = CurDay;
     [curDateBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     curDateBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
     [topNaviBg addSubview:curDateBtn];
@@ -97,7 +103,7 @@
     [nextDayBtn setTitle:@"后一天 >" forState:UIControlStateNormal];
     [nextDayBtn setExclusiveTouch:YES];
     nextDayBtn.frame = CGRectMake(238, 5, 80, 20);
-    nextDayBtn.tag = 3;
+    nextDayBtn.tag = NextDay;
     [nextDayBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     nextDayBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
     [topNaviBg addSubview:nextDayBtn];
@@ -121,21 +127,21 @@
 {
     [super viewWillAppear:animated];
     
-    //设置上一天，下一天按钮是否可用(如果当前日期跟系统日期不一样)
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc]init]autorelease];
-    [dateFormatter setDateFormat:@"yyyyMMdd"];
-    
     if ([[Helper getValueByKey:POSMINI_ORDER_NEED_REFRESH] isEqualToString:NSSTRING_YES]) {
         pageIndex = 1;
         [orderList removeAllObjects];
         
-        NSMutableDictionary *param = [[[NSMutableDictionary alloc] init] autorelease];
-        [param setObject:@"S" forKey:PARAM_ORDER_TRANS_STATUS];
-        [param setObject:@"" forKey:PARAM_ORDER_BEGIN_DATE];
-        [param setObject:@"" forKey:PARAM_ORDER_END_DATE];
-        [param setObject:[NSString stringWithFormat:@"%d", pageIndex] forKey:PARAM_ORDER_PAGE_NUMBER];
-        [orderService requestForOrderRecord:param];
+        [self requestOrderRecordByDate:@""];
     }
+}
+
+-(void) requestOrderRecordByDate:(NSString *)dateStr{
+    NSMutableDictionary *param = [[[NSMutableDictionary alloc] init] autorelease];
+    [param setObject:@"S" forKey:PARAM_ORDER_TRANS_STATUS];
+    [param setObject:dateStr forKey:PARAM_ORDER_BEGIN_DATE];
+    [param setObject:dateStr forKey:PARAM_ORDER_END_DATE];
+    [param setObject:[NSString stringWithFormat:@"%d", pageIndex] forKey:PARAM_ORDER_PAGE_NUMBER];
+    [orderService requestForOrderRecord:param];
 }
 
 -(void)orderRecordDidFinished:(NSDictionary *)body{
@@ -148,19 +154,28 @@
         [self setCurrentDate:curDate];
     }
     
-    totalOrderCount = [[body objectForKey:@"TotalNum"] intValue];
-    for (NSDictionary *dict in [body objectForKey:@"OrdersInfo"]) {
-        NSArray *orderInfo = [NSArray arrayWithObjects:
-                              [dict valueForKey:@"AcctDate"],
-                              [dict valueForKey:@"MtId"],
-                              [dict valueForKey:@"OrdAmt"],
-                              [dict valueForKey:@"OrdId"],
-                              [dict valueForKey:@"OrdStat"],
-                              [dict valueForKey:@"PayCard"],
-                              [dict valueForKey:@"SysSeqId"],
-                              [dict valueForKey:@"SysTime"], nil];
-        [orderList addObject:orderInfo];
+    int totalOrderCount = [[body objectForKey:@"TotalNum"] intValue];
+    id orderInfo = [body objectForKey:@"OrdersInfo"];
+    if (orderInfo!=nil && [orderInfo isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *dict in [body objectForKey:@"OrdersInfo"]) {
+            NSArray *orderInfo = [NSArray arrayWithObjects:
+                                  [dict valueForKey:@"AcctDate"],
+                                  [dict valueForKey:@"MtId"],
+                                  [dict valueForKey:@"OrdAmt"],
+                                  [dict valueForKey:@"OrdId"],
+                                  [dict valueForKey:@"OrdStat"],
+                                  [dict valueForKey:@"PayCard"],
+                                  [dict valueForKey:@"SysSeqId"],
+                                  [dict valueForKey:@"SysTime"], nil];
+            [orderList addObject:orderInfo];
+        }
     }
+    if (totalOrderCount > orderList.count) {
+        isShowMore = YES;
+    }else{
+        isShowMore = NO;
+    }
+    
     //刷新数据
     [orderTable reloadData];
 }
@@ -171,8 +186,7 @@
 {
     if (orderList.count==0) {
         return 1;
-    } else
-    {
+    } else{
         //显示更多
         if (isShowMore) {
             return orderList.count+1;
@@ -259,7 +273,7 @@
         return 45;
     }
     else{
-        if (isShowMore&&indexPath.row==orderList.count) {
+        if (isShowMore && indexPath.row==orderList.count) {
             return 45;
         }
         return ORDERDETAIL_CELLHEIGHT;
@@ -276,13 +290,15 @@
             [activityView startAnimating];
             
             pageIndex++;
-            //通过时间，查询指定日期的订单
-            //[self searchByDate:nowDate];
+            
+            NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc]init]autorelease];
+            [dateFormatter setDateFormat:@"yyyyMMdd"];
+            [self requestOrderRecordByDate:[dateFormatter stringFromDate:curDate]];
             return;
         }
-        
+        /*
         NSArray *orderInfo = [orderList objectAtIndex:indexPath.row];
-        if (!([[orderInfo objectAtIndex:4] isEqualToString:@"R"]||[systemDate compare:nowDate]!=NSOrderedSame))
+        if (!([[orderInfo objectAtIndex:4] isEqualToString:@"R"]||[curDate compare:nowDate]!=NSOrderedSame))
         {
             selectedIndex = indexPath.row;
             
@@ -300,9 +316,129 @@
                 return ;
             }
         }
+        */
     }
 }
 
+//响应UIButton事件
+-(void) btnClick:(id)sender
+{
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc]init]autorelease];
+    [dateFormatter setDateFormat:@"yyyyMMdd"];
+    
+    UIButton *btn = (UIButton *)sender;
+    pageIndex = 1;
+    switch (btn.tag) {
+        case PreDay:
+            //清空订单数组
+            [orderList removeAllObjects];
+            //点击上一天
+            self.curDate = [self dateFromDate:curDate withDay:-1];
+            //更新显示日期
+            [self setCurrentDate:curDate];
+            //重新查询
+            [self requestOrderRecordByDate:[dateFormatter stringFromDate:curDate]];
+            //设置上一天，下一天按钮是否可用
+            [self setNextBtnEnable];
+            break;
+        case CurDay:
+            //点击显示时间
+            self.actionSheet = [[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil] autorelease];
+            
+            [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+            
+            //Date picker
+            self.pickerView = [[[UIDatePicker alloc] init] autorelease];
+            pickerView.datePickerMode = UIDatePickerModeDate;
+            [actionSheet addSubview:pickerView];
+            [pickerView setDate:curDate];
+            [pickerView setMaximumDate:mtpCurDate];
+            
+            CGRect pickerRect = pickerView.bounds;
+            pickerRect.origin.y = -50;
+            pickerView.bounds = pickerRect;
+            
+            //取消按钮
+            UISegmentedControl *cancelBtn = [[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"取消"]] autorelease];
+            cancelBtn.momentary = YES;
+            cancelBtn.frame = CGRectMake(10.0f, 7.0f, 65.0f, 32.0f);
+            cancelBtn.segmentedControlStyle = UISegmentedControlStyleBar;
+            [cancelBtn addTarget:self action:@selector(datePickerDoneClick:) forControlEvents:UIControlEventValueChanged];
+            [actionSheet addSubview:cancelBtn];
+            cancelBtn.tag = 1;
+            
+            //确定按钮
+            UISegmentedControl *confirmBtn =[[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"确定"]] autorelease];
+            confirmBtn.momentary = YES;
+            confirmBtn.frame = CGRectMake(245, 7.0f, 65.0f, 32.0f);
+            confirmBtn.segmentedControlStyle = UISegmentedControlStyleBar;
+            [confirmBtn addTarget:self action:@selector(datePickerDoneClick:) forControlEvents:UIControlEventValueChanged];
+            [actionSheet addSubview:confirmBtn];
+            confirmBtn.tag = 2;
+            
+            [actionSheet showInView:self.view];
+            [actionSheet setBounds:CGRectMake(0,0, 320, 500)];
+            break;
+        case NextDay:
+            //点击显示下一天
+            self.curDate = [self dateFromDate:curDate withDay:1];
+            [self setCurrentDate:curDate];
+            //清空订单数组
+            [orderList removeAllObjects];
+            //重新查询
+            [self requestOrderRecordByDate:[dateFormatter stringFromDate:curDate]];
+            //设置上一天，下一天按钮是否可用
+            [self setNextBtnEnable];
+            break;
+    }
+}
+
+#pragma mark UIActionSheetDelegate Method
+/**
+ 响应UISegmentedControl点击
+ @param sender 系统参数
+ */
+-(void)datePickerDoneClick:(id)sender
+{
+    UISegmentedControl *sc = (UISegmentedControl *)sender;
+    if (sc.tag==2) {
+        
+        self.curDate = pickerView.date;
+        //设置上一天，下一天按钮是否可用
+        [self setNextBtnEnable];
+    }
+    [actionSheet dismissWithClickedButtonIndex:sc.tag animated:YES];
+}
+
+#pragma mark UIActionSheetDelegate Method
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc]init]autorelease];
+    [dateFormatter setDateFormat:@"yyyyMMdd"];
+    
+    //查询指定日期
+    if (buttonIndex==2) {
+        [self setCurrentDate:curDate];
+        
+        //清空订单数组
+        [orderList removeAllObjects];
+        
+        //重新查询指定日期订单信息
+        [self requestOrderRecordByDate:[dateFormatter stringFromDate:curDate]];
+    }
+}
+
+/**
+ 获取当期日期前day天日期
+ @param date 当前日期
+ @param day 日期偏差
+ @returns 计算后的日期
+ */
+-(NSDate *)dateFromDate:(NSDate *)date withDay:(int)day
+{
+    //avoid memory leak
+    return [[[NSDate alloc] initWithTimeInterval:24*60*60*day sinceDate:date] autorelease];
+}
 
 /**
  设置导航显示当前日期
@@ -316,7 +452,7 @@
 }
 
 
--(void) setNextBtnEnable:(NSDate *)date{
+-(void) setNextBtnEnable{
     if (mtpCurDate!=nil && [mtpCurDate compare:curDate]==NSOrderedDescending) {
         nextDayBtn.hidden = NO;
     }else{
