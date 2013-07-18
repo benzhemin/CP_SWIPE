@@ -84,6 +84,7 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
     //需要重新登录建立session
     else if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"899"))
     {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
         //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REQUIRE_USER_LOGIN object:nil];
     }
     //返回出错,打印出错信息
