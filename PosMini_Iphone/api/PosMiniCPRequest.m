@@ -70,6 +70,7 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
 {
     [self onRespondJSON:nil];
     
+    NSLog(@"%@", body);
     //统一判断状态码返回
     //状态码返回成功
     if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"000"))

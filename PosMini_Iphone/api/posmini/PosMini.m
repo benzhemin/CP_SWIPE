@@ -159,7 +159,7 @@ static PosMini *sInstance = nil;
 }
 
 -(void)postHideUIPromptMessage{
-    [self hideSysPromptMessage:YES];
+    [self hideUIPromptMessage:YES];
 }
 
 -(void) hideUIPromptMessage:(BOOL)animated

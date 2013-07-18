@@ -25,6 +25,8 @@
 		8B31E8CC1793B9C800AA5B5F /* DefaultHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */; };
 		8B48CF3317963E3900988311 /* OrderService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF3217963E3800988311 /* OrderService.m */; };
 		8B48CF361796936F00988311 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF351796936F00988311 /* OrderCell.m */; };
+		8B48CF391797C14E00988311 /* ReceiptBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF381797C14E00988311 /* ReceiptBgView.m */; };
+		8B48CF3B1797EEC800988311 /* textctrl.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF3A1797EEC700988311 /* textctrl.c */; };
 		8B55270E1793EC010030ED8D /* QAHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B55270D1793EC010030ED8D /* QAHelpCell.m */; };
 		8B5527111793F4BA0030ED8D /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527101793F4BA0030ED8D /* LicenseViewController.m */; };
 		8B5527131793F4FC0030ED8D /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B5527121793F4FC0030ED8D /* license.txt */; };
@@ -191,6 +193,10 @@
 		8B48CF3217963E3800988311 /* OrderService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderService.m; sourceTree = "<group>"; };
 		8B48CF341796936F00988311 /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
 		8B48CF351796936F00988311 /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
+		8B48CF371797C14E00988311 /* ReceiptBgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptBgView.h; sourceTree = "<group>"; };
+		8B48CF381797C14E00988311 /* ReceiptBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptBgView.m; sourceTree = "<group>"; };
+		8B48CF3A1797EEC700988311 /* textctrl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = textctrl.c; sourceTree = "<group>"; };
+		8B48CF3C1797EED700988311 /* textctrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = textctrl.h; sourceTree = "<group>"; };
 		8B55270C1793EC010030ED8D /* QAHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAHelpCell.h; sourceTree = "<group>"; };
 		8B55270D1793EC010030ED8D /* QAHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAHelpCell.m; sourceTree = "<group>"; };
 		8B55270F1793F4BA0030ED8D /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
@@ -466,6 +472,8 @@
 			children = (
 				8B31E8C41793B99B00AA5B5F /* DefaultReceiptViewController.h */,
 				8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */,
+				8B48CF3A1797EEC700988311 /* textctrl.c */,
+				8B48CF3C1797EED700988311 /* textctrl.h */,
 			);
 			path = receipt;
 			sourceTree = "<group>";
@@ -704,6 +712,8 @@
 				8B55270D1793EC010030ED8D /* QAHelpCell.m */,
 				8B48CF341796936F00988311 /* OrderCell.h */,
 				8B48CF351796936F00988311 /* OrderCell.m */,
+				8B48CF371797C14E00988311 /* ReceiptBgView.h */,
+				8B48CF381797C14E00988311 /* ReceiptBgView.m */,
 				8B5527141793F5E70030ED8D /* CustomTextView.h */,
 				8B5527151793F5E70030ED8D /* CustomTextView.m */,
 			);
@@ -1037,6 +1047,8 @@
 				8B5527191794146D0030ED8D /* AccountService.m in Sources */,
 				8B48CF3317963E3900988311 /* OrderService.m in Sources */,
 				8B48CF361796936F00988311 /* OrderCell.m in Sources */,
+				8B48CF391797C14E00988311 /* ReceiptBgView.m in Sources */,
+				8B48CF3B1797EEC800988311 /* textctrl.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
