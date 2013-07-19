@@ -114,16 +114,15 @@
     }
     
     //C trick, use c pointers make things simpler.
-    //输入删除
     char text[TEXT_LEN];
     bzero(text, TEXT_LEN);
     strcpy(text, [textField.text UTF8String]);
-    
+    //输入删除
     if ([string isEqualToString:@""]) {
         delete_amount(text);
     }
     else {
-        //如果输入收款超过999.99，使输入无效
+        //如果输入收款超过999999.99，使输入无效
         if (textField.text.length>=9) {
             return NO;
         }
