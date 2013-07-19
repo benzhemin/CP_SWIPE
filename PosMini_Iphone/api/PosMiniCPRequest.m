@@ -87,6 +87,8 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
         //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REQUIRE_USER_LOGIN object:nil];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"session超时,请重新登录", NOTIFICATION_MESSAGE, nil];
+        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
     }
     //返回出错,打印出错信息
     else if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"881"))
