@@ -12,6 +12,7 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 
+//防止服务端返回空值,客户端解析异常而退出
 BOOL NotNil(id dict, NSString *k){
     if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] && [dict objectForKey:k]!=nil) {
         return YES;
@@ -19,6 +20,7 @@ BOOL NotNil(id dict, NSString *k){
     return NO;
 }
 
+//防止服务端返回空值,客户端解析异常而退出
 BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
     if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] && [dict valueForKey:k]!=nil && [[NSString stringWithFormat:@"%@", [dict valueForKey:k]] isEqualToString:value]) {
         return YES;
