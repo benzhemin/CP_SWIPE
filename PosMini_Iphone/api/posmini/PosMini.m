@@ -142,6 +142,9 @@ static PosMini *sInstance = nil;
 
 #pragma mark -
 #pragma mark UIPromptMessage methods
+/*
+ *　显示UI loading消息
+ */
 -(void) showUIPromptMessage:(NSString *)message animated:(BOOL)animated
 {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -181,6 +184,9 @@ static PosMini *sInstance = nil;
 
 #pragma mark -
 #pragma mark SysPromptMessage methods
+/*
+ *　显示系统提示消息
+ */
 -(void) showSysPromptMessage:(NSString *)message animated:(BOOL)animated
 {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -258,7 +264,5 @@ static PosMini *sInstance = nil;
 	
 	[PosMini shutdown];
 }
-
-
 
 @end
