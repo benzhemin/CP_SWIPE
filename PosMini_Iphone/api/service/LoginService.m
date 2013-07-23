@@ -47,10 +47,6 @@
     [Helper saveValue:[body objectForKey:@"UserName"] forKey:POSMINI_LOGIN_USERNAME];
     [Helper saveValue:[body valueForKey:@"CustId"] forKey:POSMINI_CUSTOMER_ID];
     
-    if (NotNil(body, @"SessionId")) {
-        [Helper saveValue:[body valueForKey:@"SessionId"] forKey:POSMINI_LOCAL_SESSION];
-    }
-    
     //记录当前登录成功日期
     NSDateFormatter *formatter = [[[NSDateFormatter alloc]init]autorelease];
     [formatter setDateFormat:@"yyyyMMdd"];

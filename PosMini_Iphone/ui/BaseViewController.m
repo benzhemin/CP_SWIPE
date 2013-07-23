@@ -45,6 +45,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+
+    [PosMiniDevice sharedInstance].baseCTRL = self;
     
     self.navigationController.navigationBar.hidden = YES;
     
@@ -124,6 +126,9 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+    //防止popViewController时,设置错误的controller
+    [PosMiniDevice sharedInstance].baseCTRL = self;
     
     [self tabBarAnimation];
 }

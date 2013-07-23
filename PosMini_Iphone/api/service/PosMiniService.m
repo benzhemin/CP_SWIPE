@@ -177,7 +177,7 @@
 -(void)requestForPosTradeSignIn:(NSString *)deviceSN{
     [[PosMini sharedInstance] showUIPromptMessage:@"签到中..." animated:YES];
     
-    NSString* url = [NSString stringWithFormat:@"/mtp/action/bind/bind"];
+    NSString* url = [NSString stringWithFormat:@"/mtp/action/trade/signIn"];
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[Helper getValueByKey:POSMINI_CUSTOMER_ID] forKey:@"CustId"];
@@ -193,6 +193,8 @@
     [[PosMini sharedInstance] hideUIPromptMessage:YES];
     
     NSDictionary *body = (NSDictionary *)req.responseAsJson;
+    
+    NSLog(@"%@", body);
     
     PosMiniDevice *pos = [PosMiniDevice sharedInstance];
     

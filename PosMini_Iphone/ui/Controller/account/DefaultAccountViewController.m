@@ -192,7 +192,6 @@
             [_settingBankViewController release];
             */
         }
-        
     }
     if (indexPath.row==5) {
         if (![[userInfoDict valueForKey:@"BindedMtId"] isEqualToString:@"未绑定"]) {
@@ -201,7 +200,6 @@
             [alertView show];
             [alertView release];
         }
-        
     }
 }
  

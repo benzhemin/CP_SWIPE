@@ -11,6 +11,7 @@
 #import "PosMini.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+#import "Helper.h"
 
 //防止服务端返回空值,客户端解析异常而退出
 BOOL NotNil(id dict, NSString *k){
@@ -77,6 +78,11 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
     //状态码返回成功
     if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"000"))
     {
+        //如果返回sessionId就做存储
+        if (NotNil(body, @"SessionId")) {
+            [Helper saveValue:[body valueForKey:@"SessionId"] forKey:POSMINI_LOCAL_SESSION];
+        }
+        
         if (target && selector)
         {
             if ([target respondsToSelector:selector]) {

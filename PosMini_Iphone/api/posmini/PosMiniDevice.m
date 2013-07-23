@@ -139,9 +139,9 @@ static PosMiniDevice *sInstance = nil;
     if (statusCode == SUCCESS) {
         self.deviceSN = serialNum;
         
-        if ([[Helper getValueByKey:POSMINI_DEVICE_ID] isEqualToString:POSMINI_DEFAULT_VALUE]) {
+        //当前用户未绑定刷卡器,查询用户和刷卡器状态
+        if ([[Helper getValueByKey:POSMINI_MTP_BINDED_DEVICE_ID] isEqualToString:POSMINI_DEFAULT_VALUE]) {
             if ([baseCTRL isKindOfClass:[DefaultReceiptViewController class]]) {
-                //当前用户未绑定刷卡器,查询用户和刷卡器状态
                 [posService requestForPosBindStatus:serialNum];
             }
         }
@@ -170,6 +170,9 @@ static PosMiniDevice *sInstance = nil;
  * statusCode:请求清空读卡器数据返回的状态
  */
 - (void)resetDeviceBackStatus:(StatusCode)statusCode{
+    if ([baseCTRL isKindOfClass:[DefaultReceiptViewController class]]) {
+        ((DefaultReceiptViewController *)baseCTRL).confirmBtn.enabled = YES;
+    }
     
     if (statusCode == SUCCESS) {
         //请求签到数据,成功后灌入密钥

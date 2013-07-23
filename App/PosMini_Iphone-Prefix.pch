@@ -20,11 +20,11 @@
 
 #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
 
-//#define HOST_URL @"http://test.chinapnr.com/"
-//#define MD5_SEED @"d3776loqw21h77mmh675aas567xyusgKUL2H3DK4735O9861M6Q1ETGHB1C5ZK17K3P32VZR31WC77AC9E7TC43188PD3H9"
+#define HOST_URL @"http://test.chinapnr.com/"
+#define MD5_SEED @"d3776loqw21h77mmh675aas567xyusgKUL2H3DK4735O9861M6Q1ETGHB1C5ZK17K3P32VZR31WC77AC9E7TC43188PD3H9"
 
-#define HOST_URL @"https://lab.chinapnr.com/"
-#define MD5_SEED @"d3776loqw21h77mmh675aas567xyusgD1533V8J1X3S9SSX62JH2FT70XX41E99EEUY3060I2AR3710YY43G3OC3ZJF6J62"
+//#define HOST_URL @"https://lab.chinapnr.com/"
+//#define MD5_SEED @"d3776loqw21h77mmh675aas567xyusgD1533V8J1X3S9SSX62JH2FT70XX41E99EEUY3060I2AR3710YY43G3OC3ZJF6J62"
 
 
 #define CPSafeRelease(ocObject) [ocObject release]; \

@@ -7,6 +7,7 @@
 //
 
 #import "AccountService.h"
+#import "PosMiniDevice.h"
 
 @implementation AccountService
 
@@ -28,17 +29,12 @@
     PosMiniCPRequest *posReq = [PosMiniCPRequest postRequestWithPath:url andBody:dict];
     [posReq onRespondTarget:self selector:@selector(userInfoRequestDidFinished:)];
     [posReq execute];
-    
 }
 
 -(void)userInfoRequestDidFinished:(PosMiniCPRequest *)req{
     [[PosMini sharedInstance] hideUIPromptMessage:YES];
     
     NSDictionary *body = (NSDictionary *)req.responseAsJson;
-    
-    if (NotNil(body, @"SessionId")) {
-        [Helper saveValue:[body valueForKey:@"SessionId"] forKey:POSMINI_LOCAL_SESSION];
-    }
     
     self.userInfoDict = [[[NSMutableDictionary alloc] init] autorelease];
     //存储登录信息
@@ -63,6 +59,8 @@
     [userInfoDict setValue:[body valueForKey:ACCOUNT_NEED_LIQ_AMOUNT] forKey:ACCOUNT_NEED_LIQ_AMOUNT];
     
     [Helper saveValue:NSSTRING_NO forKey:POSMINI_ACCOUNT_NEED_REFRESH];
+    
+    [[PosMiniDevice sharedInstance].posReq reqDeviceSN];
     
     [target performSelector:selector];
 }
