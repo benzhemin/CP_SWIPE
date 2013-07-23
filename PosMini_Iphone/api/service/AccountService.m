@@ -52,6 +52,13 @@
         [userInfoDict setValue:[body valueForKey:ACCOUNT_CASHCARD_NUMBER] forKey:ACCOUNT_CASHCARD_NUMBER];
     }
     
+    if ([[[body valueForKey:ACCOUNT_BINDED_MOUNT_ID] description] isEqualToString:@"<null>"]) {
+        [userInfoDict setValue:@"未绑定" forKey:ACCOUNT_BINDED_MOUNT_ID];
+    }else{
+        [userInfoDict setValue:[body valueForKey:ACCOUNT_BINDED_MOUNT_ID] forKey:ACCOUNT_BINDED_MOUNT_ID];
+        [Helper saveValue:[body valueForKey:ACCOUNT_BINDED_MOUNT_ID] forKey:POSMINI_MTP_BINDED_DEVICE_ID];
+    }
+    
     [userInfoDict setValue:[body valueForKey:ACCOUNT_AVAILIABLE_CASH_AMOUNT] forKey:ACCOUNT_AVAILIABLE_CASH_AMOUNT];
     [userInfoDict setValue:[body valueForKey:ACCOUNT_NEED_LIQ_AMOUNT] forKey:ACCOUNT_NEED_LIQ_AMOUNT];
     

@@ -466,13 +466,16 @@ static void buildRoot(id<ArgBuilder> builder, NSDictionary *body)
         [mResponseText onResponseText:mResponseAsString withResponseCode:mRequest.responseStatusCode];
         [mResponseData onResponseData:mResponseAsData withResponseCode:mRequest.responseStatusCode];
         [mResponseJSON onResponseJSON:mResponseAsJSON withResponseCode:mRequest.responseStatusCode];
+    }else if (mRequest.responseStatusCode == 404){
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REQUIRE_USER_LOGIN object:nil];
+        
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"长时间未使用，请重新登录!"];
     }
     else
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
-        
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"服务器返回异常", NOTIFICATION_MESSAGE, nil];
-        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"服务器返回异常"];
     }
 	
 	// we're done here
@@ -489,8 +492,7 @@ static void buildRoot(id<ArgBuilder> builder, NSDictionary *body)
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
     
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"网络连接失败", NOTIFICATION_MESSAGE, nil];
-    [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"网络连接失败"];
 }
 
 @end

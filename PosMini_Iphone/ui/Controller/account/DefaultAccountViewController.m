@@ -60,6 +60,14 @@
         [acctService onRespondTarget:self selector:@selector(accountRequestDidFinished)];
         [acctService requestForUserInfo];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView) name:NOTIFICATION_REFRESH_ACCOUNT object:nil];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)accountRequestDidFinished{

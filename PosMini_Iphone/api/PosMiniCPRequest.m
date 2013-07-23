@@ -88,23 +88,21 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
     else if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"899"))
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
-        //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REQUIRE_USER_LOGIN object:nil];
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"session超时,请重新登录", NOTIFICATION_MESSAGE, nil];
-        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REQUIRE_USER_LOGIN object:nil];
+        
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"长时间未使用，请重新登录!"];
     }
     //返回出错,打印出错信息
     else if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"881"))
     {
         //当然用户尚未绑定设备
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"当前用户未绑定设备", NOTIFICATION_MESSAGE, nil];
-        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"当前用户未绑定设备"];
     }
     else if (NotNil(body, @"RespDesc"))
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
         
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[body objectForKey:@"RespDesc"], NOTIFICATION_MESSAGE, nil];
-        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:[body objectForKey:@"RespDesc"]];
     }
 }
 

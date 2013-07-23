@@ -11,6 +11,7 @@
 #import "CPTabBar.h"
 #import "Helper.h"
 #import "PostBeService.h"
+#import "PosMiniDevice.h"
 
 #define DEFAULT_NAVIGATION_TITLE_WIDTH 180
 

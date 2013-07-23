@@ -27,5 +27,15 @@
 	[self postNotificationOnMainThread:notification];
 }
 
+-(void)postAutoSysPromptNotification:(NSString *)message{
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:message, NOTIFICATION_MESSAGE, nil];
+    [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+}
+
+-(void)postAutoUIPromptNotification:(NSString *)message{
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:message, NOTIFICATION_MESSAGE, nil];
+    [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_UI_AUTO_PROMPT object:nil userInfo:dict];
+}
+
 @end
 

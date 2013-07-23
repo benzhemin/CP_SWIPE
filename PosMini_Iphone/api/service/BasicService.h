@@ -13,12 +13,14 @@
 #import "CPRequest.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+#import "NSNotificationCenter+CP.h"
 
 @interface BasicService : NSObject{
     id target;
     SEL selector;
 }
 
+- (id)onRespondTarget:(id)_target;
 - (id)onRespondTarget:(id)_target selector:(SEL)_selector;
 
 @end

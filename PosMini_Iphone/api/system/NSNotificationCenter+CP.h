@@ -14,5 +14,8 @@
 - (void)postNotificationOnMainThreadName:(NSString *)aName object:(id)anObject;
 - (void)postNotificationOnMainThreadName:(NSString *)aName object:(id)anObject userInfo:(NSDictionary *)aUserInfo;
 
+-(void)postAutoSysPromptNotification:(NSString *)message;
+-(void)postAutoUIPromptNotification:(NSString *)message;
+
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import "PosMini.h"
+#import "PosMiniDevice.h"
 #import "DeviceIntrospection.h"
 #import "PosMiniSettings.h"
 #import "MBProgressHUD.h"
@@ -45,6 +46,9 @@ static PosMini *sInstance = nil;
 {
     PosMini *instance = [PosMini sharedInstance];
     
+    //初始化pos mini设备
+    [PosMiniDevice initializePosMiniDevice];
+    
     [DeviceIntrospection sharedInstance];
     [PosMiniSettings instance];
     
@@ -57,6 +61,8 @@ static PosMini *sInstance = nil;
     [Helper saveValue:NSSTRING_YES forKey:POSMINI_ORDER_NEED_REFRESH];
     //初始设备号
     [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_DEVICE_ID];
+    //POSmini绑定设备号
+    [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_MTP_BINDED_DEVICE_ID];
     //设置session
     [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_LOCAL_SESSION];
     //是否已登陆
@@ -102,6 +108,7 @@ static PosMini *sInstance = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:instance];
     
+    [PosMiniDevice destroySharedInstance];
     [DeviceIntrospection destroySharedInstance];
     [PosMiniSettings destroyInstance];
     

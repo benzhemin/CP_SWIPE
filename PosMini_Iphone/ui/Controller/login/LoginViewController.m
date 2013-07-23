@@ -253,14 +253,12 @@
 {
     //判断用户名是否为空
     if ([Helper StringIsNullOrEmpty:accountTextField.text]) {
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"请输入账户名!", NOTIFICATION_MESSAGE, nil];
-        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请输入账户名!"];
         return;
     }
     //判断输入密码是否为空
     if ([Helper StringIsNullOrEmpty:pwdTextField.text]) {
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"请输入密码!", NOTIFICATION_MESSAGE, nil];
-        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请输入密码!"];
         return;
     }
     

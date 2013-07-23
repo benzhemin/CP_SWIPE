@@ -15,11 +15,12 @@
 
 @implementation DefaultReceiptViewController
 
-@synthesize recpBgView, inputField;
+@synthesize recpBgView, inputField, confirmBtn;
 
 -(void)dealloc{
     [recpBgView release];
     [inputField release];
+    [confirmBtn release];
     
     [super dealloc];
 }
@@ -80,7 +81,7 @@
     [unitLabel release];
     
     //确认收款按钮
-    UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     confirmBtn.frame = CGRectMake((contentView.bounds.size.width-btmImg.size.width)/2, 150, 274, 47);
     
     [confirmBtn setBackgroundImage:[[UIImage imageNamed:@"reg-btn.png"]stretchableImageWithLeftCapWidth:10 topCapHeight:0] forState:UIControlStateNormal];
@@ -100,6 +101,57 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [inputField becomeFirstResponder];
+    confirmBtn.enabled = YES;
+}
+
+/**
+ 点击确认收款金额页面
+ @param sender 系统参数
+ */
+-(void)confirm:(id)sender{
+    [inputField resignFirstResponder];
+    
+    //获取当前设备状态
+    if ([Helper getValueByKey:POSMINI_CONNECTION_STATUS]==nil ||
+        [[Helper getValueByKey:POSMINI_CONNECTION_STATUS] isEqualToString:NSSTRING_NO]) {
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请插入设备!"];
+    }
+    else
+    {
+        if ([PosMiniDevice sharedInstance].isDeviceLegal)
+        {
+            if ([[Helper getValueByKey:POSMINI_ONE_LIMIT_AMOUNT] isEqualToString:POSMINI_DEFAULT_VALUE])
+            {
+                [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"未获取交易限额!"];
+                return;
+            }
+            
+            NSString *oneLimitStr = [Helper getValueByKey:POSMINI_ONE_LIMIT_AMOUNT];
+            CGFloat oneLimitFloat = [oneLimitStr floatValue];
+            
+            //加入交易限额判断
+            if ([Helper StringIsNullOrEmpty:inputField.text])
+            {
+                [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请输入收款金额!"];
+            }else if ([inputField.text floatValue]<0.1)
+            {
+                [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"收款金额必须大于0.1元"];
+            }
+            else if ([inputField.text floatValue]>oneLimitFloat)
+            {
+                [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"收款金额超过单笔最大限额"];
+            }
+            else
+            {
+                confirmBtn.enabled = NO;
+                //重置刷卡器
+                [[PosMiniDevice sharedInstance].posReq resetDevice];
+            }
+    
+        }else{
+            [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"不是合法设备!"];
+        }
+    }
 }
 
 #define TEXT_LEN 20

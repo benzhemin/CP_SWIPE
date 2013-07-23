@@ -12,6 +12,11 @@
 
 @implementation BasicService
 
+- (id)onRespondTarget:(id)_target{
+    target = _target;
+    return self;
+}
+
 - (id)onRespondTarget:(id)_target selector:(SEL)_selector
 {
 	target = _target;

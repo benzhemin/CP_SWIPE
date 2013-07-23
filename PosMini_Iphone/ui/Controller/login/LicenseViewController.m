@@ -108,8 +108,7 @@
     else
     {
         //协议没有阅读完成
-        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"请下滑阅读完所有的许可协议!", NOTIFICATION_MESSAGE, nil];
-        [[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_SYS_AUTO_PROMPT object:nil userInfo:dict];
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请下滑阅读完所有的许可协议!"];
     }
 
 }
