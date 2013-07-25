@@ -14,13 +14,15 @@
 #import "DefaultHelpViewController.h"
 #import "DefaultOrderViewController.h"
 
+#import "ReceiptConfirmViewController.h"
+
 static PosMiniDevice *sInstance = nil;
 
 @implementation PosMiniDevice
 
 @synthesize posReq, baseCTRL;
 @synthesize deviceSN;
-@synthesize orderId, md5Key;
+@synthesize orderId, paySum, md5Key;
 @synthesize keyInfo;
 @synthesize isDeviceLegal;
 
@@ -46,6 +48,7 @@ static PosMiniDevice *sInstance = nil;
     [deviceSN release];
     
     [orderId release];
+    [paySum release];
     [md5Key release];
     
     [keyInfo release];
@@ -55,7 +58,8 @@ static PosMiniDevice *sInstance = nil;
     [super dealloc];
 }
 
--(id)init{
+-(id)init
+{
     self = [super init];
     if (self != nil) {
         baseCTRL = nil;
@@ -76,27 +80,25 @@ static PosMiniDevice *sInstance = nil;
 {
     PosMiniDevice *instance = [PosMiniDevice sharedInstance];
     
-    
-    
     //注册事件，监听刷卡器状态改变
     [[NSNotificationCenter defaultCenter] addObserver:instance
                                              selector:@selector(deviceStatusChange:)
                                                  name:DeviceStatusNotification
                                                object:nil];
-    
-    
 }
 
--(void)deviceStatusChange:(NSNotification *)notification{
-    
-    
+-(void)deviceStatusChange:(NSNotification *)notification
+{
     //POS mini默认连接状态为未连接
     [Helper saveValue:NSSTRING_NO forKey:POSMINI_CONNECTION_STATUS];
+    
+    //当POS mini设备状态变化,设备合法状态一定是NO
+    isDeviceLegal = NO;
     
     switch ([[[notification userInfo] objectForKey:DeviceConnectStatus] intValue])
     {
         case NO_DEVICE:   //没有设备接入(设备拔出)
-
+            
             [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"设备拔出"];
             break;
             
@@ -118,7 +120,7 @@ static PosMiniDevice *sInstance = nil;
             break;
         
         case DEVICE_NEED_UPDATE:  //刷卡器已识别,但需要升级
-            
+
             [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"设备已识别，但需要升级"];
             break;
         default:
@@ -151,6 +153,8 @@ static PosMiniDevice *sInstance = nil;
                 isDeviceLegal = YES;
                 
                 //对四个tab页面做交易限额查询
+                //DefaultReceiptViewController, DefaultOrderViewController,
+                //DefaultAccountViewController, DefaultHelpViewController
                 if ([[baseCTRL controllerName] rangeOfString:@"Default"].location != NSNotFound) {
                     [posService requestForTradeLimit];
                 }
@@ -211,7 +215,10 @@ static PosMiniDevice *sInstance = nil;
         [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"注入成功"];
         //注入成功,跳转到确认订单页面
         if ([baseCTRL isKindOfClass:[DefaultReceiptViewController class]]) {
-            
+            ReceiptConfirmViewController *receiptCTRL = [[ReceiptConfirmViewController alloc] init];
+            receiptCTRL.isShowTabBar = NO;
+            [baseCTRL.navigationController pushViewController:receiptCTRL animated:YES];
+            [receiptCTRL release];
         }
         
     }

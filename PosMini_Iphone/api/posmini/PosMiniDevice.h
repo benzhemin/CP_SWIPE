@@ -21,6 +21,7 @@
     NSString *deviceSN;
     
     NSString *orderId;
+    NSString *paySum;
     NSString *md5Key;
     
     KeyInfo *keyInfo;
@@ -33,7 +34,9 @@
 @property (nonatomic, retain) BaseViewController *baseCTRL;
 
 @property (nonatomic, copy) NSString *deviceSN;
+
 @property (nonatomic, copy) NSString *orderId;
+@property (nonatomic, copy) NSString *paySum;
 @property (nonatomic, copy) NSString *md5Key;
 
 @property (nonatomic, retain) KeyInfo *keyInfo;
