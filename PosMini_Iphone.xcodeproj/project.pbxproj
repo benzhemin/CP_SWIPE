@@ -501,10 +501,10 @@
 		8B31E8BD1793B18C00AA5B5F /* receipt */ = {
 			isa = PBXGroup;
 			children = (
-				8B48CF5017A0B41D00988311 /* ReceiptConfirmViewController.h */,
-				8B48CF5117A0B41E00988311 /* ReceiptConfirmViewController.m */,
 				8B31E8C41793B99B00AA5B5F /* DefaultReceiptViewController.h */,
 				8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */,
+				8B48CF5017A0B41D00988311 /* ReceiptConfirmViewController.h */,
+				8B48CF5117A0B41E00988311 /* ReceiptConfirmViewController.m */,
 				8B48CF3A1797EEC700988311 /* textctrl.c */,
 				8B48CF3C1797EED700988311 /* textctrl.h */,
 			);
