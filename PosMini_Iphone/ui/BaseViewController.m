@@ -45,8 +45,6 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-
-    [PosMiniDevice sharedInstance].baseCTRL = self;
     
     self.navigationController.navigationBar.hidden = YES;
     
@@ -75,9 +73,8 @@
     if (self.isShowNaviBar) {
         naviBarHeight = DEFAULT_NAVIGATION_BAR_HEIGHT;
         //初始化导航栏
-        UIImageView *cusNaviBgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-bg.png"]];
-        self.naviBgView = cusNaviBgView;
-        [cusNaviBgView release];
+        self.naviBgView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-bg.png"]] autorelease];
+        naviBgView.userInteractionEnabled = YES;
         naviBgView.frame = CGRectMake(0, 0, viewWidth, DEFAULT_NAVIGATION_BAR_HEIGHT);
         [bgImageView addSubview:naviBgView];
         

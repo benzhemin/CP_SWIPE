@@ -121,16 +121,16 @@
     [contentView addSubview:orderTable];
     
     isShowMore = NO;
-    
-    //如果进来时候设备已经连接，直接查询设备编号
-    if ([[Helper getValueByKey:POSMINI_CONNECTION_STATUS] isEqualToString:@"YES"]) {
-        [[PosMiniDevice sharedInstance].posReq reqDeviceSN];
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    //如果进来时候设备已经连接，直接查询设备编号
+    if ([[Helper getValueByKey:POSMINI_CONNECTION_STATUS] isEqualToString:@"YES"]) {
+        [[PosMiniDevice sharedInstance].posReq reqDeviceSN];
+    }
     
     if ([[Helper getValueByKey:POSMINI_ORDER_NEED_REFRESH] isEqualToString:NSSTRING_YES]) {
         pageIndex = 1;

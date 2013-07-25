@@ -31,6 +31,10 @@
     helpTableView.delegate = self;
     helpTableView.dataSource = self;
     [contentView addSubview:helpTableView];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     
     //如果进来时候设备已经连接，直接查询设备编号
     if ([[Helper getValueByKey:POSMINI_CONNECTION_STATUS] isEqualToString:@"YES"]) {

@@ -34,6 +34,7 @@
 		8B48CF49179CF6D000988311 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48CF48179CF6CF00988311 /* MediaPlayer.framework */; };
 		8B48CF4C179E166000988311 /* PosMiniService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF4B179E165E00988311 /* PosMiniService.m */; };
 		8B48CF4F179EBF3300988311 /* RequireLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF4E179EBF3300988311 /* RequireLoginViewController.m */; };
+		8B48CF5217A0B41E00988311 /* ReceiptConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF5117A0B41E00988311 /* ReceiptConfirmViewController.m */; };
 		8B55270E1793EC010030ED8D /* QAHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B55270D1793EC010030ED8D /* QAHelpCell.m */; };
 		8B5527111793F4BA0030ED8D /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527101793F4BA0030ED8D /* LicenseViewController.m */; };
 		8B5527131793F4FC0030ED8D /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B5527121793F4FC0030ED8D /* license.txt */; };
@@ -215,6 +216,8 @@
 		8B48CF4B179E165E00988311 /* PosMiniService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PosMiniService.m; sourceTree = "<group>"; };
 		8B48CF4D179EBF3300988311 /* RequireLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireLoginViewController.h; sourceTree = "<group>"; };
 		8B48CF4E179EBF3300988311 /* RequireLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireLoginViewController.m; sourceTree = "<group>"; };
+		8B48CF5017A0B41D00988311 /* ReceiptConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptConfirmViewController.h; sourceTree = "<group>"; };
+		8B48CF5117A0B41E00988311 /* ReceiptConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptConfirmViewController.m; sourceTree = "<group>"; };
 		8B55270C1793EC010030ED8D /* QAHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAHelpCell.h; sourceTree = "<group>"; };
 		8B55270D1793EC010030ED8D /* QAHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAHelpCell.m; sourceTree = "<group>"; };
 		8B55270F1793F4BA0030ED8D /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
@@ -498,6 +501,8 @@
 		8B31E8BD1793B18C00AA5B5F /* receipt */ = {
 			isa = PBXGroup;
 			children = (
+				8B48CF5017A0B41D00988311 /* ReceiptConfirmViewController.h */,
+				8B48CF5117A0B41E00988311 /* ReceiptConfirmViewController.m */,
 				8B31E8C41793B99B00AA5B5F /* DefaultReceiptViewController.h */,
 				8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */,
 				8B48CF3A1797EEC700988311 /* textctrl.c */,
@@ -1093,6 +1098,7 @@
 				8B48CF3F179CEDC000988311 /* PosMiniDevice.m in Sources */,
 				8B48CF4C179E166000988311 /* PosMiniService.m in Sources */,
 				8B48CF4F179EBF3300988311 /* RequireLoginViewController.m in Sources */,
+				8B48CF5217A0B41E00988311 /* ReceiptConfirmViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

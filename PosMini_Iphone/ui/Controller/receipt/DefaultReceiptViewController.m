@@ -30,7 +30,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self setNavigationTitle:@"刷卡收款"];
+    [self setNavigationTitle:@"刷卡确认"];
     
     UIImage *btmImg = [UIImage imageNamed:@"btm.png"];
     
@@ -95,17 +95,20 @@
     tapGesture.delegate = self;
     [self.view addGestureRecognizer:tapGesture];
     [tapGesture release];
-    
-    //如果进来时候设备已经连接，直接查询设备编号
-    if ([[Helper getValueByKey:POSMINI_CONNECTION_STATUS] isEqualToString:@"YES"]) {
-        [[PosMiniDevice sharedInstance].posReq reqDeviceSN];
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [inputField becomeFirstResponder];
     confirmBtn.enabled = YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //如果进来时候设备已经连接，直接查询设备编号
+    if ([[Helper getValueByKey:POSMINI_CONNECTION_STATUS] isEqualToString:@"YES"]) {
+        [[PosMiniDevice sharedInstance].posReq reqDeviceSN];
+    }
 }
 
 /**
@@ -147,6 +150,9 @@
             }
             else
             {
+                //将收款金额放置到PosMiniDevice中
+                [PosMiniDevice sharedInstance].paySum = inputField.text;
+                
                 confirmBtn.enabled = NO;
                 //重置刷卡器
                 [[PosMiniDevice sharedInstance].posReq resetDevice];

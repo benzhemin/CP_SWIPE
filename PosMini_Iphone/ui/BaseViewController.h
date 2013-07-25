@@ -57,6 +57,7 @@
 @property (nonatomic, retain) PostBeService *pb;
 
 -(void) hiddenBackButton;
+-(void)backToPreviousView:(id)sender;
 -(void)setNavigationTitle:(NSString *)title;
 -(NSString *)controllerName;
 

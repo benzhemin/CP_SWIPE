@@ -7,7 +7,18 @@
 //
 
 #import "BaseViewController.h"
+#import "ReceiptBgView.h"
 
-@interface ReceiptConfirmViewController : BaseViewController
+@interface ReceiptConfirmViewController : BaseViewController{
+    //白色背景
+    ReceiptBgView *recpBgView;
+    
+    UIButton *confirmBtn;
+}
+
+@property (nonatomic, retain) ReceiptBgView *recpBgView;
+@property (nonatomic, retain) UIButton *confirmBtn;
+
+-(void)pay:(id)sender;
 
 @end
