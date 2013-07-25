@@ -68,6 +68,9 @@ static PosMini *sInstance = nil;
     //是否已登陆
     [Helper saveValue:NSSTRING_NO forKey:POSMINI_LOGIN];
     
+    //pos mini连接状态
+    [Helper saveValue:NSSTRING_NO forKey:POSMINI_CONNECTION_STATUS];
+    
     //每日交易限额
     [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_ONE_LIMIT_AMOUNT];
     //单笔交易限额
