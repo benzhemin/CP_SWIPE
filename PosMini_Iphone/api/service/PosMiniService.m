@@ -190,7 +190,6 @@
 }
 
 -(void)posTradeSignInDidFinished:(PosMiniCPRequest *)req{
-    [[PosMini sharedInstance] hideUIPromptMessage:YES];
     
     NSDictionary *body = (NSDictionary *)req.responseAsJson;
     
