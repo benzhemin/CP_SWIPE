@@ -24,7 +24,7 @@
 	return self;
 }
 
-//如果采用ASIHTTPRequest的原始方式请求,添加失败回调接口
+//ASIHTTPRequest failure callback
 - (void) requestFailed:(ASIHTTPRequest *)request{
     [[PosMini sharedInstance] hideUIPromptMessage:YES];
     
