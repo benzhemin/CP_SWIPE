@@ -30,7 +30,7 @@
 @end
 
 @interface CPRequest : NSObject{
-    //三个代理类
+    //delegate obj
     id<CPResponseText> mResponseText;
     id<CPResponseData> mResponseData;
     id<CPResponseJSON> mResponseJSON;

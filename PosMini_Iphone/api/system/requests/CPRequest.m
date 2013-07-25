@@ -147,7 +147,7 @@ static void buildRoot(id<ArgBuilder> builder, NSDictionary *body)
     return rv;
 }
 
--(void)dealloc{
+- (void)dealloc{
     self.request = nil;
     [super dealloc];
 }
