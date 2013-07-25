@@ -116,7 +116,8 @@
     [unitLabel release];
     
     //确认收款按钮
-    confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    confirmBtn.frame = CGRectMake((recpBgView.frame.size.width-274)/2, 180, 274, 47);
     [confirmBtn addTarget:self action:@selector(pay:) forControlEvents:UIControlEventTouchUpInside];
     [confirmBtn setBackgroundImage:[[UIImage imageNamed:@"reg-btn.png"]stretchableImageWithLeftCapWidth:10 topCapHeight:0] forState:UIControlStateNormal];
     [confirmBtn setTitle:@"确 认 后 刷 卡" forState:UIControlStateNormal];
@@ -126,7 +127,18 @@
 
 
 -(void)pay:(id)sender{
+    PosMiniDevice *pos = [PosMiniDevice sharedInstance];
     
+    if ([[Helper getValueByKey:POSMINI_CONNECTION_STATUS] isEqualToString:NSSTRING_NO]) {
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请插入设备!"];
+    }else{
+        if (pos.isDeviceLegal) {
+            [[PosMini sharedInstance] showUIPromptMessage:@"初始化数据..." animated:YES];
+            [pos.posReq resetDevice];
+        }else{
+            [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"两次插入设备不一致!"];
+        }
+    }
 }
 
 
