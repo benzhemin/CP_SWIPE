@@ -50,6 +50,7 @@
     
     if ([[[body valueForKey:ACCOUNT_BINDED_MOUNT_ID] description] isEqualToString:@"<null>"]) {
         [userInfoDict setValue:@"未绑定" forKey:ACCOUNT_BINDED_MOUNT_ID];
+        [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_MTP_BINDED_DEVICE_ID];
     }else{
         [userInfoDict setValue:[body valueForKey:ACCOUNT_BINDED_MOUNT_ID] forKey:ACCOUNT_BINDED_MOUNT_ID];
         [Helper saveValue:[body valueForKey:ACCOUNT_BINDED_MOUNT_ID] forKey:POSMINI_MTP_BINDED_DEVICE_ID];
@@ -60,7 +61,9 @@
     
     [Helper saveValue:NSSTRING_NO forKey:POSMINI_ACCOUNT_NEED_REFRESH];
     
-    [[PosMiniDevice sharedInstance].posReq reqDeviceSN];
+    if ([[Helper getValueByKey:POSMINI_CONNECTION_STATUS] isEqualToString:NSSTRING_YES]) {
+        [[PosMiniDevice sharedInstance].posReq reqDeviceSN];
+    }
     
     [target performSelector:selector];
 }
