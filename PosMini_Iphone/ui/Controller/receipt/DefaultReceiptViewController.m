@@ -8,6 +8,7 @@
 
 #import "DefaultReceiptViewController.h"
 #include "textctrl.h"
+#import "PosMini.h"
 
 @interface DefaultReceiptViewController ()
 
@@ -155,6 +156,8 @@
                 
                 confirmBtn.enabled = NO;
                 //重置刷卡器
+                
+                [[PosMini sharedInstance] showUIPromptMessage:@"重置读卡器" animated:YES];
                 [[PosMiniDevice sharedInstance].posReq resetDevice];
             }
     
