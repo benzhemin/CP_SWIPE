@@ -23,4 +23,6 @@
 - (id)onRespondTarget:(id)_target;
 - (id)onRespondTarget:(id)_target selector:(SEL)_selector;
 
+- (void) requestFailed:(ASIHTTPRequest *)request;
+
 @end
