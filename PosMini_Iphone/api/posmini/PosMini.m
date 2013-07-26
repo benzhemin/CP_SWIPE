@@ -15,6 +15,8 @@
 #import "ASIFormDataRequest.h"
 #import "Helper.h"
 
+#import "RequireLoginViewController.h"
+
 static PosMini *sInstance = nil;
 
 @implementation PosMini
@@ -67,7 +69,8 @@ static PosMini *sInstance = nil;
     [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_LOCAL_SESSION];
     //是否已登陆
     [Helper saveValue:NSSTRING_NO forKey:POSMINI_LOGIN];
-    
+    //是否在展示重新登录页面
+    [Helper saveValue:NSSTRING_NO forKey:POSMINI_SHOW_USER_LOGIN];
     //pos mini连接状态
     [Helper saveValue:NSSTRING_NO forKey:POSMINI_CONNECTION_STATUS];
     
@@ -79,7 +82,6 @@ static PosMini *sInstance = nil;
     //是否需要向下传递用户名
     
     //是否让用户输入密码
-    
     
     
 	[[NSNotificationCenter defaultCenter] addObserver:instance
@@ -147,7 +149,15 @@ static PosMini *sInstance = nil;
     }
 }
 
-
+//用户重新登录
+-(void)requireUserLogin:(NSNotification *)notify{
+    
+    if ([[Helper getValueByKey:POSMINI_SHOW_USER_LOGIN] isEqualToString:NSSTRING_NO]) {
+        RequireLoginViewController *rl = [[RequireLoginViewController alloc] init];
+        [[[UIApplication sharedApplication] keyWindow].rootViewController presentModalViewController:rl animated:YES];
+        [rl release];
+    }
+}
 
 
 #pragma mark -
@@ -241,7 +251,6 @@ static PosMini *sInstance = nil;
     }
 	
 }
-
 
 -(void) displayUIPromptAutomatically:(NSNotification *)notification
 {    
