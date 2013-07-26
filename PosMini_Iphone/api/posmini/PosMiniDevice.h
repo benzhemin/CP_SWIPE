@@ -12,7 +12,12 @@
 #import "BaseViewController.h"
 #import "PosMiniService.h"
 
-@interface PosMiniDevice : NSObject <PosRequestDelegate>{
+typedef enum _AlertViewType{
+    AlertView_Clear_BurshCard_Faild = 1,
+    
+}AlertViewType;
+
+@interface PosMiniDevice : NSObject <PosRequestDelegate, UIAlertViewDelegate>{
     PosRequest *posReq;
     BaseViewController *baseCTRL;
     
@@ -23,6 +28,8 @@
     NSString *orderId;
     NSString *paySum;
     NSString *md5Key;
+    
+    NSString *bankCardAndPassData;
     
     KeyInfo *keyInfo;
     
@@ -38,6 +45,8 @@
 @property (nonatomic, copy) NSString *orderId;
 @property (nonatomic, copy) NSString *paySum;
 @property (nonatomic, copy) NSString *md5Key;
+
+@property (nonatomic, copy) NSString *bankCardAndPassData;
 
 @property (nonatomic, retain) KeyInfo *keyInfo;
 
