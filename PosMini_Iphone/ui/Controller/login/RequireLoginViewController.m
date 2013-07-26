@@ -101,6 +101,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [Helper saveValue:NSSTRING_YES forKey:POSMINI_SHOW_USER_LOGIN];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
