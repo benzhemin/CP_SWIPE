@@ -64,6 +64,18 @@
     }
 }
 
+//ASIHTTPRequest failure callback
+- (void) requestFailed:(ASIHTTPRequest *)request{
+    [super requestFailed:request];
+    
+    [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"版本更新请求异常"];
+    
+    if ([target respondsToSelector:selector])
+    {
+        [target performSelector:selector];
+    }
+}
+
 #pragma mark UIAlertViewDelegate Method
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
