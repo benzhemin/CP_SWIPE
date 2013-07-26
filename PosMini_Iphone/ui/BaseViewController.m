@@ -164,7 +164,7 @@
     }
 }
 
--(void) hiddenBackButton
+-(void) hideBackButton
 {
     naviBackBtn.hidden = YES;
 }
