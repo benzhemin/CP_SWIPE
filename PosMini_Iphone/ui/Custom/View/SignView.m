@@ -94,8 +94,12 @@
     [self.pointsList removeAllObjects];
     
     //deep copy
-    for (NSValue *val in points) {
-        [pointsList addObject:[NSValue valueWithCGPoint:[val CGPointValue]]];
+    for (id val in points) {
+        if ([val isKindOfClass:[NSValue class]]) {
+            [pointsList addObject:[NSValue valueWithCGPoint:[val CGPointValue]]];
+        }else if ([val isKindOfClass:[NSString class]]){
+            [pointsList addObject:val];
+        }
     }
     
     [self setNeedsDisplay];
