@@ -25,6 +25,7 @@
 		8B13B4BD17B8969A00082FC7 /* ReceiptConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4B117B8969A00082FC7 /* ReceiptConfirmViewController.m */; };
 		8B13B4BE17B8969A00082FC7 /* SignLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4B317B8969A00082FC7 /* SignLandscapeViewController.m */; };
 		8B13B4BF17B8969A00082FC7 /* SwipeCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4B517B8969A00082FC7 /* SwipeCardViewController.m */; };
+		8B13B4C217B89A2B00082FC7 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4C117B89A2B00082FC7 /* BaseViewController.m */; };
 		8B31E85A178D4BAE00AA5B5F /* PostBeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E859178D4BAE00AA5B5F /* PostBeService.m */; };
 		8B31E861178E8CE800AA5B5F /* PosMini.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E860178E8CE800AA5B5F /* PosMini.m */; };
 		8B31E865178E9A0700AA5B5F /* VersionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E864178E9A0700AA5B5F /* VersionService.m */; };
@@ -204,6 +205,8 @@
 		8B13B4B317B8969A00082FC7 /* SignLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignLandscapeViewController.m; sourceTree = "<group>"; };
 		8B13B4B417B8969A00082FC7 /* SwipeCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeCardViewController.h; sourceTree = "<group>"; };
 		8B13B4B517B8969A00082FC7 /* SwipeCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeCardViewController.m; sourceTree = "<group>"; };
+		8B13B4C017B89A2B00082FC7 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		8B13B4C117B89A2B00082FC7 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		8B31E858178D4BAE00AA5B5F /* PostBeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostBeService.h; sourceTree = "<group>"; };
 		8B31E859178D4BAE00AA5B5F /* PostBeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostBeService.m; sourceTree = "<group>"; };
 		8B31E85B178E52F800AA5B5F /* UIDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDimension.h; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 		8B13B49C17B8969A00082FC7 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				8B13B4C017B89A2B00082FC7 /* BaseViewController.h */,
+				8B13B4C117B89A2B00082FC7 /* BaseViewController.m */,
 				8B13B4AD17B8969A00082FC7 /* receipt */,
 				8B13B4AA17B8969A00082FC7 /* order */,
 				8B13B49D17B8969A00082FC7 /* account */,
@@ -1107,6 +1112,7 @@
 				8B13B4BD17B8969A00082FC7 /* ReceiptConfirmViewController.m in Sources */,
 				8B13B4BE17B8969A00082FC7 /* SignLandscapeViewController.m in Sources */,
 				8B13B4BF17B8969A00082FC7 /* SwipeCardViewController.m in Sources */,
+				8B13B4C217B89A2B00082FC7 /* BaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

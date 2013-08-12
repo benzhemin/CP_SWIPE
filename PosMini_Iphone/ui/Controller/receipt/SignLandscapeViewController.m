@@ -114,7 +114,7 @@
     [super viewWillAppear:animated];
     
     if ([PosMiniDevice sharedInstance].pointsList.count > 0) {
-        //[self.signView ]
+        [self.signView drawSignFromArray:[PosMiniDevice sharedInstance].pointsList];
     }
 }
 
