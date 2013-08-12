@@ -173,8 +173,6 @@
     }
 }
 
-#define TEXT_LEN 20
-
 #pragma mark UITextFieldDelegate Method
 //输入收款金额文字框输入改变时，自动修改输入金额数据格式
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -185,8 +183,8 @@
     }
     
     //C trick, use c pointers make things simpler.
-    char text[TEXT_LEN];
-    bzero(text, TEXT_LEN);
+    char text[TEXT_MAX_LEN];
+    bzero(text, TEXT_MAX_LEN);
     strcpy(text, [textField.text UTF8String]);
     //输入删除
     if ([string isEqualToString:@""]) {
@@ -194,7 +192,7 @@
     }
     else {
         //如果输入收款超过999999.99，使输入无效
-        if (textField.text.length>=9) {
+        if (textField.text.length>=12) {
             return NO;
         }
         insert_amount(text, *[string UTF8String]);

@@ -10,6 +10,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include "textctrl.h"
+
+/*
+    收款输入金额的UITextField设置
+    规则如下:输入金额,字符串从右向左移动1位,并保持小数点在末两位
+            点击删除按钮,删除最低位,并保持小数点在末两位
+ */
 
 void swap(char *a, char *b){
 	char temp = *a;
@@ -32,6 +39,11 @@ void delete_amount(char *text){
 
 void insert_amount(char *text, char digit){
 	int len = strlen(text);
+    
+    //超过最大输入金额
+    if (len >= TEXT_MAX_LEN) {
+        return;
+    }
 	
 	text[len] = digit;
 	text[len+1] = '\0';
