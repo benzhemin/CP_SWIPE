@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		8B13B44A17B88C1A00082FC7 /* textctrl.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B44817B88C1A00082FC7 /* textctrl.c */; };
-		8B13B47617B88CAF00082FC7 /* CPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46717B88CAF00082FC7 /* CPNavigationController.m */; };
 		8B13B47717B88CAF00082FC7 /* CPTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46A17B88CAF00082FC7 /* CPTabBar.m */; };
 		8B13B47817B88CAF00082FC7 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46D17B88CAF00082FC7 /* CustomTextView.m */; };
 		8B13B47917B88CAF00082FC7 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46F17B88CAF00082FC7 /* OrderCell.m */; };
 		8B13B47A17B88CAF00082FC7 /* QAHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47117B88CAF00082FC7 /* QAHelpCell.m */; };
 		8B13B47B17B88CAF00082FC7 /* ReceiptBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47317B88CAF00082FC7 /* ReceiptBgView.m */; };
 		8B13B47C17B88CAF00082FC7 /* SignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47517B88CAF00082FC7 /* SignView.m */; };
+		8B13B47F17B895A700082FC7 /* CPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47E17B895A700082FC7 /* CPNavigationController.m */; };
 		8B31E85A178D4BAE00AA5B5F /* PostBeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E859178D4BAE00AA5B5F /* PostBeService.m */; };
 		8B31E861178E8CE800AA5B5F /* PosMini.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E860178E8CE800AA5B5F /* PosMini.m */; };
 		8B31E865178E9A0700AA5B5F /* VersionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E864178E9A0700AA5B5F /* VersionService.m */; };
@@ -170,8 +170,6 @@
 /* Begin PBXFileReference section */
 		8B13B44817B88C1A00082FC7 /* textctrl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = textctrl.c; sourceTree = "<group>"; };
 		8B13B44917B88C1A00082FC7 /* textctrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textctrl.h; sourceTree = "<group>"; };
-		8B13B46617B88CAF00082FC7 /* CPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNavigationController.h; sourceTree = "<group>"; };
-		8B13B46717B88CAF00082FC7 /* CPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNavigationController.m; sourceTree = "<group>"; };
 		8B13B46917B88CAF00082FC7 /* CPTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTabBar.h; sourceTree = "<group>"; };
 		8B13B46A17B88CAF00082FC7 /* CPTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTabBar.m; sourceTree = "<group>"; };
 		8B13B46B17B88CAF00082FC7 /* CPTabBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTabBarDelegate.h; sourceTree = "<group>"; };
@@ -185,6 +183,8 @@
 		8B13B47317B88CAF00082FC7 /* ReceiptBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptBgView.m; sourceTree = "<group>"; };
 		8B13B47417B88CAF00082FC7 /* SignView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignView.h; sourceTree = "<group>"; };
 		8B13B47517B88CAF00082FC7 /* SignView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignView.m; sourceTree = "<group>"; };
+		8B13B47D17B895A700082FC7 /* CPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNavigationController.h; sourceTree = "<group>"; };
+		8B13B47E17B895A700082FC7 /* CPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNavigationController.m; sourceTree = "<group>"; };
 		8B31E858178D4BAE00AA5B5F /* PostBeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostBeService.h; sourceTree = "<group>"; };
 		8B31E859178D4BAE00AA5B5F /* PostBeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostBeService.m; sourceTree = "<group>"; };
 		8B31E85B178E52F800AA5B5F /* UIDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDimension.h; sourceTree = "<group>"; };
@@ -423,18 +423,10 @@
 		8B13B46417B88CAF00082FC7 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				8B13B46517B88CAF00082FC7 /* NavigationController */,
+				8B13B47D17B895A700082FC7 /* CPNavigationController.h */,
+				8B13B47E17B895A700082FC7 /* CPNavigationController.m */,
 			);
 			path = controller;
-			sourceTree = "<group>";
-		};
-		8B13B46517B88CAF00082FC7 /* NavigationController */ = {
-			isa = PBXGroup;
-			children = (
-				8B13B46617B88CAF00082FC7 /* CPNavigationController.h */,
-				8B13B46717B88CAF00082FC7 /* CPNavigationController.m */,
-			);
-			path = NavigationController;
 			sourceTree = "<group>";
 		};
 		8B13B46817B88CAF00082FC7 /* view */ = {
@@ -1114,13 +1106,13 @@
 				8B48CF5517A0FE5B00988311 /* SwipeCardViewController.m in Sources */,
 				8B48CF5A17A250FB00988311 /* SignLandscapeViewController.m in Sources */,
 				8B13B44A17B88C1A00082FC7 /* textctrl.c in Sources */,
-				8B13B47617B88CAF00082FC7 /* CPNavigationController.m in Sources */,
 				8B13B47717B88CAF00082FC7 /* CPTabBar.m in Sources */,
 				8B13B47817B88CAF00082FC7 /* CustomTextView.m in Sources */,
 				8B13B47917B88CAF00082FC7 /* OrderCell.m in Sources */,
 				8B13B47A17B88CAF00082FC7 /* QAHelpCell.m in Sources */,
 				8B13B47B17B88CAF00082FC7 /* ReceiptBgView.m in Sources */,
 				8B13B47C17B88CAF00082FC7 /* SignView.m in Sources */,
+				8B13B47F17B895A700082FC7 /* CPNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
