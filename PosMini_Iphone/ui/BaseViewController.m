@@ -49,9 +49,11 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    //获取状态栏Frame
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
     CGFloat statusBarHeight = statusBarFrame.size.height;
     
+    //隐藏系统默认导航栏
     self.navigationController.navigationBar.hidden = YES;
     
     CGFloat viewWidth = self.view.frame.size.width;
