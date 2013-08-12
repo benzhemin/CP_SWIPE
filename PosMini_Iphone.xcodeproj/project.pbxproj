@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B13B44A17B88C1A00082FC7 /* textctrl.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B44817B88C1A00082FC7 /* textctrl.c */; };
+		8B13B47617B88CAF00082FC7 /* CPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46717B88CAF00082FC7 /* CPNavigationController.m */; };
+		8B13B47717B88CAF00082FC7 /* CPTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46A17B88CAF00082FC7 /* CPTabBar.m */; };
+		8B13B47817B88CAF00082FC7 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46D17B88CAF00082FC7 /* CustomTextView.m */; };
+		8B13B47917B88CAF00082FC7 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46F17B88CAF00082FC7 /* OrderCell.m */; };
+		8B13B47A17B88CAF00082FC7 /* QAHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47117B88CAF00082FC7 /* QAHelpCell.m */; };
+		8B13B47B17B88CAF00082FC7 /* ReceiptBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47317B88CAF00082FC7 /* ReceiptBgView.m */; };
+		8B13B47C17B88CAF00082FC7 /* SignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47517B88CAF00082FC7 /* SignView.m */; };
 		8B31E85A178D4BAE00AA5B5F /* PostBeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E859178D4BAE00AA5B5F /* PostBeService.m */; };
 		8B31E861178E8CE800AA5B5F /* PosMini.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E860178E8CE800AA5B5F /* PosMini.m */; };
 		8B31E865178E9A0700AA5B5F /* VersionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E864178E9A0700AA5B5F /* VersionService.m */; };
@@ -24,9 +32,6 @@
 		8B31E8C91793B9B600AA5B5F /* DefaultAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8C81793B9B600AA5B5F /* DefaultAccountViewController.m */; };
 		8B31E8CC1793B9C800AA5B5F /* DefaultHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */; };
 		8B48CF3317963E3900988311 /* OrderService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF3217963E3800988311 /* OrderService.m */; };
-		8B48CF361796936F00988311 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF351796936F00988311 /* OrderCell.m */; };
-		8B48CF391797C14E00988311 /* ReceiptBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF381797C14E00988311 /* ReceiptBgView.m */; };
-		8B48CF3B1797EEC800988311 /* textctrl.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF3A1797EEC700988311 /* textctrl.c */; };
 		8B48CF3F179CEDC000988311 /* PosMiniDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF3E179CEDC000988311 /* PosMiniDevice.m */; };
 		8B48CF43179CEE9F00988311 /* libPosRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48CF41179CEE9F00988311 /* libPosRequest.a */; };
 		8B48CF45179CF6B600988311 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48CF44179CF6B500988311 /* AVFoundation.framework */; };
@@ -38,11 +43,8 @@
 		8B48CF5517A0FE5B00988311 /* SwipeCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF5417A0FE5A00988311 /* SwipeCardViewController.m */; };
 		8B48CF5717A2201B00988311 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48CF5617A2201800988311 /* QuartzCore.framework */; };
 		8B48CF5A17A250FB00988311 /* SignLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF5917A250F900988311 /* SignLandscapeViewController.m */; };
-		8B48CF5D17A25B0800988311 /* SignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF5C17A25B0700988311 /* SignView.m */; };
-		8B55270E1793EC010030ED8D /* QAHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B55270D1793EC010030ED8D /* QAHelpCell.m */; };
 		8B5527111793F4BA0030ED8D /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527101793F4BA0030ED8D /* LicenseViewController.m */; };
 		8B5527131793F4FC0030ED8D /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B5527121793F4FC0030ED8D /* license.txt */; };
-		8B5527161793F5E70030ED8D /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527151793F5E70030ED8D /* CustomTextView.m */; };
 		8B5527191794146D0030ED8D /* AccountService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527181794146D0030ED8D /* AccountService.m */; };
 		8BC76229178A797700AD74C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC76228178A797700AD74C0 /* UIKit.framework */; };
 		8BC7622B178A797700AD74C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7622A178A797700AD74C0 /* Foundation.framework */; };
@@ -142,8 +144,6 @@
 		8BC7632E178A7EB700AD74C0 /* white-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC762DB178A7EB700AD74C0 /* white-bg.png */; };
 		8BC7632F178A7EB700AD74C0 /* white-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC762DC178A7EB700AD74C0 /* white-bg@2x.png */; };
 		8BC76369178BFF1400AD74C0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC7635E178BFF1300AD74C0 /* BaseViewController.m */; };
-		8BC7636B178BFF1400AD74C0 /* CPTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC76366178BFF1400AD74C0 /* CPTabBar.m */; };
-		8BC76371178BFF9600AD74C0 /* CPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC76370178BFF9600AD74C0 /* CPNavigationController.m */; };
 		8BC763E0178C0B2400AD74C0 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC763B9178C0B2400AD74C0 /* ASIAuthenticationDialog.m */; };
 		8BC763E1178C0B2400AD74C0 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC763BC178C0B2400AD74C0 /* ASIDataCompressor.m */; };
 		8BC763E2178C0B2400AD74C0 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC763BE178C0B2400AD74C0 /* ASIDataDecompressor.m */; };
@@ -168,6 +168,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B13B44817B88C1A00082FC7 /* textctrl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = textctrl.c; sourceTree = "<group>"; };
+		8B13B44917B88C1A00082FC7 /* textctrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textctrl.h; sourceTree = "<group>"; };
+		8B13B46617B88CAF00082FC7 /* CPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNavigationController.h; sourceTree = "<group>"; };
+		8B13B46717B88CAF00082FC7 /* CPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNavigationController.m; sourceTree = "<group>"; };
+		8B13B46917B88CAF00082FC7 /* CPTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTabBar.h; sourceTree = "<group>"; };
+		8B13B46A17B88CAF00082FC7 /* CPTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTabBar.m; sourceTree = "<group>"; };
+		8B13B46B17B88CAF00082FC7 /* CPTabBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTabBarDelegate.h; sourceTree = "<group>"; };
+		8B13B46C17B88CAF00082FC7 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		8B13B46D17B88CAF00082FC7 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
+		8B13B46E17B88CAF00082FC7 /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
+		8B13B46F17B88CAF00082FC7 /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
+		8B13B47017B88CAF00082FC7 /* QAHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAHelpCell.h; sourceTree = "<group>"; };
+		8B13B47117B88CAF00082FC7 /* QAHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAHelpCell.m; sourceTree = "<group>"; };
+		8B13B47217B88CAF00082FC7 /* ReceiptBgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptBgView.h; sourceTree = "<group>"; };
+		8B13B47317B88CAF00082FC7 /* ReceiptBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptBgView.m; sourceTree = "<group>"; };
+		8B13B47417B88CAF00082FC7 /* SignView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignView.h; sourceTree = "<group>"; };
+		8B13B47517B88CAF00082FC7 /* SignView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignView.m; sourceTree = "<group>"; };
 		8B31E858178D4BAE00AA5B5F /* PostBeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostBeService.h; sourceTree = "<group>"; };
 		8B31E859178D4BAE00AA5B5F /* PostBeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostBeService.m; sourceTree = "<group>"; };
 		8B31E85B178E52F800AA5B5F /* UIDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDimension.h; sourceTree = "<group>"; };
@@ -203,12 +220,6 @@
 		8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultHelpViewController.m; sourceTree = "<group>"; };
 		8B48CF3117963E3800988311 /* OrderService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderService.h; sourceTree = "<group>"; };
 		8B48CF3217963E3800988311 /* OrderService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderService.m; sourceTree = "<group>"; };
-		8B48CF341796936F00988311 /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
-		8B48CF351796936F00988311 /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
-		8B48CF371797C14E00988311 /* ReceiptBgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptBgView.h; sourceTree = "<group>"; };
-		8B48CF381797C14E00988311 /* ReceiptBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptBgView.m; sourceTree = "<group>"; };
-		8B48CF3A1797EEC700988311 /* textctrl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = textctrl.c; sourceTree = "<group>"; };
-		8B48CF3C1797EED700988311 /* textctrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = textctrl.h; sourceTree = "<group>"; };
 		8B48CF3D179CEDC000988311 /* PosMiniDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PosMiniDevice.h; sourceTree = "<group>"; };
 		8B48CF3E179CEDC000988311 /* PosMiniDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PosMiniDevice.m; sourceTree = "<group>"; };
 		8B48CF41179CEE9F00988311 /* libPosRequest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPosRequest.a; sourceTree = "<group>"; };
@@ -227,15 +238,9 @@
 		8B48CF5617A2201800988311 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8B48CF5817A250F800988311 /* SignLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignLandscapeViewController.h; sourceTree = "<group>"; };
 		8B48CF5917A250F900988311 /* SignLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignLandscapeViewController.m; sourceTree = "<group>"; };
-		8B48CF5B17A25B0600988311 /* SignView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignView.h; sourceTree = "<group>"; };
-		8B48CF5C17A25B0700988311 /* SignView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignView.m; sourceTree = "<group>"; };
-		8B55270C1793EC010030ED8D /* QAHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAHelpCell.h; sourceTree = "<group>"; };
-		8B55270D1793EC010030ED8D /* QAHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAHelpCell.m; sourceTree = "<group>"; };
 		8B55270F1793F4BA0030ED8D /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
 		8B5527101793F4BA0030ED8D /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
 		8B5527121793F4FC0030ED8D /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
-		8B5527141793F5E70030ED8D /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
-		8B5527151793F5E70030ED8D /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 		8B5527171794146D0030ED8D /* AccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountService.h; sourceTree = "<group>"; };
 		8B5527181794146D0030ED8D /* AccountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountService.m; sourceTree = "<group>"; };
 		8BC76225178A797700AD74C0 /* PosMini_Iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosMini_Iphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -341,11 +346,6 @@
 		8BC762DC178A7EB700AD74C0 /* white-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-bg@2x.png"; sourceTree = "<group>"; };
 		8BC7635D178BFF1300AD74C0 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ../BaseViewController.h; sourceTree = "<group>"; };
 		8BC7635E178BFF1300AD74C0 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../BaseViewController.m; sourceTree = "<group>"; };
-		8BC76365178BFF1300AD74C0 /* CPTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTabBar.h; sourceTree = "<group>"; };
-		8BC76366178BFF1400AD74C0 /* CPTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTabBar.m; sourceTree = "<group>"; };
-		8BC76367178BFF1400AD74C0 /* CPTabBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTabBarDelegate.h; sourceTree = "<group>"; };
-		8BC7636F178BFF9600AD74C0 /* CPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNavigationController.h; sourceTree = "<group>"; };
-		8BC76370178BFF9600AD74C0 /* CPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNavigationController.m; sourceTree = "<group>"; };
 		8BC763B8178C0B2400AD74C0 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		8BC763B9178C0B2400AD74C0 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		8BC763BA178C0B2400AD74C0 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -420,6 +420,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B13B46417B88CAF00082FC7 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B13B46517B88CAF00082FC7 /* NavigationController */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		8B13B46517B88CAF00082FC7 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				8B13B46617B88CAF00082FC7 /* CPNavigationController.h */,
+				8B13B46717B88CAF00082FC7 /* CPNavigationController.m */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		8B13B46817B88CAF00082FC7 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8B13B46917B88CAF00082FC7 /* CPTabBar.h */,
+				8B13B46A17B88CAF00082FC7 /* CPTabBar.m */,
+				8B13B46B17B88CAF00082FC7 /* CPTabBarDelegate.h */,
+				8B13B46C17B88CAF00082FC7 /* CustomTextView.h */,
+				8B13B46D17B88CAF00082FC7 /* CustomTextView.m */,
+				8B13B46E17B88CAF00082FC7 /* OrderCell.h */,
+				8B13B46F17B88CAF00082FC7 /* OrderCell.m */,
+				8B13B47017B88CAF00082FC7 /* QAHelpCell.h */,
+				8B13B47117B88CAF00082FC7 /* QAHelpCell.m */,
+				8B13B47217B88CAF00082FC7 /* ReceiptBgView.h */,
+				8B13B47317B88CAF00082FC7 /* ReceiptBgView.m */,
+				8B13B47417B88CAF00082FC7 /* SignView.h */,
+				8B13B47517B88CAF00082FC7 /* SignView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		8B31E857178D4B1F00AA5B5F /* service */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,8 +552,6 @@
 			children = (
 				8B31E8C41793B99B00AA5B5F /* DefaultReceiptViewController.h */,
 				8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */,
-				8B48CF3C1797EED700988311 /* textctrl.h */,
-				8B48CF3A1797EEC700988311 /* textctrl.c */,
 				8B48CF5017A0B41D00988311 /* ReceiptConfirmViewController.h */,
 				8B48CF5117A0B41E00988311 /* ReceiptConfirmViewController.m */,
 				8B48CF5317A0FE5A00988311 /* SwipeCardViewController.h */,
@@ -750,47 +785,12 @@
 		8BC76362178BFF1300AD74C0 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				8BC76363178BFF1300AD74C0 /* CustomController */,
-				8BC76364178BFF1300AD74C0 /* CustomView */,
+				8B13B46417B88CAF00082FC7 /* controller */,
+				8B13B46817B88CAF00082FC7 /* view */,
+				8B13B44817B88C1A00082FC7 /* textctrl.c */,
+				8B13B44917B88C1A00082FC7 /* textctrl.h */,
 			);
 			path = Custom;
-			sourceTree = "<group>";
-		};
-		8BC76363178BFF1300AD74C0 /* CustomController */ = {
-			isa = PBXGroup;
-			children = (
-				8BC7636C178BFF6500AD74C0 /* NavigationController */,
-			);
-			path = CustomController;
-			sourceTree = "<group>";
-		};
-		8BC76364178BFF1300AD74C0 /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-				8BC76365178BFF1300AD74C0 /* CPTabBar.h */,
-				8BC76366178BFF1400AD74C0 /* CPTabBar.m */,
-				8BC76367178BFF1400AD74C0 /* CPTabBarDelegate.h */,
-				8B55270C1793EC010030ED8D /* QAHelpCell.h */,
-				8B55270D1793EC010030ED8D /* QAHelpCell.m */,
-				8B48CF341796936F00988311 /* OrderCell.h */,
-				8B48CF351796936F00988311 /* OrderCell.m */,
-				8B48CF371797C14E00988311 /* ReceiptBgView.h */,
-				8B48CF381797C14E00988311 /* ReceiptBgView.m */,
-				8B48CF5B17A25B0600988311 /* SignView.h */,
-				8B48CF5C17A25B0700988311 /* SignView.m */,
-				8B5527141793F5E70030ED8D /* CustomTextView.h */,
-				8B5527151793F5E70030ED8D /* CustomTextView.m */,
-			);
-			path = CustomView;
-			sourceTree = "<group>";
-		};
-		8BC7636C178BFF6500AD74C0 /* NavigationController */ = {
-			isa = PBXGroup;
-			children = (
-				8BC7636F178BFF9600AD74C0 /* CPNavigationController.h */,
-				8BC76370178BFF9600AD74C0 /* CPNavigationController.m */,
-			);
-			path = NavigationController;
 			sourceTree = "<group>";
 		};
 		8BC76372178C077300AD74C0 /* system */ = {
@@ -1070,8 +1070,6 @@
 				8BC76239178A797700AD74C0 /* AppDelegate.m in Sources */,
 				8BC7624C178A7A4200AD74C0 /* main.m in Sources */,
 				8BC76369178BFF1400AD74C0 /* BaseViewController.m in Sources */,
-				8BC7636B178BFF1400AD74C0 /* CPTabBar.m in Sources */,
-				8BC76371178BFF9600AD74C0 /* CPNavigationController.m in Sources */,
 				8BC763E0178C0B2400AD74C0 /* ASIAuthenticationDialog.m in Sources */,
 				8BC763E1178C0B2400AD74C0 /* ASIDataCompressor.m in Sources */,
 				8BC763E2178C0B2400AD74C0 /* ASIDataDecompressor.m in Sources */,
@@ -1106,21 +1104,23 @@
 				8B31E8C61793B99B00AA5B5F /* DefaultReceiptViewController.m in Sources */,
 				8B31E8C91793B9B600AA5B5F /* DefaultAccountViewController.m in Sources */,
 				8B31E8CC1793B9C800AA5B5F /* DefaultHelpViewController.m in Sources */,
-				8B55270E1793EC010030ED8D /* QAHelpCell.m in Sources */,
 				8B5527111793F4BA0030ED8D /* LicenseViewController.m in Sources */,
-				8B5527161793F5E70030ED8D /* CustomTextView.m in Sources */,
 				8B5527191794146D0030ED8D /* AccountService.m in Sources */,
 				8B48CF3317963E3900988311 /* OrderService.m in Sources */,
-				8B48CF361796936F00988311 /* OrderCell.m in Sources */,
-				8B48CF391797C14E00988311 /* ReceiptBgView.m in Sources */,
-				8B48CF3B1797EEC800988311 /* textctrl.c in Sources */,
 				8B48CF3F179CEDC000988311 /* PosMiniDevice.m in Sources */,
 				8B48CF4C179E166000988311 /* PosMiniService.m in Sources */,
 				8B48CF4F179EBF3300988311 /* RequireLoginViewController.m in Sources */,
 				8B48CF5217A0B41E00988311 /* ReceiptConfirmViewController.m in Sources */,
 				8B48CF5517A0FE5B00988311 /* SwipeCardViewController.m in Sources */,
 				8B48CF5A17A250FB00988311 /* SignLandscapeViewController.m in Sources */,
-				8B48CF5D17A25B0800988311 /* SignView.m in Sources */,
+				8B13B44A17B88C1A00082FC7 /* textctrl.c in Sources */,
+				8B13B47617B88CAF00082FC7 /* CPNavigationController.m in Sources */,
+				8B13B47717B88CAF00082FC7 /* CPTabBar.m in Sources */,
+				8B13B47817B88CAF00082FC7 /* CustomTextView.m in Sources */,
+				8B13B47917B88CAF00082FC7 /* OrderCell.m in Sources */,
+				8B13B47A17B88CAF00082FC7 /* QAHelpCell.m in Sources */,
+				8B13B47B17B88CAF00082FC7 /* ReceiptBgView.m in Sources */,
+				8B13B47C17B88CAF00082FC7 /* SignView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,6 +31,17 @@ static PosMiniDevice *sInstance = nil;
 @synthesize keyInfo;
 @synthesize isDeviceLegal;
 
+@synthesize pointsList;
+
+//重写self.pointsList = points 方法
+-(void)setPointsList:(NSMutableArray *)points{
+    [self.pointsList removeAllObjects];
+    //deep copy
+    for (NSValue *val in points) {
+        [pointsList addObject:[NSValue valueWithCGPoint:[val CGPointValue]]];
+    }
+}
+
 +(PosMiniDevice *)sharedInstance
 {
     if (sInstance == nil)
@@ -58,6 +69,8 @@ static PosMiniDevice *sInstance = nil;
     
     [bankCardAndPassData release];
     
+    [pointsList release];
+    
     [keyInfo release];
     
     [posService release];
@@ -73,6 +86,7 @@ static PosMiniDevice *sInstance = nil;
         
         //默认不是合法设备
         isDeviceLegal = NO;
+        pointsList = [[NSMutableArray alloc] init];
         
         posReq = [[PosRequest alloc] init];
         posReq.delegate = self;

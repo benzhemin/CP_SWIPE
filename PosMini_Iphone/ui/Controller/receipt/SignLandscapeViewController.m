@@ -77,6 +77,7 @@
     hintMsgLabel.layer.cornerRadius = 10.0;
     [self.signView addSubview:hintMsgLabel];
     [signView bringSubviewToFront:hintMsgLabel];
+    hintMsgLabel.alpha = 0.0f;
     
     //获取状态栏大小
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
@@ -94,7 +95,6 @@
     transform = CGAffineTransformRotate(transform, (M_PI / 2.0));
     self.view.transform = transform;
     
-    
     //设置View层次大小
     self.bgImageView.frame = bounds;
     self.naviBgView.frame = CGRectMake(0, DEFAULT_STATUS_BAR_HEIGHT, bounds.size.width, DEFAULT_NAVIGATION_BAR_HEIGHT);
@@ -108,6 +108,14 @@
     self.clearBtn.frame = CGRectMake(signView.bounds.size.width/2-50, signView.bounds.size.height-40, 22, 35);
     self.clearLabel.frame = CGRectMake(signView.bounds.size.width/2-20, signView.bounds.size.height-40, 100, 35);
     self.hintMsgLabel.center = CGPointMake(signView.center.x, signView.center.y+70);
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    if ([PosMiniDevice sharedInstance].pointsList.count > 0) {
+        //[self.signView ]
+    }
 }
 
 /**
@@ -129,20 +137,42 @@
 -(void)displayHintMessage{
     self.hintMsgLabel.alpha = 1.0;
     //[self performSelector:@selector(hideHintMessage) withObject:nil afterDelay:2.0];
-    [self hideHintMessage];
+    CAKeyframeAnimation * animation;
+    animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    animation.duration = 0.5;
+    animation.delegate = self;
+    animation.removedOnCompletion = YES;
+    animation.fillMode = kCAFillModeForwards;
+    
+    NSMutableArray *values = [NSMutableArray array];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.2, 1.0)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.9, 0.9, 0.9)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+    
+    animation.values = values;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseInEaseOut];
+    [hintMsgLabel.layer addAnimation:animation forKey:nil];
+    
+    [self performSelector:@selector(hideHintMessage) withObject:hintMsgLabel afterDelay:1.5];
 }
 
 -(void)hideHintMessage{
-    [UIView beginAnimations:@"HintMessageAnimation" context:nil];
-    [UIView setAnimationDuration:2.0];
     hintMsgLabel.alpha = 0.0;
-    [UIView commitAnimations];
 }
 
 -(void)confirmSign:(id)sender{
     if ([self.signView pointsList].count < 10) {
         [self displayHintMessage];
+        return;
     }
+    
+    [PosMiniDevice sharedInstance].pointsList = self.signView.pointsList;
+    
+    
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
+    
+    
 }
 
 //返回之前调整StatusBar

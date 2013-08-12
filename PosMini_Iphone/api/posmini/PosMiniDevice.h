@@ -31,6 +31,9 @@ typedef enum _AlertViewType{
     
     NSString *bankCardAndPassData;
     
+    //用户签名
+    NSMutableArray *pointsList;
+    
     KeyInfo *keyInfo;
     
     //POS mini设备 是否合法
@@ -47,6 +50,8 @@ typedef enum _AlertViewType{
 @property (nonatomic, copy) NSString *md5Key;
 
 @property (nonatomic, copy) NSString *bankCardAndPassData;
+
+@property (nonatomic, retain) NSMutableArray *pointsList;
 
 @property (nonatomic, retain) KeyInfo *keyInfo;
 
