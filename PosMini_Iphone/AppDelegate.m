@@ -41,6 +41,7 @@
     [super dealloc];
 }
 
+//执行应用启动逻辑
 - (void)performApplicationStartupLogic
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
@@ -71,6 +72,7 @@
     UIImage *launchImg = IS_IPHONE5 ? [UIImage imageNamed:@"Default-568h.png"]:[UIImage imageNamed:@"Default.png"];
     
     self.launchImgView = [[[UIImageView alloc] initWithImage:launchImg] autorelease];
+    launchImgView.frame = CGRectMake(0, 20, launchImg.size.width, launchImg.size.height);
     [self.window.rootViewController.view addSubview:launchImgView];
     [self.window makeKeyAndVisible];
     
@@ -93,7 +95,7 @@
     cpTabBar.delegate = self;
     [cpTabBar setTabSelected:2];
     [self.window.rootViewController.view addSubview:cpTabBar];
-    
+     
     //请求定位
     self.locService = [[[LocationService alloc] init] autorelease];
     [locService startToLocateWithAuthentication:NO];
@@ -106,6 +108,9 @@
     [self.window.rootViewController.view addSubview:cpTabBar];
 }
 
+/**
+　请求版本更新回调
+ */
 -(void)versionReqFinished{
     [launchImgView removeFromSuperview];
     self.launchImgView = nil;
