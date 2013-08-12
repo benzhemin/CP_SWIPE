@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B13B44A17B88C1A00082FC7 /* textctrl.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B44817B88C1A00082FC7 /* textctrl.c */; };
-		8B13B47717B88CAF00082FC7 /* CPTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46A17B88CAF00082FC7 /* CPTabBar.m */; };
-		8B13B47817B88CAF00082FC7 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46D17B88CAF00082FC7 /* CustomTextView.m */; };
-		8B13B47917B88CAF00082FC7 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B46F17B88CAF00082FC7 /* OrderCell.m */; };
-		8B13B47A17B88CAF00082FC7 /* QAHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47117B88CAF00082FC7 /* QAHelpCell.m */; };
-		8B13B47B17B88CAF00082FC7 /* ReceiptBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47317B88CAF00082FC7 /* ReceiptBgView.m */; };
-		8B13B47C17B88CAF00082FC7 /* SignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47517B88CAF00082FC7 /* SignView.m */; };
-		8B13B47F17B895A700082FC7 /* CPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B47E17B895A700082FC7 /* CPNavigationController.m */; };
+		8B13B49417B8967B00082FC7 /* CPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B48317B8967B00082FC7 /* CPNavigationController.m */; };
+		8B13B49517B8967B00082FC7 /* textctrl.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B48417B8967B00082FC7 /* textctrl.c */; };
+		8B13B49617B8967B00082FC7 /* CPTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B48817B8967B00082FC7 /* CPTabBar.m */; };
+		8B13B49717B8967B00082FC7 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B48B17B8967B00082FC7 /* CustomTextView.m */; };
+		8B13B49817B8967B00082FC7 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B48D17B8967B00082FC7 /* OrderCell.m */; };
+		8B13B49917B8967B00082FC7 /* QAHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B48F17B8967B00082FC7 /* QAHelpCell.m */; };
+		8B13B49A17B8967B00082FC7 /* ReceiptBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B49117B8967B00082FC7 /* ReceiptBgView.m */; };
+		8B13B49B17B8967B00082FC7 /* SignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B49317B8967B00082FC7 /* SignView.m */; };
+		8B13B4B617B8969A00082FC7 /* DefaultAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B49F17B8969A00082FC7 /* DefaultAccountViewController.m */; };
+		8B13B4B717B8969A00082FC7 /* DefaultHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4A217B8969A00082FC7 /* DefaultHelpViewController.m */; };
+		8B13B4B817B8969A00082FC7 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4A517B8969A00082FC7 /* LicenseViewController.m */; };
+		8B13B4B917B8969A00082FC7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4A717B8969A00082FC7 /* LoginViewController.m */; };
+		8B13B4BA17B8969A00082FC7 /* RequireLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4A917B8969A00082FC7 /* RequireLoginViewController.m */; };
+		8B13B4BB17B8969A00082FC7 /* DefaultOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4AC17B8969A00082FC7 /* DefaultOrderViewController.m */; };
+		8B13B4BC17B8969A00082FC7 /* DefaultReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4AF17B8969A00082FC7 /* DefaultReceiptViewController.m */; };
+		8B13B4BD17B8969A00082FC7 /* ReceiptConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4B117B8969A00082FC7 /* ReceiptConfirmViewController.m */; };
+		8B13B4BE17B8969A00082FC7 /* SignLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4B317B8969A00082FC7 /* SignLandscapeViewController.m */; };
+		8B13B4BF17B8969A00082FC7 /* SwipeCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B4B517B8969A00082FC7 /* SwipeCardViewController.m */; };
 		8B31E85A178D4BAE00AA5B5F /* PostBeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E859178D4BAE00AA5B5F /* PostBeService.m */; };
 		8B31E861178E8CE800AA5B5F /* PosMini.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E860178E8CE800AA5B5F /* PosMini.m */; };
 		8B31E865178E9A0700AA5B5F /* VersionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E864178E9A0700AA5B5F /* VersionService.m */; };
@@ -24,13 +34,8 @@
 		8B31E874178F905C00AA5B5F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B31E873178F905A00AA5B5F /* CoreLocation.framework */; };
 		8B31E87F178F934600AA5B5F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B31E87D178F934600AA5B5F /* Icon.png */; };
 		8B31E880178F934600AA5B5F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B31E87E178F934600AA5B5F /* Icon@2x.png */; };
-		8B31E884178FB71100AA5B5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E883178FB71100AA5B5F /* LoginViewController.m */; };
 		8B31E88B178FFE3600AA5B5F /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E88A178FFE3600AA5B5F /* SFHFKeychainUtils.m */; };
 		8B31E88E17900AC800AA5B5F /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E88D17900AC700AA5B5F /* LoginService.m */; };
-		8B31E8C31793B94A00AA5B5F /* DefaultOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8C21793B94A00AA5B5F /* DefaultOrderViewController.m */; };
-		8B31E8C61793B99B00AA5B5F /* DefaultReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */; };
-		8B31E8C91793B9B600AA5B5F /* DefaultAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8C81793B9B600AA5B5F /* DefaultAccountViewController.m */; };
-		8B31E8CC1793B9C800AA5B5F /* DefaultHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */; };
 		8B48CF3317963E3900988311 /* OrderService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF3217963E3800988311 /* OrderService.m */; };
 		8B48CF3F179CEDC000988311 /* PosMiniDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF3E179CEDC000988311 /* PosMiniDevice.m */; };
 		8B48CF43179CEE9F00988311 /* libPosRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48CF41179CEE9F00988311 /* libPosRequest.a */; };
@@ -38,12 +43,7 @@
 		8B48CF47179CF6C300988311 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48CF46179CF6C200988311 /* AudioToolbox.framework */; };
 		8B48CF49179CF6D000988311 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48CF48179CF6CF00988311 /* MediaPlayer.framework */; };
 		8B48CF4C179E166000988311 /* PosMiniService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF4B179E165E00988311 /* PosMiniService.m */; };
-		8B48CF4F179EBF3300988311 /* RequireLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF4E179EBF3300988311 /* RequireLoginViewController.m */; };
-		8B48CF5217A0B41E00988311 /* ReceiptConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF5117A0B41E00988311 /* ReceiptConfirmViewController.m */; };
-		8B48CF5517A0FE5B00988311 /* SwipeCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF5417A0FE5A00988311 /* SwipeCardViewController.m */; };
 		8B48CF5717A2201B00988311 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48CF5617A2201800988311 /* QuartzCore.framework */; };
-		8B48CF5A17A250FB00988311 /* SignLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48CF5917A250F900988311 /* SignLandscapeViewController.m */; };
-		8B5527111793F4BA0030ED8D /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527101793F4BA0030ED8D /* LicenseViewController.m */; };
 		8B5527131793F4FC0030ED8D /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B5527121793F4FC0030ED8D /* license.txt */; };
 		8B5527191794146D0030ED8D /* AccountService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5527181794146D0030ED8D /* AccountService.m */; };
 		8BC76229178A797700AD74C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC76228178A797700AD74C0 /* UIKit.framework */; };
@@ -143,7 +143,6 @@
 		8BC7632D178A7EB700AD74C0 /* v-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC762DA178A7EB700AD74C0 /* v-line@2x.png */; };
 		8BC7632E178A7EB700AD74C0 /* white-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC762DB178A7EB700AD74C0 /* white-bg.png */; };
 		8BC7632F178A7EB700AD74C0 /* white-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC762DC178A7EB700AD74C0 /* white-bg@2x.png */; };
-		8BC76369178BFF1400AD74C0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC7635E178BFF1300AD74C0 /* BaseViewController.m */; };
 		8BC763E0178C0B2400AD74C0 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC763B9178C0B2400AD74C0 /* ASIAuthenticationDialog.m */; };
 		8BC763E1178C0B2400AD74C0 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC763BC178C0B2400AD74C0 /* ASIDataCompressor.m */; };
 		8BC763E2178C0B2400AD74C0 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC763BE178C0B2400AD74C0 /* ASIDataDecompressor.m */; };
@@ -168,23 +167,43 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B13B44817B88C1A00082FC7 /* textctrl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = textctrl.c; sourceTree = "<group>"; };
-		8B13B44917B88C1A00082FC7 /* textctrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textctrl.h; sourceTree = "<group>"; };
-		8B13B46917B88CAF00082FC7 /* CPTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTabBar.h; sourceTree = "<group>"; };
-		8B13B46A17B88CAF00082FC7 /* CPTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTabBar.m; sourceTree = "<group>"; };
-		8B13B46B17B88CAF00082FC7 /* CPTabBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTabBarDelegate.h; sourceTree = "<group>"; };
-		8B13B46C17B88CAF00082FC7 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
-		8B13B46D17B88CAF00082FC7 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
-		8B13B46E17B88CAF00082FC7 /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
-		8B13B46F17B88CAF00082FC7 /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
-		8B13B47017B88CAF00082FC7 /* QAHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAHelpCell.h; sourceTree = "<group>"; };
-		8B13B47117B88CAF00082FC7 /* QAHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAHelpCell.m; sourceTree = "<group>"; };
-		8B13B47217B88CAF00082FC7 /* ReceiptBgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptBgView.h; sourceTree = "<group>"; };
-		8B13B47317B88CAF00082FC7 /* ReceiptBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptBgView.m; sourceTree = "<group>"; };
-		8B13B47417B88CAF00082FC7 /* SignView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignView.h; sourceTree = "<group>"; };
-		8B13B47517B88CAF00082FC7 /* SignView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignView.m; sourceTree = "<group>"; };
-		8B13B47D17B895A700082FC7 /* CPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNavigationController.h; sourceTree = "<group>"; };
-		8B13B47E17B895A700082FC7 /* CPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNavigationController.m; sourceTree = "<group>"; };
+		8B13B48217B8967B00082FC7 /* CPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNavigationController.h; sourceTree = "<group>"; };
+		8B13B48317B8967B00082FC7 /* CPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNavigationController.m; sourceTree = "<group>"; };
+		8B13B48417B8967B00082FC7 /* textctrl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = textctrl.c; sourceTree = "<group>"; };
+		8B13B48517B8967B00082FC7 /* textctrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textctrl.h; sourceTree = "<group>"; };
+		8B13B48717B8967B00082FC7 /* CPTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTabBar.h; sourceTree = "<group>"; };
+		8B13B48817B8967B00082FC7 /* CPTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTabBar.m; sourceTree = "<group>"; };
+		8B13B48917B8967B00082FC7 /* CPTabBarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTabBarDelegate.h; sourceTree = "<group>"; };
+		8B13B48A17B8967B00082FC7 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		8B13B48B17B8967B00082FC7 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
+		8B13B48C17B8967B00082FC7 /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
+		8B13B48D17B8967B00082FC7 /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
+		8B13B48E17B8967B00082FC7 /* QAHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAHelpCell.h; sourceTree = "<group>"; };
+		8B13B48F17B8967B00082FC7 /* QAHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAHelpCell.m; sourceTree = "<group>"; };
+		8B13B49017B8967B00082FC7 /* ReceiptBgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptBgView.h; sourceTree = "<group>"; };
+		8B13B49117B8967B00082FC7 /* ReceiptBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptBgView.m; sourceTree = "<group>"; };
+		8B13B49217B8967B00082FC7 /* SignView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignView.h; sourceTree = "<group>"; };
+		8B13B49317B8967B00082FC7 /* SignView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignView.m; sourceTree = "<group>"; };
+		8B13B49E17B8969A00082FC7 /* DefaultAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultAccountViewController.h; sourceTree = "<group>"; };
+		8B13B49F17B8969A00082FC7 /* DefaultAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultAccountViewController.m; sourceTree = "<group>"; };
+		8B13B4A117B8969A00082FC7 /* DefaultHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultHelpViewController.h; sourceTree = "<group>"; };
+		8B13B4A217B8969A00082FC7 /* DefaultHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultHelpViewController.m; sourceTree = "<group>"; };
+		8B13B4A417B8969A00082FC7 /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
+		8B13B4A517B8969A00082FC7 /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
+		8B13B4A617B8969A00082FC7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		8B13B4A717B8969A00082FC7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		8B13B4A817B8969A00082FC7 /* RequireLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireLoginViewController.h; sourceTree = "<group>"; };
+		8B13B4A917B8969A00082FC7 /* RequireLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireLoginViewController.m; sourceTree = "<group>"; };
+		8B13B4AB17B8969A00082FC7 /* DefaultOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultOrderViewController.h; sourceTree = "<group>"; };
+		8B13B4AC17B8969A00082FC7 /* DefaultOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOrderViewController.m; sourceTree = "<group>"; };
+		8B13B4AE17B8969A00082FC7 /* DefaultReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultReceiptViewController.h; sourceTree = "<group>"; };
+		8B13B4AF17B8969A00082FC7 /* DefaultReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultReceiptViewController.m; sourceTree = "<group>"; };
+		8B13B4B017B8969A00082FC7 /* ReceiptConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptConfirmViewController.h; sourceTree = "<group>"; };
+		8B13B4B117B8969A00082FC7 /* ReceiptConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptConfirmViewController.m; sourceTree = "<group>"; };
+		8B13B4B217B8969A00082FC7 /* SignLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignLandscapeViewController.h; sourceTree = "<group>"; };
+		8B13B4B317B8969A00082FC7 /* SignLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignLandscapeViewController.m; sourceTree = "<group>"; };
+		8B13B4B417B8969A00082FC7 /* SwipeCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeCardViewController.h; sourceTree = "<group>"; };
+		8B13B4B517B8969A00082FC7 /* SwipeCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeCardViewController.m; sourceTree = "<group>"; };
 		8B31E858178D4BAE00AA5B5F /* PostBeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostBeService.h; sourceTree = "<group>"; };
 		8B31E859178D4BAE00AA5B5F /* PostBeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostBeService.m; sourceTree = "<group>"; };
 		8B31E85B178E52F800AA5B5F /* UIDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDimension.h; sourceTree = "<group>"; };
@@ -203,21 +222,11 @@
 		8B31E873178F905A00AA5B5F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8B31E87D178F934600AA5B5F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		8B31E87E178F934600AA5B5F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		8B31E882178FB71100AA5B5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		8B31E883178FB71100AA5B5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8B31E887178FE06700AA5B5F /* UserDefaultsDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultsDef.h; sourceTree = "<group>"; };
 		8B31E889178FFE3600AA5B5F /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		8B31E88A178FFE3600AA5B5F /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		8B31E88C17900AC600AA5B5F /* LoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginService.h; sourceTree = "<group>"; };
 		8B31E88D17900AC700AA5B5F /* LoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginService.m; sourceTree = "<group>"; };
-		8B31E8C11793B94A00AA5B5F /* DefaultOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultOrderViewController.h; sourceTree = "<group>"; };
-		8B31E8C21793B94A00AA5B5F /* DefaultOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOrderViewController.m; sourceTree = "<group>"; };
-		8B31E8C41793B99B00AA5B5F /* DefaultReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultReceiptViewController.h; sourceTree = "<group>"; };
-		8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultReceiptViewController.m; sourceTree = "<group>"; };
-		8B31E8C71793B9B600AA5B5F /* DefaultAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultAccountViewController.h; sourceTree = "<group>"; };
-		8B31E8C81793B9B600AA5B5F /* DefaultAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultAccountViewController.m; sourceTree = "<group>"; };
-		8B31E8CA1793B9C800AA5B5F /* DefaultHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultHelpViewController.h; sourceTree = "<group>"; };
-		8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultHelpViewController.m; sourceTree = "<group>"; };
 		8B48CF3117963E3800988311 /* OrderService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderService.h; sourceTree = "<group>"; };
 		8B48CF3217963E3800988311 /* OrderService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderService.m; sourceTree = "<group>"; };
 		8B48CF3D179CEDC000988311 /* PosMiniDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PosMiniDevice.h; sourceTree = "<group>"; };
@@ -229,17 +238,7 @@
 		8B48CF48179CF6CF00988311 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		8B48CF4A179E165E00988311 /* PosMiniService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PosMiniService.h; sourceTree = "<group>"; };
 		8B48CF4B179E165E00988311 /* PosMiniService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PosMiniService.m; sourceTree = "<group>"; };
-		8B48CF4D179EBF3300988311 /* RequireLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireLoginViewController.h; sourceTree = "<group>"; };
-		8B48CF4E179EBF3300988311 /* RequireLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireLoginViewController.m; sourceTree = "<group>"; };
-		8B48CF5017A0B41D00988311 /* ReceiptConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptConfirmViewController.h; sourceTree = "<group>"; };
-		8B48CF5117A0B41E00988311 /* ReceiptConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptConfirmViewController.m; sourceTree = "<group>"; };
-		8B48CF5317A0FE5A00988311 /* SwipeCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeCardViewController.h; sourceTree = "<group>"; };
-		8B48CF5417A0FE5A00988311 /* SwipeCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeCardViewController.m; sourceTree = "<group>"; };
 		8B48CF5617A2201800988311 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		8B48CF5817A250F800988311 /* SignLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignLandscapeViewController.h; sourceTree = "<group>"; };
-		8B48CF5917A250F900988311 /* SignLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignLandscapeViewController.m; sourceTree = "<group>"; };
-		8B55270F1793F4BA0030ED8D /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
-		8B5527101793F4BA0030ED8D /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
 		8B5527121793F4FC0030ED8D /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		8B5527171794146D0030ED8D /* AccountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountService.h; sourceTree = "<group>"; };
 		8B5527181794146D0030ED8D /* AccountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountService.m; sourceTree = "<group>"; };
@@ -344,8 +343,6 @@
 		8BC762DA178A7EB700AD74C0 /* v-line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "v-line@2x.png"; sourceTree = "<group>"; };
 		8BC762DB178A7EB700AD74C0 /* white-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-bg.png"; sourceTree = "<group>"; };
 		8BC762DC178A7EB700AD74C0 /* white-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-bg@2x.png"; sourceTree = "<group>"; };
-		8BC7635D178BFF1300AD74C0 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ../BaseViewController.h; sourceTree = "<group>"; };
-		8BC7635E178BFF1300AD74C0 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../BaseViewController.m; sourceTree = "<group>"; };
 		8BC763B8178C0B2400AD74C0 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		8BC763B9178C0B2400AD74C0 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		8BC763BA178C0B2400AD74C0 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -420,33 +417,111 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8B13B46417B88CAF00082FC7 /* controller */ = {
+		8B13B48017B8967B00082FC7 /* custom */ = {
 			isa = PBXGroup;
 			children = (
-				8B13B47D17B895A700082FC7 /* CPNavigationController.h */,
-				8B13B47E17B895A700082FC7 /* CPNavigationController.m */,
+				8B13B48117B8967B00082FC7 /* controller */,
+				8B13B48417B8967B00082FC7 /* textctrl.c */,
+				8B13B48517B8967B00082FC7 /* textctrl.h */,
+				8B13B48617B8967B00082FC7 /* view */,
+			);
+			path = custom;
+			sourceTree = "<group>";
+		};
+		8B13B48117B8967B00082FC7 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B13B48217B8967B00082FC7 /* CPNavigationController.h */,
+				8B13B48317B8967B00082FC7 /* CPNavigationController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
 		};
-		8B13B46817B88CAF00082FC7 /* view */ = {
+		8B13B48617B8967B00082FC7 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				8B13B46917B88CAF00082FC7 /* CPTabBar.h */,
-				8B13B46A17B88CAF00082FC7 /* CPTabBar.m */,
-				8B13B46B17B88CAF00082FC7 /* CPTabBarDelegate.h */,
-				8B13B46C17B88CAF00082FC7 /* CustomTextView.h */,
-				8B13B46D17B88CAF00082FC7 /* CustomTextView.m */,
-				8B13B46E17B88CAF00082FC7 /* OrderCell.h */,
-				8B13B46F17B88CAF00082FC7 /* OrderCell.m */,
-				8B13B47017B88CAF00082FC7 /* QAHelpCell.h */,
-				8B13B47117B88CAF00082FC7 /* QAHelpCell.m */,
-				8B13B47217B88CAF00082FC7 /* ReceiptBgView.h */,
-				8B13B47317B88CAF00082FC7 /* ReceiptBgView.m */,
-				8B13B47417B88CAF00082FC7 /* SignView.h */,
-				8B13B47517B88CAF00082FC7 /* SignView.m */,
+				8B13B48717B8967B00082FC7 /* CPTabBar.h */,
+				8B13B48817B8967B00082FC7 /* CPTabBar.m */,
+				8B13B48917B8967B00082FC7 /* CPTabBarDelegate.h */,
+				8B13B48A17B8967B00082FC7 /* CustomTextView.h */,
+				8B13B48B17B8967B00082FC7 /* CustomTextView.m */,
+				8B13B48C17B8967B00082FC7 /* OrderCell.h */,
+				8B13B48D17B8967B00082FC7 /* OrderCell.m */,
+				8B13B48E17B8967B00082FC7 /* QAHelpCell.h */,
+				8B13B48F17B8967B00082FC7 /* QAHelpCell.m */,
+				8B13B49017B8967B00082FC7 /* ReceiptBgView.h */,
+				8B13B49117B8967B00082FC7 /* ReceiptBgView.m */,
+				8B13B49217B8967B00082FC7 /* SignView.h */,
+				8B13B49317B8967B00082FC7 /* SignView.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		8B13B49C17B8969A00082FC7 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B13B4AD17B8969A00082FC7 /* receipt */,
+				8B13B4AA17B8969A00082FC7 /* order */,
+				8B13B49D17B8969A00082FC7 /* account */,
+				8B13B4A017B8969A00082FC7 /* help */,
+				8B13B4A317B8969A00082FC7 /* login */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		8B13B49D17B8969A00082FC7 /* account */ = {
+			isa = PBXGroup;
+			children = (
+				8B13B49E17B8969A00082FC7 /* DefaultAccountViewController.h */,
+				8B13B49F17B8969A00082FC7 /* DefaultAccountViewController.m */,
+			);
+			path = account;
+			sourceTree = "<group>";
+		};
+		8B13B4A017B8969A00082FC7 /* help */ = {
+			isa = PBXGroup;
+			children = (
+				8B13B4A117B8969A00082FC7 /* DefaultHelpViewController.h */,
+				8B13B4A217B8969A00082FC7 /* DefaultHelpViewController.m */,
+			);
+			path = help;
+			sourceTree = "<group>";
+		};
+		8B13B4A317B8969A00082FC7 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				8B13B4A417B8969A00082FC7 /* LicenseViewController.h */,
+				8B13B4A517B8969A00082FC7 /* LicenseViewController.m */,
+				8B13B4A617B8969A00082FC7 /* LoginViewController.h */,
+				8B13B4A717B8969A00082FC7 /* LoginViewController.m */,
+				8B13B4A817B8969A00082FC7 /* RequireLoginViewController.h */,
+				8B13B4A917B8969A00082FC7 /* RequireLoginViewController.m */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		8B13B4AA17B8969A00082FC7 /* order */ = {
+			isa = PBXGroup;
+			children = (
+				8B13B4AB17B8969A00082FC7 /* DefaultOrderViewController.h */,
+				8B13B4AC17B8969A00082FC7 /* DefaultOrderViewController.m */,
+			);
+			path = order;
+			sourceTree = "<group>";
+		};
+		8B13B4AD17B8969A00082FC7 /* receipt */ = {
+			isa = PBXGroup;
+			children = (
+				8B13B4AE17B8969A00082FC7 /* DefaultReceiptViewController.h */,
+				8B13B4AF17B8969A00082FC7 /* DefaultReceiptViewController.m */,
+				8B13B4B017B8969A00082FC7 /* ReceiptConfirmViewController.h */,
+				8B13B4B117B8969A00082FC7 /* ReceiptConfirmViewController.m */,
+				8B13B4B217B8969A00082FC7 /* SignLandscapeViewController.h */,
+				8B13B4B317B8969A00082FC7 /* SignLandscapeViewController.m */,
+				8B13B4B417B8969A00082FC7 /* SwipeCardViewController.h */,
+				8B13B4B517B8969A00082FC7 /* SwipeCardViewController.m */,
+			);
+			path = receipt;
 			sourceTree = "<group>";
 		};
 		8B31E857178D4B1F00AA5B5F /* service */ = {
@@ -490,19 +565,6 @@
 			path = location;
 			sourceTree = "<group>";
 		};
-		8B31E881178FB6DE00AA5B5F /* login */ = {
-			isa = PBXGroup;
-			children = (
-				8B48CF4D179EBF3300988311 /* RequireLoginViewController.h */,
-				8B48CF4E179EBF3300988311 /* RequireLoginViewController.m */,
-				8B31E882178FB71100AA5B5F /* LoginViewController.h */,
-				8B31E883178FB71100AA5B5F /* LoginViewController.m */,
-				8B55270F1793F4BA0030ED8D /* LicenseViewController.h */,
-				8B5527101793F4BA0030ED8D /* LicenseViewController.m */,
-			);
-			path = login;
-			sourceTree = "<group>";
-		};
 		8B31E888178FFE3600AA5B5F /* SFHFKeychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,48 +572,6 @@
 				8B31E88A178FFE3600AA5B5F /* SFHFKeychainUtils.m */,
 			);
 			path = SFHFKeychain;
-			sourceTree = "<group>";
-		};
-		8B31E8BA1793B18C00AA5B5F /* account */ = {
-			isa = PBXGroup;
-			children = (
-				8B31E8C71793B9B600AA5B5F /* DefaultAccountViewController.h */,
-				8B31E8C81793B9B600AA5B5F /* DefaultAccountViewController.m */,
-			);
-			path = account;
-			sourceTree = "<group>";
-		};
-		8B31E8BB1793B18C00AA5B5F /* help */ = {
-			isa = PBXGroup;
-			children = (
-				8B31E8CA1793B9C800AA5B5F /* DefaultHelpViewController.h */,
-				8B31E8CB1793B9C800AA5B5F /* DefaultHelpViewController.m */,
-			);
-			path = help;
-			sourceTree = "<group>";
-		};
-		8B31E8BC1793B18C00AA5B5F /* order */ = {
-			isa = PBXGroup;
-			children = (
-				8B31E8C11793B94A00AA5B5F /* DefaultOrderViewController.h */,
-				8B31E8C21793B94A00AA5B5F /* DefaultOrderViewController.m */,
-			);
-			path = order;
-			sourceTree = "<group>";
-		};
-		8B31E8BD1793B18C00AA5B5F /* receipt */ = {
-			isa = PBXGroup;
-			children = (
-				8B31E8C41793B99B00AA5B5F /* DefaultReceiptViewController.h */,
-				8B31E8C51793B99B00AA5B5F /* DefaultReceiptViewController.m */,
-				8B48CF5017A0B41D00988311 /* ReceiptConfirmViewController.h */,
-				8B48CF5117A0B41E00988311 /* ReceiptConfirmViewController.m */,
-				8B48CF5317A0FE5A00988311 /* SwipeCardViewController.h */,
-				8B48CF5417A0FE5A00988311 /* SwipeCardViewController.m */,
-				8B48CF5817A250F800988311 /* SignLandscapeViewController.h */,
-				8B48CF5917A250F900988311 /* SignLandscapeViewController.m */,
-			);
-			path = receipt;
 			sourceTree = "<group>";
 		};
 		8B48CF40179CEE9F00988311 /* pos-mini */ = {
@@ -754,35 +774,10 @@
 		8BC7635C178BFF1300AD74C0 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				8BC7635F178BFF1300AD74C0 /* Controller */,
-				8BC76362178BFF1300AD74C0 /* Custom */,
+				8B13B49C17B8969A00082FC7 /* controller */,
+				8B13B48017B8967B00082FC7 /* custom */,
 			);
 			path = ui;
-			sourceTree = "<group>";
-		};
-		8BC7635F178BFF1300AD74C0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				8BC7635D178BFF1300AD74C0 /* BaseViewController.h */,
-				8BC7635E178BFF1300AD74C0 /* BaseViewController.m */,
-				8B31E8BD1793B18C00AA5B5F /* receipt */,
-				8B31E8BC1793B18C00AA5B5F /* order */,
-				8B31E8BA1793B18C00AA5B5F /* account */,
-				8B31E8BB1793B18C00AA5B5F /* help */,
-				8B31E881178FB6DE00AA5B5F /* login */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		8BC76362178BFF1300AD74C0 /* Custom */ = {
-			isa = PBXGroup;
-			children = (
-				8B13B46417B88CAF00082FC7 /* controller */,
-				8B13B46817B88CAF00082FC7 /* view */,
-				8B13B44817B88C1A00082FC7 /* textctrl.c */,
-				8B13B44917B88C1A00082FC7 /* textctrl.h */,
-			);
-			path = Custom;
 			sourceTree = "<group>";
 		};
 		8BC76372178C077300AD74C0 /* system */ = {
@@ -1061,7 +1056,6 @@
 			files = (
 				8BC76239178A797700AD74C0 /* AppDelegate.m in Sources */,
 				8BC7624C178A7A4200AD74C0 /* main.m in Sources */,
-				8BC76369178BFF1400AD74C0 /* BaseViewController.m in Sources */,
 				8BC763E0178C0B2400AD74C0 /* ASIAuthenticationDialog.m in Sources */,
 				8BC763E1178C0B2400AD74C0 /* ASIDataCompressor.m in Sources */,
 				8BC763E2178C0B2400AD74C0 /* ASIDataDecompressor.m in Sources */,
@@ -1089,30 +1083,30 @@
 				8B31E868178E9F2100AA5B5F /* Helper.m in Sources */,
 				8B31E86B178EAA9700AA5B5F /* BasicService.m in Sources */,
 				8B31E872178F8FBD00AA5B5F /* LocationService.m in Sources */,
-				8B31E884178FB71100AA5B5F /* LoginViewController.m in Sources */,
 				8B31E88B178FFE3600AA5B5F /* SFHFKeychainUtils.m in Sources */,
 				8B31E88E17900AC800AA5B5F /* LoginService.m in Sources */,
-				8B31E8C31793B94A00AA5B5F /* DefaultOrderViewController.m in Sources */,
-				8B31E8C61793B99B00AA5B5F /* DefaultReceiptViewController.m in Sources */,
-				8B31E8C91793B9B600AA5B5F /* DefaultAccountViewController.m in Sources */,
-				8B31E8CC1793B9C800AA5B5F /* DefaultHelpViewController.m in Sources */,
-				8B5527111793F4BA0030ED8D /* LicenseViewController.m in Sources */,
 				8B5527191794146D0030ED8D /* AccountService.m in Sources */,
 				8B48CF3317963E3900988311 /* OrderService.m in Sources */,
 				8B48CF3F179CEDC000988311 /* PosMiniDevice.m in Sources */,
 				8B48CF4C179E166000988311 /* PosMiniService.m in Sources */,
-				8B48CF4F179EBF3300988311 /* RequireLoginViewController.m in Sources */,
-				8B48CF5217A0B41E00988311 /* ReceiptConfirmViewController.m in Sources */,
-				8B48CF5517A0FE5B00988311 /* SwipeCardViewController.m in Sources */,
-				8B48CF5A17A250FB00988311 /* SignLandscapeViewController.m in Sources */,
-				8B13B44A17B88C1A00082FC7 /* textctrl.c in Sources */,
-				8B13B47717B88CAF00082FC7 /* CPTabBar.m in Sources */,
-				8B13B47817B88CAF00082FC7 /* CustomTextView.m in Sources */,
-				8B13B47917B88CAF00082FC7 /* OrderCell.m in Sources */,
-				8B13B47A17B88CAF00082FC7 /* QAHelpCell.m in Sources */,
-				8B13B47B17B88CAF00082FC7 /* ReceiptBgView.m in Sources */,
-				8B13B47C17B88CAF00082FC7 /* SignView.m in Sources */,
-				8B13B47F17B895A700082FC7 /* CPNavigationController.m in Sources */,
+				8B13B49417B8967B00082FC7 /* CPNavigationController.m in Sources */,
+				8B13B49517B8967B00082FC7 /* textctrl.c in Sources */,
+				8B13B49617B8967B00082FC7 /* CPTabBar.m in Sources */,
+				8B13B49717B8967B00082FC7 /* CustomTextView.m in Sources */,
+				8B13B49817B8967B00082FC7 /* OrderCell.m in Sources */,
+				8B13B49917B8967B00082FC7 /* QAHelpCell.m in Sources */,
+				8B13B49A17B8967B00082FC7 /* ReceiptBgView.m in Sources */,
+				8B13B49B17B8967B00082FC7 /* SignView.m in Sources */,
+				8B13B4B617B8969A00082FC7 /* DefaultAccountViewController.m in Sources */,
+				8B13B4B717B8969A00082FC7 /* DefaultHelpViewController.m in Sources */,
+				8B13B4B817B8969A00082FC7 /* LicenseViewController.m in Sources */,
+				8B13B4B917B8969A00082FC7 /* LoginViewController.m in Sources */,
+				8B13B4BA17B8969A00082FC7 /* RequireLoginViewController.m in Sources */,
+				8B13B4BB17B8969A00082FC7 /* DefaultOrderViewController.m in Sources */,
+				8B13B4BC17B8969A00082FC7 /* DefaultReceiptViewController.m in Sources */,
+				8B13B4BD17B8969A00082FC7 /* ReceiptConfirmViewController.m in Sources */,
+				8B13B4BE17B8969A00082FC7 /* SignLandscapeViewController.m in Sources */,
+				8B13B4BF17B8969A00082FC7 /* SwipeCardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
