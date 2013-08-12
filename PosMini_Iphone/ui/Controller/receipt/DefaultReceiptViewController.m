@@ -128,14 +128,18 @@
     {
         if ([PosMiniDevice sharedInstance].isDeviceLegal)
         {
+            //POSmini三期要求去掉交易限额的限制
+            /*
             if ([[Helper getValueByKey:POSMINI_ONE_LIMIT_AMOUNT] isEqualToString:POSMINI_DEFAULT_VALUE])
             {
                 [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"未获取交易限额!"];
                 return;
             }
             
+            
             NSString *oneLimitStr = [Helper getValueByKey:POSMINI_ONE_LIMIT_AMOUNT];
             CGFloat oneLimitFloat = [oneLimitStr floatValue];
+             */
             
             //加入交易限额判断
             if ([Helper StringIsNullOrEmpty:inputField.text])
@@ -145,10 +149,12 @@
             {
                 [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"收款金额必须大于0.1元"];
             }
+            /*
             else if ([inputField.text floatValue]>oneLimitFloat)
             {
                 [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"收款金额超过单笔最大限额"];
             }
+            */
             else
             {
                 //将收款金额放置到PosMiniDevice中

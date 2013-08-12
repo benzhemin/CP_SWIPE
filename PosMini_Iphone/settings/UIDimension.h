@@ -22,7 +22,7 @@ typedef enum {
 } PosMiniUIViewTag;
 
 
-
+#define DEFAULT_STATUS_BAR_HEIGHT 20
 #define DEFAULT_NAVIGATION_BAR_HEIGHT 44
 
 #define DEFAULT_TAB_BAR_HEIGHT 49

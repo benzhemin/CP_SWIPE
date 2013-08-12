@@ -49,7 +49,7 @@
 #pragma mark UITableViewDataSource Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 //返回Table每行的Cell
@@ -77,6 +77,9 @@
             break;
         case 4:
             [cell setQuestion:@"如何进行退款操作？" setAnswer:@"当日支付成功的订单可以在APP上进行消费撤销，隔日的订单可以登陆商户控台进行退款操作。"];
+            break;
+        case 5:
+            [cell setQuestion:@"APP提示交易失败，但是消费者已收到银行扣款通知时，商户该怎么处理？" setAnswer:@"商户可告知消费者，第二天银行会做退款处理。"];
             break;
     }
     return cell;

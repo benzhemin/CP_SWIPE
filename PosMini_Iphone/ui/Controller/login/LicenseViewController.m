@@ -33,7 +33,7 @@
     
     //标题
     UILabel *showTitleLable = [[UILabel alloc] initWithFrame:CGRectMake((showLicenseTextBg.frame.size.width-200)/2, 15, 200, 30)];
-    showTitleLable.text = @"POS mini使用协议";
+    showTitleLable.text = @"POSmini支付服务协议";
     showTitleLable.backgroundColor = [UIColor clearColor];
     showTitleLable.textAlignment = NSTextAlignmentCenter;
     showTitleLable.font = [UIFont boldSystemFontOfSize:18];

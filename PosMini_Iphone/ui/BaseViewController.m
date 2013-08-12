@@ -39,12 +39,18 @@
     if (self=[super init]) {
         isShowNaviBar = YES;
         isShowTabBar = YES;
+        
+        //设置self.view的高度包含statusBarHeight
+        self.wantsFullScreenLayout = YES;
     }
     return self;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
+    CGFloat statusBarHeight = statusBarFrame.size.height;
     
     self.navigationController.navigationBar.hidden = YES;
     
@@ -75,7 +81,7 @@
         //初始化导航栏
         self.naviBgView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-bg.png"]] autorelease];
         naviBgView.userInteractionEnabled = YES;
-        naviBgView.frame = CGRectMake(0, 0, viewWidth, DEFAULT_NAVIGATION_BAR_HEIGHT);
+        naviBgView.frame = CGRectMake(0, statusBarHeight, viewWidth, DEFAULT_NAVIGATION_BAR_HEIGHT);
         [bgImageView addSubview:naviBgView];
         
         self.naviBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -106,14 +112,14 @@
         naviTitleLabel.textColor = [UIColor whiteColor];
         naviTitleLabel.backgroundColor = [UIColor clearColor];
         [naviBgView addSubview:naviTitleLabel];
-        naviTitleLabel.center = naviBgView.center;
+        naviTitleLabel.center = CGPointMake(naviBgView.center.x, naviTitleLabel.center.y);
     }
     
     CGFloat tabBarHeight = 0.0;
     if (isShowTabBar) {
         tabBarHeight = DEFAULT_TAB_BAR_HEIGHT;
     }
-    contentView.frame = CGRectMake(0, naviBarHeight, viewWidth, viewHeight-naviBarHeight-tabBarHeight);
+    contentView.frame = CGRectMake(0, naviBarHeight+statusBarHeight, viewWidth, viewHeight-naviBarHeight-tabBarHeight);
     
     self.pb = [[[PostBeService alloc] init] autorelease];
     if (![[self getViewId] isEqualToString:@"0"] && [Helper getValueByKey:POSTBE_UID]) {

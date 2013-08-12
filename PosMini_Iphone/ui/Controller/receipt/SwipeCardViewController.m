@@ -38,6 +38,7 @@
         [self setNavigationTitle:@"刷卡退款"];
     }
     
+    //当应用被切换出去,依然确保计时器起作用
     UIBackgroundTaskIdentifier bgTask = 0;
     UIApplication *app = [UIApplication sharedApplication];
     bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
@@ -129,6 +130,9 @@
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    //计时器失效
+    [self invalidateTimer];
 }
 
 /**

@@ -51,7 +51,11 @@
     return self;
 }
 
+//请求交易限额
 -(void)requestForTradeLimit{
+    //取消交易限额请求
+    return;
+    
     [[PosMini sharedInstance] showUIPromptMessage:@"请求交易限额..." animated:YES];
     
     NSString* url = [NSString stringWithFormat:@"/mtp/action/query/mini/limitAmt"];

@@ -182,6 +182,8 @@ static PosMiniDevice *sInstance = nil;
  */
 
 - (void)resetDeviceBackStatus:(StatusCode)statusCode{
+    
+    //无论返回状态是成功还是失败,都置金额确认按钮enable=YES
     if ([baseCTRL isKindOfClass:DefaultReceiptViewController.class])
     {
         ((DefaultReceiptViewController *)baseCTRL).confirmBtn.enabled = YES;
@@ -399,6 +401,12 @@ static PosMiniDevice *sInstance = nil;
     
     if (statusCode==SUCCESS) {
         NSLog(@"%@",encryptString);
+        
+        //计时器失效
+        if ([baseCTRL isKindOfClass:SwipeCardViewController.class]) {
+            [(SwipeCardViewController *)baseCTRL invalidateTimer];
+        }
+        
         //请求清空刷卡器里面数据
         [self.posReq resetDevice];
         //清空数组
