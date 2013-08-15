@@ -10,6 +10,7 @@
 #import "PosMiniDevice.h"
 #import "DeviceIntrospection.h"
 #import "PosMiniSettings.h"
+#import "LocationService.h"
 #import "MBProgressHUD.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
@@ -50,7 +51,7 @@ static PosMini *sInstance = nil;
     
     //初始化pos mini设备
     [PosMiniDevice initializePosMiniDevice];
-    
+    [LocationService sharedInstance];
     [DeviceIntrospection sharedInstance];
     [PosMiniSettings instance];
     
@@ -73,6 +74,8 @@ static PosMini *sInstance = nil;
     [Helper saveValue:NSSTRING_NO forKey:POSMINI_SHOW_USER_LOGIN];
     //pos mini连接状态
     [Helper saveValue:NSSTRING_NO forKey:POSMINI_CONNECTION_STATUS];
+    //显示用户签名,保留,目前不需要显示用户签名
+    [Helper saveValue:NSSTRING_NO forKey:POSMINI_SHOW_USER_SIGN];
     
     //每日交易限额
     [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_ONE_LIMIT_AMOUNT];
@@ -115,6 +118,7 @@ static PosMini *sInstance = nil;
     
     [PosMiniDevice destroySharedInstance];
     [DeviceIntrospection destroySharedInstance];
+    [LocationService destroySharedInstance];
     [PosMiniSettings destroyInstance];
     
     [PosMini destroySharedInstance];
