@@ -12,6 +12,8 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "Helper.h"
+#import "PayService.h"
+#import "RefundService.h"
 
 //防止服务端返回空值,客户端解析异常而退出
 BOOL NotNil(id dict, NSString *k){
@@ -31,7 +33,7 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
 
 @implementation PosMiniCPRequest
 
-@synthesize userInfo;
+@synthesize reqtype, userInfo;
 
 -(void)dealloc{
     [userInfo release];
@@ -96,7 +98,7 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REQUIRE_USER_LOGIN object:nil];
         
-        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"长时间未使用，请重新登录!"];
+        //[[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"长时间未使用，请重新登录!"];
     }
     //返回出错,打印出错信息
     else if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"881"))
@@ -104,11 +106,32 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
         //当然用户尚未绑定设备
         [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"当前用户未绑定设备"];
     }
+    //返回未定义状态码,提示服务器返回信息
     else if (NotNil(body, @"RespDesc"))
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
+        if (target!=nil && [target respondsToSelector:@selector(processMTPRespDesc:)]) {
+            [target performSelector:@selector(processMTPRespDesc:) withObject:[body objectForKey:@"RespDesc"]];
+        }
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
         [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:[body objectForKey:@"RespDesc"]];
+    }
+    //返回内容非JSON格式
+    else{
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"服务端返回数据异常"];
+    }
+}
+
+//处理失败消息分发
+- (void) requestFailed:(ASIHTTPRequest *)request{
+    //取消loading显示效果
+    [[PosMini sharedInstance] hideUIPromptMessage:YES];
+    
+    NSError *error = [request error];
+    if ([error code] == ASIRequestTimedOutErrorType) {
+        if ([target respondsToSelector:@selector(requestTimeOut:)]) {
+            [target performSelector:@selector(requestTimeOut:) withObject:self];
+        }
     }
 }
 

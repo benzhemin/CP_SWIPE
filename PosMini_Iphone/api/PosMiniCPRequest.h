@@ -15,10 +15,14 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value);
     id target;
     SEL selector;
     
+    //请求类型
+    int reqtype;
+    
     //record request info
     NSMutableDictionary *userInfo;
 }
 
+@property (nonatomic, assign) int reqtype;
 @property (nonatomic, retain) NSMutableDictionary *userInfo;
 
 - (id)onRespondTarget:(id)_target selector:(SEL)_selector;
