@@ -60,7 +60,15 @@
 }
 
 -(void)queryForRefundState{
+    PosMiniDevice *pos = [PosMiniDevice sharedInstance];
+    NSString* url = [NSString stringWithFormat:@"/mtp/action/query/queryRefundOrder"];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:[Helper getValueByKey:POSMINI_CUSTOMER_ID] forKey:PARAM_CUSTOMER_ID];
+    [dict setValue:pos.orderId forKey:@"RefOrdId"];
     
+    PosMiniCPRequest *posReq = [PosMiniCPRequest postRequestWithPath:url andBody:dict];
+    [posReq onRespondTarget:self selector:@selector(refundRequestDidFinished:)];
+    [posReq execute];
 }
 
 //处理退款失败显示弹窗
@@ -82,7 +90,7 @@
         [alertViw release];
     }else{
         [[PosMini sharedInstance] showUIPromptMessage:@"查询中..." animated:YES];
-        [self requestForQueryTrans];
+        [self queryForRefundState];
         ++reqCount;
     }
 }
