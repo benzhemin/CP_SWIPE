@@ -34,8 +34,6 @@
     
     PostBeService *pb;
     VersionService *vp;
-    
-    LocationService *locService;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -49,8 +47,6 @@
 @property (nonatomic, retain) NSArray *naviArray;
 
 @property (nonatomic, retain) CPTabBar *cpTabBar;
-
-@property (nonatomic, retain) LocationService *locService;
 
 -(void)versionReqFinished;
 -(void)loginSuccess;
