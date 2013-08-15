@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+
 @interface LocationService : NSObject <CLLocationManagerDelegate, UIAlertViewDelegate>{
     CLLocationManager *locationManager;
     CLLocationCoordinate2D coordination;

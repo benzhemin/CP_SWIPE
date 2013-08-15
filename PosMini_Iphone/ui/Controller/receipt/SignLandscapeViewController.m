@@ -7,6 +7,7 @@
 //
 
 #import "SignLandscapeViewController.h"
+#import "PayConfirmViewController.h"
 
 @interface SignLandscapeViewController ()
 
@@ -48,15 +49,18 @@
     self.clearBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [clearBtn setImage:[UIImage imageNamed:@"del-btn.png"] forState:UIControlStateNormal];
     [clearBtn addTarget:self action:@selector(clearSign:) forControlEvents:UIControlEventTouchUpInside];
-    [self.signView addSubview:clearBtn];
+    [self.contentView addSubview:clearBtn];
+    [contentView bringSubviewToFront:clearBtn];
+    
     //提示删除签名Label
     self.clearLabel = [[[UILabel alloc] init] autorelease];
     clearLabel.text=@"删除签名";
     clearLabel.userInteractionEnabled = YES;
     clearLabel.backgroundColor = [UIColor clearColor];
     clearLabel.font = [UIFont systemFontOfSize:14];
-    [self.signView addSubview:clearLabel];
+    [self.contentView addSubview:clearLabel];
     [clearLabel release];
+    [contentView bringSubviewToFront:clearLabel];
     
     //注册触摸手势
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClearGesture:)];
@@ -167,12 +171,22 @@
         return;
     }
     
-    [PosMiniDevice sharedInstance].pointsList = self.signView.pointsList;
+    //设置全局签名为当前签名
+    //原来的需求:支付失败,弹出提示框,对应两个按钮:重新支付,取消,用户点击重新支付后保留用户签名.
+    //目前支付失败只弹出确定,然后重新做交易流程
+    //[PosMiniDevice sharedInstance].pointsList = self.signView.pointsList;
     
     
+    //保留用户签名
+    [PosMiniDevice sharedInstance].signImg = [Helper imageWithView:signView];
+    //恢复statusBar
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
     
-    
+    //确认支付
+    PayConfirmViewController *pc = [[PayConfirmViewController alloc] init];
+    pc.isShowTabBar = NO;
+    [self.navigationController pushViewController:pc animated:YES];
+    [pc release];
 }
 
 //返回之前调整StatusBar
@@ -181,8 +195,6 @@
     
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
-
-
 
 
 @end

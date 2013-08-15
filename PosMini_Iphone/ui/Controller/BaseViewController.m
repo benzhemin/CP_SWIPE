@@ -121,7 +121,7 @@
     if (isShowTabBar) {
         tabBarHeight = DEFAULT_TAB_BAR_HEIGHT;
     }
-    contentView.frame = CGRectMake(0, naviBarHeight+statusBarHeight, viewWidth, viewHeight-naviBarHeight-tabBarHeight);
+    contentView.frame = CGRectMake(0, naviBarHeight+statusBarHeight, viewWidth, viewHeight-naviBarHeight-tabBarHeight-statusBarHeight);
     
     self.pb = [[[PostBeService alloc] init] autorelease];
     if (![[self getViewId] isEqualToString:@"0"] && [Helper getValueByKey:POSTBE_UID]) {

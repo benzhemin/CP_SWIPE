@@ -25,14 +25,25 @@
 }
 
 //ASIHTTPRequest failure callback
-- (void) requestFailed:(ASIHTTPRequest *)request{
+- (void) requestFailed:(ASIHTTPRequest *)req{
     [[PosMini sharedInstance] hideUIPromptMessage:YES];
     
-    NSError *error = [request error];
+    NSError *error = [req error];
     NSString *description = [error localizedDescription];
     NSLog(@"%@", description);
     
-    NSLog(@"网络异常　url:%@", request.url);
+    NSLog(@"网络异常　url:%@", req.url);
+}
+
+//默认提示超时
+- (void) requestTimeOut:(ASIHTTPRequest *)req{
+    [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请求超时!"];
+}
+
+//处理服务器返回的信息
+//当返回状态码在客户端未定义,而返回的应答信息不为空
+- (void) processMTPRespDesc:(NSString *)msg{
+    //do nothing here
 }
 
 @end

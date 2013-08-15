@@ -27,6 +27,7 @@
 -(void)requestFinishedOnRequestThread;
 @end
 
+//扩展Get请求
 @interface ExtendedGetRequest : ASIHTTPRequest <ExtendedRequest>
 {
     CPRequest *cpRequest;
@@ -47,6 +48,7 @@
 }
 @end
 
+//扩展Post请求
 @interface ExtendedFormRequest : ASIFormDataRequest <ExtendedRequest>
 {
     CPRequest *cpRequest;
@@ -68,6 +70,7 @@
 }
 @end
 
+//uri编码
 static NSString *uriEncode(NSString *str)
 {
     return [(NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)str, NULL, CFSTR(":/?#[]@!$&’()*+,;="), kCFStringEncodingUTF8) autorelease];
@@ -475,13 +478,14 @@ static void buildRoot(id<ArgBuilder> builder, NSDictionary *body)
     else
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
-        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"服务器返回异常"];
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"服务器返回状态异常"];
     }
 	
 	// we're done here
 	self.request = nil;
 }
 
+//默认的requestFailed,便于移植
 - (void) requestFailed:(ASIHTTPRequest *)request{
     
     NSError *error = [request error];

@@ -7,6 +7,7 @@
 //
 
 #import "DefaultOrderViewController.h"
+#import "RefundViewController.h"
 #import "OrderCell.h"
 
 @interface DefaultOrderViewController ()
@@ -237,19 +238,25 @@
         else{
             OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (cell==nil) {
-                cell = [[[OrderCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier]autorelease];
+                cell = [[[OrderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             NSArray *orderInfo = [orderList objectAtIndex:indexPath.row];
-            if ([[orderInfo objectAtIndex:OrderStatus] isEqualToString:@"R"]||[mtpCurDate compare:curDate]!=NSOrderedSame)
-            {
-                [cell setShowArrow:NO];
-            }
-            //已成功或未结算都可以退款
-            else
+            
+            
+            //只有退款OrderStatus状态为s且当天交易的订单可以退款
+            /*
+                S   成功
+                R   已成功退款
+                F   失败
+                I   初始化
+             */
+            [cell setShowArrow:NO];
+            if ([[orderInfo objectAtIndex:OrderStatus] isEqualToString:@"S"] && [mtpCurDate compare:curDate]==NSOrderedSame)
             {
                 [cell setShowArrow:YES];
             }
+            
             [cell setOrderId:[orderInfo objectAtIndex:OrderId] setOrderSum:[[orderInfo objectAtIndex:OrderAmount] floatValue] setOrederState:[orderInfo objectAtIndex:OrderStatus] setTradeTime:[orderInfo objectAtIndex:OrderSysTimer] setBankNum:[orderInfo objectAtIndex:OrderPayCard]];
             return cell;
         }
@@ -301,15 +308,17 @@
             [self requestOrderRecordByDate:[dateFormatter stringFromDate:curDate]];
             return;
         }
-        /*
+        
+        
         NSArray *orderInfo = [orderList objectAtIndex:indexPath.row];
-        if (!([[orderInfo objectAtIndex:4] isEqualToString:@"R"]||[curDate compare:nowDate]!=NSOrderedSame))
+        if ([[orderInfo objectAtIndex:OrderStatus] isEqualToString:@"S"] && [mtpCurDate compare:curDate]==NSOrderedSame)
         {
             selectedIndex = indexPath.row;
             
             //退款前，先判断账户是否已经绑定设备
-            if ([[Helper getValueByKey:@"deviceId"] isEqualToString:@"#"]) {
-                [self showMessage:@"未绑定设备，请先绑定设备!"];
+            //绑定设备才能退款
+            if ([[Helper getValueByKey:POSMINI_MTP_BINDED_DEVICE_ID] isEqualToString:@"#"]) {
+                [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"未绑定设备，请先绑定设备!"];
                 return;
             }
             else
@@ -321,7 +330,6 @@
                 return ;
             }
         }
-        */
     }
 }
 
@@ -398,6 +406,29 @@
     }
 }
 
+#pragma mark UIAlertViewDelegate Method
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0) {
+        //开始退款流程
+        NSArray *orderInfo = [orderList objectAtIndex:selectedIndex];
+        //[cell setOrderId:[orderInfo objectAtIndex:3] setOrderSum:[[orderInfo objectAtIndex:2] floatValue] setOrederState:[orderInfo objectAtIndex:4] setTradeTime:[orderInfo objectAtIndex:7] setBankNum:[orderInfo objectAtIndex:5]];
+        
+        //设置全局退款
+        PosMiniDevice *pos = [PosMiniDevice sharedInstance];
+        pos.refundOrderId = [orderInfo objectAtIndex:OrderId];
+        pos.paySum = [orderInfo objectAtIndex:OrderAmount];
+        
+        
+        RefundViewController *rf = [[RefundViewController alloc]init];
+        rf.orderId = [orderInfo objectAtIndex:OrderId];
+        rf.paySum = [orderInfo objectAtIndex:OrderAmount];
+        rf.tradeTime = [orderInfo objectAtIndex:OrderSysTimer];
+        [self.navigationController pushViewController:rf animated:YES];
+        [rf release];
+    }
+}
+
 #pragma mark UIActionSheetDelegate Method
 /**
  响应UISegmentedControl点击
@@ -466,22 +497,3 @@
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

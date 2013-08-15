@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define DEFAULT_TIME_OUT_SECONDS 30
-#define DEFAULT_NUMBER_TO_RETRY_ON_TIME_OUT 2
+#define DEFAULT_NUMBER_TO_RETRY_ON_TIME_OUT 0
 
 @class CPRequest, ASIHTTPRequest;
 

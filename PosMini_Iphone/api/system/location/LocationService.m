@@ -106,11 +106,8 @@ static LocationService *sInstance = nil;
 -(BOOL)isCoordinationEmpty
 {
     if (coordination.latitude!=0.0f && coordination.longitude!=0.0f)
-    {
         return NO;
-    }else{
-        return YES;
-    }
+    return YES;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

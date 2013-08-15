@@ -17,7 +17,9 @@
 #import "ReceiptConfirmViewController.h"
 #import "SwipeCardViewController.h"
 #import "SignLandscapeViewController.h"
+#import "RefundViewController.h"
 
+#import "RefundService.h"
 
 
 static PosMiniDevice *sInstance = nil;
@@ -26,8 +28,9 @@ static PosMiniDevice *sInstance = nil;
 
 @synthesize posReq, baseCTRL;
 @synthesize deviceSN;
-@synthesize orderId, paySum, md5Key;
+@synthesize orderId, refundOrderId, paySum, md5Key;
 @synthesize bankCardAndPassData;
+@synthesize signImg;
 @synthesize keyInfo;
 @synthesize isDeviceLegal;
 
@@ -68,16 +71,21 @@ static PosMiniDevice *sInstance = nil;
     [deviceSN release];
     
     [orderId release];
+    [refundOrderId release];
+    
     [paySum release];
     [md5Key release];
     
     [bankCardAndPassData release];
+    [signImg release];
     
     [pointsList release];
     
     [keyInfo release];
     
     [posService release];
+    
+    [rfService release];
     
     [super dealloc];
 }
@@ -97,6 +105,8 @@ static PosMiniDevice *sInstance = nil;
         [posReq initializeAudioAndDevice];
         
         posService = [[PosMiniService alloc] init];
+        
+        rfService = [[RefundService alloc] init];
     }
     return self;
 }
@@ -164,8 +174,8 @@ static PosMiniDevice *sInstance = nil;
 - (void)reqDeviceSNBackStatus:(StatusCode)statusCode andSerialNum:(NSString *)serialNum
 {
     if (statusCode == SUCCESS) {
-        self.deviceSN = serialNum;
-        
+        //默认置设备合法性为非法
+        isDeviceLegal = NO;
         //当前用户未绑定刷卡器,查询用户和刷卡器状态
         if ([[Helper getValueByKey:POSMINI_MTP_BINDED_DEVICE_ID] isEqualToString:POSMINI_DEFAULT_VALUE]) {
             if ([baseCTRL isKindOfClass:[DefaultReceiptViewController class]]) {
@@ -175,6 +185,8 @@ static PosMiniDevice *sInstance = nil;
         else {
             //插入的刷卡器和用户绑定的刷卡器一致
             if ([[Helper getValueByKey:POSMINI_MTP_BINDED_DEVICE_ID] isEqualToString:serialNum]) {
+                self.deviceSN = serialNum;
+                
                 isDeviceLegal = YES;
                 
                 //对四个tab页面做交易限额查询
@@ -183,12 +195,16 @@ static PosMiniDevice *sInstance = nil;
                 if ([[baseCTRL controllerName] rangeOfString:@"Default"].location != NSNotFound) {
                     [posService requestForTradeLimit];
                 }
+                
+                //如果是刷卡页面,要做状态请求
+                //[posMiniRequest reqDeviceStatus];
+                
             }else{
-                isDeviceLegal = NO;
                 [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"不是合法设备"];
             }
         }
     }else{
+        self.deviceSN = [NSString stringWithFormat:@""];
         [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"查询刷卡器序列号失败!"];
     }
 }
@@ -200,7 +216,6 @@ static PosMiniDevice *sInstance = nil;
  */
 
 - (void)resetDeviceBackStatus:(StatusCode)statusCode{
-    
     //无论返回状态是成功还是失败,都置金额确认按钮enable=YES
     if ([baseCTRL isKindOfClass:DefaultReceiptViewController.class])
     {
@@ -216,7 +231,7 @@ static PosMiniDevice *sInstance = nil;
             return;
         }
         
-        if ([baseCTRL isKindOfClass:ReceiptConfirmViewController.class]) {
+        if ([baseCTRL isKindOfClass:ReceiptConfirmViewController.class] || [baseCTRL isKindOfClass:[RefundViewController class]]) {
             [posReq setTimeOutWithTime:READ_CARD_TIMEOUT];
         }
         
@@ -231,7 +246,8 @@ static PosMiniDevice *sInstance = nil;
             }
             //退款
             if (swipeCTRL.scType == REFOUND_SWIPE_TYPE) {
-                
+                [rfService onRespondTarget:swipeCTRL];
+                [rfService requestForRefundTrans];
             }
         }
     }else
@@ -249,8 +265,16 @@ static PosMiniDevice *sInstance = nil;
 - (void)setTimeOutBackStatus:(StatusCode)statusCode
 {
     if (statusCode==SUCCESS) {
+        
+        if ([baseCTRL isKindOfClass:[RefundViewController class]]) {
+            //退款对应的orderId,paySum是点击cell拿到的信息
+            [posReq reqSwipeCardWithID:self.refundOrderId amount:self.paySum info:[NSString stringWithFormat:@"%@|%@|%@",[Helper getValueByKey:POSMINI_CUSTOMER_ID],self.refundOrderId,self.paySum] pinIndex:2 packageIndex:3];
+        }
+        
         //向刷卡器写入订单信息，请求刷卡
-        [posReq reqSwipeCardWithID:self.orderId amount:[NSString stringWithFormat:@"%0.2f",[self.paySum floatValue]] info:[NSString stringWithFormat:@"%@|%@|%@",[Helper getValueByKey:@"CustId"],self.orderId,[NSString stringWithFormat:@"%0.2f",[self.paySum floatValue]]] pinIndex:2 packageIndex:3];
+        else if ([baseCTRL isKindOfClass:[ReceiptConfirmViewController class]]){
+            [posReq reqSwipeCardWithID:self.orderId amount:self.paySum info:[NSString stringWithFormat:@"%@|%@|%@",[Helper getValueByKey:POSMINI_CUSTOMER_ID],self.orderId,self.paySum] pinIndex:2 packageIndex:3];
+        }
     }
     else{
         [[PosMini sharedInstance] hideUIPromptMessage:YES];
@@ -277,7 +301,16 @@ static PosMiniDevice *sInstance = nil;
         //写入订单信息成功，跳转到刷卡动画页面
         SwipeCardViewController *sc = [[SwipeCardViewController alloc] init];
         sc.isShowTabBar = NO;
-        sc.scType = PAY_SWIPE_TYPE;
+        
+        //刷卡支付
+        if ([baseCTRL isKindOfClass:[ReceiptConfirmViewController class]]) {
+            sc.scType = PAY_SWIPE_TYPE;
+        }
+        //刷卡退款
+        else if ([baseCTRL isKindOfClass:[RefundViewController class]]){
+            sc.scType = REFOUND_SWIPE_TYPE;
+        }
+        
         [baseCTRL.navigationController pushViewController:sc animated:YES];
         [sc release];
         
@@ -311,13 +344,17 @@ static PosMiniDevice *sInstance = nil;
 {
     
     if (statusCode==SUCCESS) {
-        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"密钥注入成功"];
         //注入成功,跳转到确认订单页面
         if ([baseCTRL isKindOfClass:[DefaultReceiptViewController class]]) {
             ReceiptConfirmViewController *receiptCTRL = [[ReceiptConfirmViewController alloc] init];
             receiptCTRL.isShowTabBar = NO;
             [baseCTRL.navigationController pushViewController:receiptCTRL animated:YES];
             [receiptCTRL release];
+        }
+        
+        //注入成功,退款页面发起的注入签名请求
+        else if ([baseCTRL isKindOfClass:[RefundViewController class]]){
+            [posReq resetDevice];
         }
         
     }
@@ -387,6 +424,7 @@ static PosMiniDevice *sInstance = nil;
             case ACTION_TIME_OUT:
             {
                 alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"刷卡超时!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                alertView.tag = AlertView_Clear_BurshCard_Faild;
                 [alertView show];
                 [alertView release];
                 return;
@@ -394,6 +432,7 @@ static PosMiniDevice *sInstance = nil;
             case USER_UNDO:
                 //用户取消
                 alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"操作取消!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                alertView.tag = AlertView_Clear_BurshCard_Faild;
                 [alertView show];
                 [alertView release];
                 return ;
@@ -418,7 +457,7 @@ static PosMiniDevice *sInstance = nil;
     [[PosMini sharedInstance] hideUIPromptMessage:YES];
     
     if (statusCode==SUCCESS) {
-        NSLog(@"%@",encryptString);
+        NSLog(@"encryptString:%@",encryptString);
         
         //计时器失效
         if ([baseCTRL isKindOfClass:SwipeCardViewController.class]) {
@@ -461,7 +500,6 @@ static PosMiniDevice *sInstance = nil;
     if (alertView.tag == AlertView_Clear_BurshCard_Faild) {
         [baseCTRL.navigationController popToRootViewControllerAnimated:YES];
     }
-    
 }
 
 

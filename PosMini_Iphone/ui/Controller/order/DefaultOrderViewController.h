@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "OrderService.h"
 
-typedef enum _OrderInfoSeq{
+typedef enum {
     OrderAccountDate = 0,
     OrderPosId,
     OrderAmount,
@@ -20,7 +20,7 @@ typedef enum _OrderInfoSeq{
     OrderSysTimer
 } OrderInfoSeq;
 
-typedef enum _BtnType{
+typedef enum {
     PreDay = 1,
     CurDay,
     NextDay

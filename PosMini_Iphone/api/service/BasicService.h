@@ -23,6 +23,9 @@
 - (id)onRespondTarget:(id)_target;
 - (id)onRespondTarget:(id)_target selector:(SEL)_selector;
 
-- (void) requestFailed:(ASIHTTPRequest *)request;
+- (void) requestFailed:(ASIHTTPRequest *)req;
+- (void) requestTimeOut:(ASIHTTPRequest *)req;
+
+- (void) processMTPRespDesc:(NSString *)msg;
 
 @end

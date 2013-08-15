@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 #import "PosRequest.h"
 #import "Helper.h"
 #import "BaseViewController.h"
 #import "PosMiniService.h"
+
+@class RefundService;
 
 typedef enum _AlertViewType{
     AlertView_Clear_BurshCard_Faild = 1,
@@ -22,14 +25,19 @@ typedef enum _AlertViewType{
     BaseViewController *baseCTRL;
     
     PosMiniService *posService;
+    RefundService *rfService;
     
     NSString *deviceSN;
     
     NSString *orderId;
+    NSString *refundOrderId;
+    
     NSString *paySum;
     NSString *md5Key;
     
     NSString *bankCardAndPassData;
+    //签名图片
+    UIImage *signImg;
     
     //用户签名
     NSMutableArray *pointsList;
@@ -46,10 +54,13 @@ typedef enum _AlertViewType{
 @property (nonatomic, copy) NSString *deviceSN;
 
 @property (nonatomic, copy) NSString *orderId;
+@property (nonatomic, copy) NSString *refundOrderId;
+
 @property (nonatomic, copy) NSString *paySum;
 @property (nonatomic, copy) NSString *md5Key;
 
 @property (nonatomic, copy) NSString *bankCardAndPassData;
+@property (nonatomic, retain) UIImage *signImg;
 
 @property (nonatomic, retain) NSMutableArray *pointsList;
 

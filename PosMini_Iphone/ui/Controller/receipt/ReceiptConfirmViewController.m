@@ -42,6 +42,14 @@
     recpBgView.center = CGPointMake(contentView.center.x, recpBgView.center.y);
     [contentView addSubview:recpBgView];
     
+    //底部图片
+    UIImageView *btmImgView = [[UIImageView alloc] initWithImage:btmImg];
+    btmImgView.frame = CGRectMake((contentView.bounds.size.width-btmImg.size.width)/2,
+                                  recpBgView.frame.size.height, btmImg.size.width, btmImg.size.height);
+    [contentView addSubview:btmImgView];
+    [btmImgView release];
+
+    
     //显示收款账户标题
     UILabel *accountLabelTitle = [[UILabel alloc] init];
     accountLabelTitle.textColor = [UIColor colorWithRed:115/250.0 green:115/250.0 blue:115/250.0 alpha:1.0];
