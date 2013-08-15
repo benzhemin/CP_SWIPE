@@ -18,8 +18,6 @@
 @synthesize receiptNaviController, orderNaviController, acctNaviController, helpNaviController;
 @synthesize naviArray;
 
-@synthesize locService;
-
 - (void)dealloc{
     [_window release];
     
@@ -35,8 +33,6 @@
     
     [pb release];
     [vp release];
-    
-    [locService release];
     
     [super dealloc];
 }
@@ -97,8 +93,7 @@
     [self.window.rootViewController.view addSubview:cpTabBar];
      
     //请求定位
-    self.locService = [[[LocationService alloc] init] autorelease];
-    [locService startToLocateWithAuthentication:NO];
+    [[LocationService sharedInstance] startToLocateWithAuthentication:NO];
 }
 
 -(void)changeToIndex:(int)index
