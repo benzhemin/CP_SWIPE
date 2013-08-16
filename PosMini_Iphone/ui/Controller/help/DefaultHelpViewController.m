@@ -64,19 +64,19 @@
     }
     switch (indexPath.row) {
         case 0:
-            [cell setQuestion:@"使用POS mini产品前有哪些注意事项？" setAnswer:@"使用POS mini刷卡器前，请先仔细查看包装盒内的产品说明书，熟悉产品的功能与使用流程。"];
+            [cell setQuestion:@"使用POSmini产品前有哪些注意事项？" setAnswer:@"使用POSmini刷卡器前，请先仔细查看包装盒内的产品说明书，熟悉产品的功能与使用流程。"];
             break;
         case 1:
-            [cell setQuestion:@"如何使用POS mini刷卡器进行收款？" setAnswer:@"账户登录成功后，插入POS mini刷卡器，点击进入商户收款模块即可开始收款。"];
+            [cell setQuestion:@"如何使用POSmini刷卡器进行收款？" setAnswer:@"账户登录成功后，插入POSmini刷卡器，点击进入商户收款模块即可开始收款。"];
             break;
         case 2:
-            [cell setQuestion:@"如何更换POS mini刷卡器？" setAnswer:@"一个账户只可以与一台POS mini刷卡器绑定，如需更换请先联系客服人员解除绑定后再完成绑定。"];
+            [cell setQuestion:@"如何更换POSmini刷卡器？" setAnswer:@"一个账户只可以与一台POSmini刷卡器绑定，如需更换请先联系客服人员解除绑定后再完成绑定。"];
             break;
         case 3:
             [cell setQuestion:@"交易失败的原因有哪些？" setAnswer:@"银行卡余额不足、密码输入错误等原因会导致交易失败。此外，超过交易限额也会导致交易失败。"];
             break;
         case 4:
-            [cell setQuestion:@"如何进行退款操作？" setAnswer:@"当日支付成功的订单可以在APP上进行消费撤销，隔日的订单可以登陆商户控台进行退款操作。"];
+            [cell setQuestion:@"如何进行退款？" setAnswer:@"当日支付成功的订单可以在APP上进行消费撤销，隔日的订单可以登陆商户控台进行退款操作。"];
             break;
         case 5:
             [cell setQuestion:@"APP提示交易失败，但是消费者已收到银行扣款通知时，商户该怎么处理？" setAnswer:@"商户可告知消费者，第二天银行会做退款处理。"];

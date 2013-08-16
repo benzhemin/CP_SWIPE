@@ -15,6 +15,7 @@
 
 @synthesize launchImgView, cpTabBar;
 
+@synthesize loginNaviController;
 @synthesize receiptNaviController, orderNaviController, acctNaviController, helpNaviController;
 @synthesize naviArray;
 
@@ -23,6 +24,8 @@
     
     [launchImgView release];
     [cpTabBar release];
+    
+    [loginNaviController release];
     
     [receiptNaviController release];
     [orderNaviController release];
@@ -45,7 +48,8 @@
     LoginViewController *loginController = [[[LoginViewController alloc] init] autorelease];
     loginController.isShowNaviBar = NO;
     loginController.isShowTabBar = NO;
-    self.window.rootViewController = loginController;
+    self.loginNaviController = [[[CPNavigationController alloc] initWithRootViewController:loginController] autorelease];
+    self.window.rootViewController = loginNaviController;
     
     DefaultReceiptViewController *receiptController = [[DefaultReceiptViewController alloc] init];
     self.receiptNaviController = [[[CPNavigationController alloc] initWithRootViewController:receiptController] autorelease];

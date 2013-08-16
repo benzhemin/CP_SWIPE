@@ -7,6 +7,7 @@
 //
 
 #import "DefaultAccountViewController.h"
+#import "SettingBankViewController.h"
 #import "Helper.h"
 
 @interface DefaultAccountViewController ()
@@ -82,7 +83,7 @@
 #pragma mark UITableViewDataSource Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 4;
 }
 
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -132,7 +133,7 @@
             if ([userInfoDict valueForKey:@"CashCardNo"]!=nil) {
                 content.text = [userInfoDict valueForKey:ACCOUNT_CASHCARD_NUMBER];
             }
-            //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         case 2:
             title.text = @"当日收款:";
@@ -140,6 +141,7 @@
                 content.text = [NSString stringWithFormat:@"%@元(%@笔)",[userInfoDict valueForKey:ACCOUNT_TOTAL_ORDER_AMOUNT],[userInfoDict valueForKey:ACCOUNT_TOTAL_ORDER_COUNT]];
             }
             break;
+        /*
         case 3:
             title.text = @"单笔交易限额:";
             if (![[Helper getValueByKey:POSMINI_ONE_LIMIT_AMOUNT] isEqualToString:POSMINI_DEFAULT_VALUE]) {
@@ -156,7 +158,8 @@
                 content.text = @"元";
             }
             break;
-        case 5:
+        */
+        case 3:
             title.text = @"设备编号:";
             if ([userInfoDict valueForKey:ACCOUNT_BINDED_MOUNT_ID]!=nil) {
                 content.text = [userInfoDict valueForKey:ACCOUNT_BINDED_MOUNT_ID];
@@ -171,10 +174,10 @@
 //选中行事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //do nothing here
-    return;
+    //开启取现银行
     
     if (indexPath.row==1) {
+        //用户未设置取现银行
         if (![[userInfoDict valueForKey:@"CashCardNo"] isEqualToString:@"未设置"]) {
             //提示用户是否重设取现银行
             UIAlertView *noticeAlert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"是否重新设置银行账户" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
@@ -182,6 +185,7 @@
             [noticeAlert show];
             [noticeAlert release];
         }
+        //用户已设置取现银行
         else
         {
             //设置取现银行
@@ -193,7 +197,11 @@
             */
         }
     }
-    if (indexPath.row==5) {
+    
+    //屏蔽解绑
+    return;
+    
+    if (indexPath.row==3) {
         if (![[userInfoDict valueForKey:@"BindedMtId"] isEqualToString:@"未绑定"]) {
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"解绑后该设备将作废，是否确定解绑!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
             alertView.tag = 1;
@@ -202,7 +210,40 @@
         }
     }
 }
- 
+
+#pragma mark UIAlertViewDelegate Method
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag==2) {
+        if (buttonIndex==0) {
+            //设置取现银行
+            SettingBankViewController *sb = [[SettingBankViewController alloc]init];
+            sb.defaultBankAccountString = [userInfoDict valueForKey:@"CashCardNo"];
+            [self.navigationController pushViewController:sb animated:YES];
+            [sb release];
+        }
+        
+    }
+    
+    if (alertView.tag==1) {
+        //刷卡器解绑
+        /*
+        if (buttonIndex==0) {
+            //发送请求解除刷卡器绑定
+            
+            NSHttpBlock *httpInfo = [[NSHttpBlock alloc]init];
+            httpInfo.requestUrl= [NSString stringWithFormat:@"%@/mtp/action/bind/release",HOST_URL];
+            NSMutableDictionary *postDataDictionary = [[[NSMutableDictionary alloc]init]autorelease];
+            [postDataDictionary setValue:[Helper getValueByKey:@"CustId"] forKey:@"CustId"];
+            [postDataDictionary setValue:[userInfoDictionary valueForKey:@"BindedMtId"] forKey:@"MtId"];
+            httpInfo.requestKeyValue = postDataDictionary;
+            httpInfo.httpId = 2;
+            httpInfo.requestMethod = @"POST";
+            [self sendHttpRequest:httpInfo];
+        }
+        */
+    }
+}
 
 /**
  返回用户行为跟踪Id号

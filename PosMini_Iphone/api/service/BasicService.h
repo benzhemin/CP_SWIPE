@@ -26,6 +26,6 @@
 - (void) requestFailed:(ASIHTTPRequest *)req;
 - (void) requestTimeOut:(ASIHTTPRequest *)req;
 
-- (void) processMTPRespDesc:(NSString *)msg;
+- (void) processMTPRespDesc:(PosMiniCPRequest *)req;
 
 @end

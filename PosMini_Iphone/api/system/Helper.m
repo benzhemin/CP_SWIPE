@@ -110,6 +110,22 @@
     return YES;
 }
 
+/*
+ 判断字符串的每个字符是否为数字或字母
+ @param string 输入字符串
+ @returns 返回结果
+ */
+
++(BOOL)containInvalidChar:(NSString *)string{
+    
+    NSCharacterSet *disallowedCharacters = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    NSRange foundRange = [string rangeOfCharacterFromSet:disallowedCharacters];
+    if (foundRange.location != NSNotFound) {
+        return YES;
+    }
+    return NO;
+}
+
 /**
  MD5加密
  @param str 输入初始参数

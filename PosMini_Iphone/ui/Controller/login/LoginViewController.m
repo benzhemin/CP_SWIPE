@@ -12,6 +12,7 @@
 #import "NSNotificationCenter+CP.h"
 #import "AppDelegate.h"
 #import "LicenseViewController.h"
+#import "RegisterViewController.h"
 
 @interface LoginViewController ()
 @end
@@ -195,22 +196,21 @@
     [imageBg addSubview:loginButton];
     
     //注册按钮
-    /*
-     self.registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-     [registerButton setBackgroundImage:[[UIImage imageNamed:@"login-btn-bg.png"] stretchableImageWithLeftCapWidth:13 topCapHeight:25] forState:UIControlStateNormal];
-     [registerButton.titleLabel setFont:[UIFont boldSystemFontOfSize:20]];
-     [registerButton setTitleColor:[UIColor colorWithRed:68/255.0 green:68/255.0 blue:68/255.0 alpha:1.0] forState:UIControlStateNormal];
-     registerButton.frame = CGRectMake(10, loginButton.frame.size.height+loginButton.frame.origin.y+10, 300, 56);
-     [registerButton setTitle:@"注     册" forState:UIControlStateNormal];
-     [registerButton addTarget:self action:@selector(readLicenseClick:) forControlEvents:UIControlEventTouchUpInside];
-     [imageBg addSubview:registerButton];
-     */
+    self.registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [registerButton setBackgroundImage:[[UIImage imageNamed:@"login-btn-bg.png"] stretchableImageWithLeftCapWidth:13 topCapHeight:25] forState:UIControlStateNormal];
+    [registerButton.titleLabel setFont:[UIFont boldSystemFontOfSize:20]];
+    [registerButton setTitleColor:[UIColor colorWithRed:68/255.0 green:68/255.0 blue:68/255.0 alpha:1.0] forState:UIControlStateNormal];
+    registerButton.frame = CGRectMake(10, loginButton.frame.size.height+loginButton.frame.origin.y+10, 300, 56);
+    [registerButton setTitle:@"注     册" forState:UIControlStateNormal];
+    [registerButton addTarget:self action:@selector(registerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [imageBg addSubview:registerButton];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     NSString *readLicense = [Helper getValueByKey:POSMINI_HAVE_READ_LICENSE];
     if (readLicense!=nil && [readLicense isEqualToString:@"YES"]) {
-        
+        return;
     }else{
         LicenseViewController *lc = [[LicenseViewController alloc] init];
         [self presentModalViewController:lc animated:YES];
@@ -225,6 +225,14 @@
     [accountTextField resignFirstResponder];
     [pwdTextField resignFirstResponder];
     bgScrollView.contentSize = CGSizeMake(contentView.frame.size.width, contentView.frame.size.height);
+}
+
+//点击注册按钮事件
+-(void) registerBtnClick:(id)sender{
+    RegisterViewController *rc = [[RegisterViewController alloc]init];
+    rc.isShowTabBar =NO;
+    [self.navigationController pushViewController:rc animated:YES];
+    [rc release];
 }
 
 #pragma mark UIGestureRecognizerDelegate Method

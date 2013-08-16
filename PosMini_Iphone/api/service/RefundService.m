@@ -73,9 +73,9 @@
 
 //处理退款失败显示弹窗
 //退款失败没有对应的状态码,当服务端返回状态码不为000作退款失败处理
-- (void) processMTPRespDesc:(NSString *)msg{
+- (void) processMTPRespDesc:(PosMiniCPRequest *)req{
     //退款失败
-    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"退款失败!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"退款失败!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alertView show];
     [alertView release];
 }
@@ -84,7 +84,7 @@
     [[PosMini sharedInstance] hideUIPromptMessage:YES];
     
     if (reqCount >= 3) {
-        UIAlertView *alertViw = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络异常请稍后再查或拨打客服电话人工查询!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        UIAlertView *alertViw = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络异常请稍后再查或拨打客服电话人工查询!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         alertViw.tag = 1;
         [alertViw show];
         [alertViw release];

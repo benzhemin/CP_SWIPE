@@ -23,6 +23,8 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CPTabBarDelegate>{
     UIImageView *launchImgView;
     
+    CPNavigationController *loginNaviController;
+    
     CPNavigationController *receiptNaviController;
     CPNavigationController *orderNaviController;
     CPNavigationController *acctNaviController;
@@ -38,6 +40,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) UIImageView *launchImgView;
+
+@property (nonatomic, retain) CPNavigationController *loginNaviController;
 
 @property (nonatomic, retain) CPNavigationController *receiptNaviController;
 @property (nonatomic, retain) CPNavigationController *orderNaviController;

@@ -66,7 +66,8 @@
 -(void) login:(id)sender;
 //处理跳转到许可协议
 -(void) readLicenseClick:(id)sender;
-
+//处理跳转注册
+-(void) registerBtnClick:(id)sender;
 
 
 @end

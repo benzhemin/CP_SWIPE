@@ -42,7 +42,7 @@
 
 //处理服务器返回的信息
 //当返回状态码在客户端未定义,而返回的应答信息不为空
-- (void) processMTPRespDesc:(NSString *)msg{
+- (void) processMTPRespDesc:(PosMiniCPRequest *)req{
     //do nothing here
 }
 

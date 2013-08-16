@@ -142,8 +142,8 @@
 
 //处理服务器返回的信息
 //当返回状态码在客户端未定义,而返回的应答信息不为空
-- (void) processMTPRespDesc:(NSString *)msg{
-    UIAlertView *alertViw = [[UIAlertView alloc]initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+- (void) processMTPRespDesc:(PosMiniCPRequest *)req{
+    UIAlertView *alertViw = [[UIAlertView alloc]initWithTitle:@"提示" message:req.respDesc delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
     alertViw.tag = 2;
     [alertViw show];
     [alertViw release];

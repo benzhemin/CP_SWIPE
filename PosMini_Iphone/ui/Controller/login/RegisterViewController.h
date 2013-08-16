@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "RegTextField.h"
-
+#import "RegService.h"
 
 @interface RegisterViewController : BaseViewController<UITextFieldDelegate>{
     //背景ScrollView
@@ -52,9 +52,16 @@
     UILabel *timerLabel;
     //Timer计数器
     int timerCount;
+    
+    NSTimer *timer;
+    
+    RegService *regService;
 }
 
 @property (nonatomic, retain) UIScrollView *bgScrollView;
+
+@property (nonatomic, assign) Boolean isGetMessageCode;
+@property (nonatomic, assign) Boolean isFirstGetMessageCode;
 
 @property (nonatomic, retain) RegTextField *phoneNumTextField;
 @property (nonatomic, retain) RegTextField *imageSafeCodeTextField;
@@ -68,6 +75,15 @@
 @property (nonatomic, retain) RegTextField *pwdTextField;
 @property (nonatomic, retain) RegTextField *confirmPwdTextField;
 @property (nonatomic, retain) UIButton *registerButton;
+
+@property (nonatomic, retain) UITextField *focusTextField;
+
+@property (nonatomic, retain) NSTimer *timer;
+
+-(void)smsRequestDidFinished;
+-(void)regRequestDidFinished:(PosMiniCPRequest *)req;
+
+-(void) getSafeCode;
 
 @end
 

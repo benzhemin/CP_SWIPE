@@ -53,6 +53,8 @@
 		8B96B88E17BB2916005B5E4A /* RegTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B96B88D17BB2916005B5E4A /* RegTextField.m */; };
 		8B96B91517BB932A005B5E4A /* RefundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B96B91417BB932A005B5E4A /* RefundViewController.m */; };
 		8B96B91817BB9C9F005B5E4A /* RefundService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B96B91717BB9C9E005B5E4A /* RefundService.m */; };
+		8B96B91B17BE010E005B5E4A /* RegService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B96B91A17BE010C005B5E4A /* RegService.m */; };
+		8B96B91E17BE22A3005B5E4A /* SettingBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B96B91D17BE22A3005B5E4A /* SettingBankViewController.m */; };
 		8BC76229178A797700AD74C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC76228178A797700AD74C0 /* UIKit.framework */; };
 		8BC7622B178A797700AD74C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7622A178A797700AD74C0 /* Foundation.framework */; };
 		8BC7622D178A797700AD74C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7622C178A797700AD74C0 /* CoreGraphics.framework */; };
@@ -263,6 +265,10 @@
 		8B96B91417BB932A005B5E4A /* RefundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundViewController.m; sourceTree = "<group>"; };
 		8B96B91617BB9C9E005B5E4A /* RefundService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundService.h; sourceTree = "<group>"; };
 		8B96B91717BB9C9E005B5E4A /* RefundService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundService.m; sourceTree = "<group>"; };
+		8B96B91917BE010B005B5E4A /* RegService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegService.h; sourceTree = "<group>"; };
+		8B96B91A17BE010C005B5E4A /* RegService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegService.m; sourceTree = "<group>"; };
+		8B96B91C17BE22A3005B5E4A /* SettingBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBankViewController.h; sourceTree = "<group>"; };
+		8B96B91D17BE22A3005B5E4A /* SettingBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBankViewController.m; sourceTree = "<group>"; };
 		8BC76225178A797700AD74C0 /* PosMini_Iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosMini_Iphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC76228178A797700AD74C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8BC7622A178A797700AD74C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -499,6 +505,8 @@
 			children = (
 				8B13B49E17B8969A00082FC7 /* DefaultAccountViewController.h */,
 				8B13B49F17B8969A00082FC7 /* DefaultAccountViewController.m */,
+				8B96B91C17BE22A3005B5E4A /* SettingBankViewController.h */,
+				8B96B91D17BE22A3005B5E4A /* SettingBankViewController.m */,
 			);
 			path = account;
 			sourceTree = "<group>";
@@ -576,6 +584,8 @@
 				8B13B4C717B8E76400082FC7 /* PayService.m */,
 				8B96B91617BB9C9E005B5E4A /* RefundService.h */,
 				8B96B91717BB9C9E005B5E4A /* RefundService.m */,
+				8B96B91917BE010B005B5E4A /* RegService.h */,
+				8B96B91A17BE010C005B5E4A /* RegService.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1149,6 +1159,8 @@
 				8B96B88E17BB2916005B5E4A /* RegTextField.m in Sources */,
 				8B96B91517BB932A005B5E4A /* RefundViewController.m in Sources */,
 				8B96B91817BB9C9F005B5E4A /* RefundService.m in Sources */,
+				8B96B91B17BE010E005B5E4A /* RegService.m in Sources */,
+				8B96B91E17BE22A3005B5E4A /* SettingBankViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

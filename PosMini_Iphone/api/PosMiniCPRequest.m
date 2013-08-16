@@ -34,9 +34,11 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
 @implementation PosMiniCPRequest
 
 @synthesize reqtype, userInfo;
+@synthesize respDesc;
 
 -(void)dealloc{
     [userInfo release];
+    [respDesc release];
     [super dealloc];
 }
 
@@ -109,8 +111,9 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
     //返回未定义状态码,提示服务器返回信息
     else if (NotNil(body, @"RespDesc"))
     {
+        self.respDesc = [body objectForKey:@"RespDesc"];
         if (target!=nil && [target respondsToSelector:@selector(processMTPRespDesc:)]) {
-            [target performSelector:@selector(processMTPRespDesc:) withObject:[body objectForKey:@"RespDesc"]];
+            [target performSelector:@selector(processMTPRespDesc:) withObject:self];
         }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
