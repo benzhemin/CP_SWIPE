@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F45A8F717BF10A800A1DB11 /* DataPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F45A8F617BF10A800A1DB11 /* DataPickerViewController.m */; };
+		0F45A8FB17BF171A00A1DB11 /* SQLiteOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F45A8FA17BF171A00A1DB11 /* SQLiteOperation.m */; };
+		0F45A90117BF1BC400A1DB11 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F45A90017BF1BC400A1DB11 /* libsqlite3.0.dylib */; };
+		0FB866B317C063910059205E /* BindCardService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB866B217C063910059205E /* BindCardService.m */; };
+		0FB866B517C07A230059205E /* prov_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0FB866B417C07A230059205E /* prov_area.sqlite */; };
 		8B13B49417B8967B00082FC7 /* CPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B48317B8967B00082FC7 /* CPNavigationController.m */; };
 		8B13B49517B8967B00082FC7 /* textctrl.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B48417B8967B00082FC7 /* textctrl.c */; };
 		8B13B49617B8967B00082FC7 /* CPTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B13B48817B8967B00082FC7 /* CPTabBar.m */; };
@@ -176,6 +181,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F45A8F517BF10A800A1DB11 /* DataPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataPickerViewController.h; path = PosMini_Iphone/ui/Controller/account/DataPickerViewController.h; sourceTree = SOURCE_ROOT; };
+		0F45A8F617BF10A800A1DB11 /* DataPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPickerViewController.m; path = PosMini_Iphone/ui/Controller/account/DataPickerViewController.m; sourceTree = SOURCE_ROOT; };
+		0F45A8F917BF171A00A1DB11 /* SQLiteOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteOperation.h; sourceTree = "<group>"; };
+		0F45A8FA17BF171A00A1DB11 /* SQLiteOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteOperation.m; sourceTree = "<group>"; };
+		0F45A90017BF1BC400A1DB11 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		0FB866B117C063910059205E /* BindCardService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindCardService.h; sourceTree = "<group>"; };
+		0FB866B217C063910059205E /* BindCardService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindCardService.m; sourceTree = "<group>"; };
+		0FB866B417C07A230059205E /* prov_area.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = prov_area.sqlite; sourceTree = "<group>"; };
 		8B13B48217B8967B00082FC7 /* CPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPNavigationController.h; sourceTree = "<group>"; };
 		8B13B48317B8967B00082FC7 /* CPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPNavigationController.m; sourceTree = "<group>"; };
 		8B13B48417B8967B00082FC7 /* textctrl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = textctrl.c; sourceTree = "<group>"; };
@@ -424,6 +437,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F45A90117BF1BC400A1DB11 /* libsqlite3.0.dylib in Frameworks */,
 				8B48CF5717A2201B00988311 /* QuartzCore.framework in Frameworks */,
 				8B48CF49179CF6D000988311 /* MediaPlayer.framework in Frameworks */,
 				8B48CF47179CF6C300988311 /* AudioToolbox.framework in Frameworks */,
@@ -444,6 +458,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F45A8F817BF171A00A1DB11 /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				0FB866B417C07A230059205E /* prov_area.sqlite */,
+				0F45A8F917BF171A00A1DB11 /* SQLiteOperation.h */,
+				0F45A8FA17BF171A00A1DB11 /* SQLiteOperation.m */,
+			);
+			path = sqlite;
+			sourceTree = "<group>";
+		};
 		8B13B48017B8967B00082FC7 /* custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +529,8 @@
 			children = (
 				8B13B49E17B8969A00082FC7 /* DefaultAccountViewController.h */,
 				8B13B49F17B8969A00082FC7 /* DefaultAccountViewController.m */,
+				0F45A8F517BF10A800A1DB11 /* DataPickerViewController.h */,
+				0F45A8F617BF10A800A1DB11 /* DataPickerViewController.m */,
 				8B96B91C17BE22A3005B5E4A /* SettingBankViewController.h */,
 				8B96B91D17BE22A3005B5E4A /* SettingBankViewController.m */,
 			);
@@ -586,6 +612,8 @@
 				8B96B91717BB9C9E005B5E4A /* RefundService.m */,
 				8B96B91917BE010B005B5E4A /* RegService.h */,
 				8B96B91A17BE010C005B5E4A /* RegService.m */,
+				0FB866B117C063910059205E /* BindCardService.h */,
+				0FB866B217C063910059205E /* BindCardService.m */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -650,6 +678,7 @@
 			isa = PBXGroup;
 			children = (
 				8BC76287178A7C5A00AD74C0 /* libz.1.2.5.dylib */,
+				0F45A90017BF1BC400A1DB11 /* libsqlite3.0.dylib */,
 				8B48CF5617A2201800988311 /* QuartzCore.framework */,
 				8B48CF48179CF6CF00988311 /* MediaPlayer.framework */,
 				8B48CF46179CF6C200988311 /* AudioToolbox.framework */,
@@ -833,6 +862,7 @@
 				8BC76401178D330300AD74C0 /* requests */,
 				8BC763FD178D32E100AD74C0 /* device */,
 				8B31E86C178F8F4300AA5B5F /* location */,
+				0F45A8F817BF171A00A1DB11 /* sqlite */,
 				8BC763F3178CF17400AD74C0 /* NSNotificationCenter+CP.h */,
 				8BC763F4178CF17400AD74C0 /* NSNotificationCenter+CP.m */,
 			);
@@ -1089,6 +1119,7 @@
 				8B31E87F178F934600AA5B5F /* Icon.png in Resources */,
 				8B31E880178F934600AA5B5F /* Icon@2x.png in Resources */,
 				8B5527131793F4FC0030ED8D /* license.txt in Resources */,
+				0FB866B517C07A230059205E /* prov_area.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1161,6 +1192,9 @@
 				8B96B91817BB9C9F005B5E4A /* RefundService.m in Sources */,
 				8B96B91B17BE010E005B5E4A /* RegService.m in Sources */,
 				8B96B91E17BE22A3005B5E4A /* SettingBankViewController.m in Sources */,
+				0F45A8F717BF10A800A1DB11 /* DataPickerViewController.m in Sources */,
+				0F45A8FB17BF171A00A1DB11 /* SQLiteOperation.m in Sources */,
+				0FB866B317C063910059205E /* BindCardService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

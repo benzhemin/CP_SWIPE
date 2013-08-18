@@ -52,6 +52,9 @@
 
 @property (nonatomic, retain) CPTabBar *cpTabBar;
 
+-(void)showTabBar;
+-(void)hiddenTabBar;
+
 -(void)versionReqFinished;
 -(void)loginSuccess;
 

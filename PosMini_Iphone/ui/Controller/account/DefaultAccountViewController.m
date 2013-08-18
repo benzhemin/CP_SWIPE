@@ -218,7 +218,7 @@
         if (buttonIndex==0) {
             //设置取现银行
             SettingBankViewController *sb = [[SettingBankViewController alloc]init];
-            sb.defaultBankAccountString = [userInfoDict valueForKey:@"CashCardNo"];
+            //sb.defaultBankAccountString = [userInfoDict valueForKey:@"CashCardNo"];
             [self.navigationController pushViewController:sb animated:YES];
             [sb release];
         }
