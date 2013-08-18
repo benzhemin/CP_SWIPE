@@ -138,7 +138,7 @@ static PosMini *sInstance = nil;
     //construct seession cookie
     //NSHTTPCookiePath and NSHTTPCookieDomain is required, or NSHTTPCookie will return nil
     NSString *sessionStr = [Helper getValueByKey:POSMINI_LOCAL_SESSION];
-    if (sessionStr!=nil && ![sessionStr isEqualToString:@"#"])
+    if (sessionStr!=nil && [sessionStr isEqualToString:@"#"]==NO)
     {
         NSMutableDictionary *properties = [[[NSMutableDictionary alloc] init] autorelease];
         [properties setValue:POSMINI_MTP_SESSION forKey:NSHTTPCookieName];

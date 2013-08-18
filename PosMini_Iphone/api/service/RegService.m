@@ -54,7 +54,7 @@
 }
 
 -(void)requestForRegisterUsr:(NSMutableDictionary *)dict{
-    NSString* url = [NSString stringWithFormat:@"/mtp/registe"];
+    NSString* url = [NSString stringWithFormat:@"/mtp/register"];
     
     PosMiniCPRequest *posReq = [PosMiniCPRequest postRequestWithPath:url andBody:dict];
     posReq.reqtype = REQ_REG;
@@ -64,7 +64,7 @@
 
 -(void)regRequestDidFinished:(PosMiniCPRequest *)req{
     if (target && [target respondsToSelector:@selector(regRequestDidFinished:)]) {
-        [target performSelector:@selector(regRequestDidFinished:) withObject:self];
+        [target performSelector:@selector(regRequestDidFinished:) withObject:req];
     }
 }
 

@@ -61,6 +61,9 @@
     [focusTextField release];
     
     [timer release];
+    
+    [safeCodeRandomString release];
+    
     [super dealloc];
 }
 
@@ -69,6 +72,8 @@
     if (self) {
         regService = [[RegService alloc] init];
         [regService onRespondTarget:self];
+        
+        safeCodeRandomString = [[NSMutableString alloc]init];
     }
     return self;
 }
