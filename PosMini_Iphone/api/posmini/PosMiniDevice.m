@@ -36,7 +36,7 @@ static PosMiniDevice *sInstance = nil;
 
 @synthesize pointsList;
 
-//重写self.pointsList = points 方法
+//重写set 方法
 -(void)setPointsList:(NSMutableArray *)points{
     [self.pointsList removeAllObjects];
     //deep copy
@@ -127,6 +127,13 @@ static PosMiniDevice *sInstance = nil;
     //POS mini默认连接状态为未连接
     [Helper saveValue:NSSTRING_NO forKey:POSMINI_CONNECTION_STATUS];
     
+    [[PosMini sharedInstance] hideUIPromptMessage:YES];
+    //设置收款页面的确认按钮状态
+    if ([baseCTRL isKindOfClass:DefaultReceiptViewController.class])
+    {
+        ((DefaultReceiptViewController *)baseCTRL).confirmBtn.enabled = YES;
+    }
+    
     //当POS mini设备状态变化,设备合法状态一定是NO
     isDeviceLegal = NO;
     
@@ -197,7 +204,9 @@ static PosMiniDevice *sInstance = nil;
                 }
                 
                 //如果是刷卡页面,要做状态请求
-                //[posMiniRequest reqDeviceStatus];
+                if ([baseCTRL isKindOfClass:[SwipeCardViewController class]]) {
+                    [posReq reqDeviceStatus];
+                }
                 
             }else{
                 [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"不是合法设备"];
@@ -239,10 +248,14 @@ static PosMiniDevice *sInstance = nil;
             SwipeCardViewController *swipeCTRL = (SwipeCardViewController *)baseCTRL;
             //付款
             if (swipeCTRL.scType == PAY_SWIPE_TYPE) {
+                [swipeCTRL invalidAnimation];
+                
                 SignLandscapeViewController *signCTRL = [[SignLandscapeViewController alloc]init];
                 signCTRL.isShowTabBar = NO;
                 
                 [swipeCTRL.navigationController pushViewController:signCTRL animated:YES];
+                
+                [[PosMini sharedInstance] hideUIPromptMessage:YES];
             }
             //退款
             if (swipeCTRL.scType == REFOUND_SWIPE_TYPE) {
@@ -350,6 +363,8 @@ static PosMiniDevice *sInstance = nil;
             receiptCTRL.isShowTabBar = NO;
             [baseCTRL.navigationController pushViewController:receiptCTRL animated:YES];
             [receiptCTRL release];
+            
+            [[PosMini sharedInstance] hideUIPromptMessage:YES];
         }
         
         //注入成功,退款页面发起的注入签名请求
@@ -360,13 +375,14 @@ static PosMiniDevice *sInstance = nil;
     }
     else if(statusCode == TIMEOUT)
     {
+        [[PosMini sharedInstance] hideUIPromptMessage:YES];
         [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"超时,请插拔刷卡器重试!"];
     }
     else
     {
+        [[PosMini sharedInstance] hideUIPromptMessage:YES];
         [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"灌注密钥失败!"];
     }
-    [[PosMini sharedInstance] hideUIPromptMessage:YES];
 }
 
 /**
@@ -453,9 +469,6 @@ static PosMiniDevice *sInstance = nil;
  */
 - (void)requestBrushCardDataBackStatus:(StatusCode)statusCode encrypt:(NSString *)encryptString
 {
-    //移除等待进度框
-    [[PosMini sharedInstance] hideUIPromptMessage:YES];
-    
     if (statusCode==SUCCESS) {
         NSLog(@"encryptString:%@",encryptString);
         
