@@ -122,6 +122,10 @@
     }
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
 /**
  处理用户触摸事件
  @param tap 系统参数
@@ -194,6 +198,16 @@
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+
+/**
+ 返回用户行为跟踪Id号
+ @returns 页面编号
+ */
+-(NSString *)getViewId{
+    
+    return @"pos00004";
 }
 
 

@@ -38,6 +38,7 @@ typedef enum _SwipeCardType{
 @property (nonatomic, assign) BOOL isTimerValid;
 
 -(void)playAnimation;
+-(void)invalidAnimation;
 -(void)invalidateTimer;
 
 @end

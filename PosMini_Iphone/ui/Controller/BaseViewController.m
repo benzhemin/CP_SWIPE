@@ -17,7 +17,6 @@
 @synthesize naviBgView, naviTitleLabel, naviBackBtn;
 @synthesize isShowNaviBar, isShowTabBar;
 @synthesize uiPromptHUD, sysPromptHUD;
-@synthesize pb;
 
 -(void)dealloc{
     [bgImageView release];
@@ -42,6 +41,8 @@
         
         //设置self.view的高度包含statusBarHeight
         self.wantsFullScreenLayout = YES;
+        
+        pb = [[PostBeService alloc] init];
     }
     return self;
 }
@@ -123,7 +124,6 @@
     }
     contentView.frame = CGRectMake(0, naviBarHeight+statusBarHeight, viewWidth, viewHeight-naviBarHeight-tabBarHeight-statusBarHeight);
     
-    self.pb = [[[PostBeService alloc] init] autorelease];
     if (![[self getViewId] isEqualToString:@"0"] && [Helper getValueByKey:POSTBE_UID]) {
         [pb postBeRequest];
     }

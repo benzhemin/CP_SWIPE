@@ -469,7 +469,9 @@ static void buildRoot(id<ArgBuilder> builder, NSDictionary *body)
         [mResponseText onResponseText:mResponseAsString withResponseCode:mRequest.responseStatusCode];
         [mResponseData onResponseData:mResponseAsData withResponseCode:mRequest.responseStatusCode];
         [mResponseJSON onResponseJSON:mResponseAsJSON withResponseCode:mRequest.responseStatusCode];
-    }else if (mRequest.responseStatusCode == 404){
+    }
+    //it was not suppose to add relogin here
+    else if (mRequest.responseStatusCode == 404){
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REQUIRE_USER_LOGIN object:nil];
         

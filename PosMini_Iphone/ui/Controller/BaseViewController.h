@@ -54,8 +54,6 @@
 @property (nonatomic, retain) MBProgressHUD *uiPromptHUD;
 @property (nonatomic, retain) MBProgressHUD *sysPromptHUD;
 
-@property (nonatomic, retain) PostBeService *pb;
-
 -(void) hideBackButton;
 -(void)backToPreviousView:(id)sender;
 -(void)setNavigationTitle:(NSString *)title;

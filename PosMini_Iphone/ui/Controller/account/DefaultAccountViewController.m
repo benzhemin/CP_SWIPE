@@ -132,8 +132,9 @@
             title.text = @"自动取现:";
             if ([userInfoDict valueForKey:@"CashCardNo"]!=nil) {
                 content.text = [userInfoDict valueForKey:ACCOUNT_CASHCARD_NUMBER];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
             break;
         case 2:
             title.text = @"当日收款:";

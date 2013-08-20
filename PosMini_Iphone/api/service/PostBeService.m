@@ -28,7 +28,7 @@
     NSString *url = [NSString stringWithFormat:@"http://www.ttyfund.com/api/services/postbe.php?act=postbe&key=TTYFUND-CHINAPNR&app_client=minipos_client&app_platform=ios&app_version=%@&id=%@&uid=%@&model=%@&channel=&mail=&date=%@",
                                                 [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"],
                                                 [[DeviceIntrospection sharedInstance] uuid],
-                                                [Helper getValueByKey:@"uid"],
+                                                [Helper getValueByKey:POSTBE_UID],
                                                 [[DeviceIntrospection sharedInstance] platformName],
                                                 [_dateFormatter stringFromDate:date]];
     

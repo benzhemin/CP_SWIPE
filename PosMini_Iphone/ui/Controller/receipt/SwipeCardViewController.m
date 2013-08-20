@@ -106,6 +106,10 @@
     [self playAnimation];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 
@@ -121,26 +125,27 @@
 											 selector:@selector(posApplicationDidEnterBackground:)
 												 name:UIApplicationDidEnterBackgroundNotification
 											   object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(posApplicationWillEnterForeground:)
-												 name:UIApplicationWillEnterForegroundNotification
+											 selector:@selector(posApplicationDidBecomeActive:)
+												 name:UIApplicationDidBecomeActiveNotification
 											   object:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     //计时器失效
     [self invalidateTimer];
+    [self invalidAnimation];
 }
 
 /**
  播放动画提示用户刷卡
  */
--(void)playAnimation
-
-{
+-(void)playAnimation{
     //恢复初始位置
     bankCardView.frame = CGRectMake(-150, MARGIN_TOP-30-117-90,174, 113);
     
@@ -153,6 +158,13 @@
     [UIView setAnimationRepeatCount:INT64_MAX];
     bankCardView.frame = CGRectMake(310, bankCardView.frame.origin.y, bankCardView.frame.size.width, bankCardView.frame.size.height);
     [UIView commitAnimations];
+}
+
+/*
+ *　avoid Unbalanced calls to begin/end appearance transitions
+ */
+-(void)invalidAnimation{
+    [bankCardView.layer removeAllAnimations];
 }
 
 //计时Timer失效
@@ -208,24 +220,14 @@
 
 //进入后台
 -(void)posApplicationDidEnterBackground:(NSNotification *)notify{
-    /*
-    if (timer!=nil) {
-        //暂停Timer
-        [timer setFireDate:[NSDate distantFuture]];
-    }
-    */
+    //do nothing
+    [self invalidAnimation];
 }
 
 //回到前台
--(void)posApplicationWillEnterForeground:(NSNotification *)notify{
-    //timer 不做暂停
-    /*
-    if (timer!=nil) {
-        //暂停Timer
-        [timer setFireDate:[NSDate date]];
-    }
-    */
+-(void)posApplicationDidBecomeActive:(NSNotification *)notify{
     [self playAnimation];
+    [[PosMiniDevice sharedInstance].posReq reqDeviceStatus];
 }
 
 /**

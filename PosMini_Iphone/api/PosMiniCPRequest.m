@@ -100,7 +100,7 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_HIDE_UI_PROMPT object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REQUIRE_USER_LOGIN object:nil];
         
-        //[[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"长时间未使用，请重新登录!"];
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"长时间未使用，请重新登录!"];
         [[PosMini sharedInstance] hideUIPromptMessage:YES];
     }
     //返回出错,打印出错信息

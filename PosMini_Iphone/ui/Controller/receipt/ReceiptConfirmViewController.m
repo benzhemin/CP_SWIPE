@@ -149,7 +149,14 @@
     }
 }
 
-
+/**
+ 返回用户行为跟踪Id号
+ @returns 页面编号
+ */
+-(NSString *)getViewId{
+    
+    return @"pos00003";
+}
 
 
 

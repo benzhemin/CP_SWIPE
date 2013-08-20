@@ -36,6 +36,8 @@
     
     NSDictionary *body = (NSDictionary *)req.responseAsJson;
     
+    NSLog(@"%@", body);
+    
     self.userInfoDict = [[[NSMutableDictionary alloc] init] autorelease];
     //存储登录信息
     [userInfoDict setValue:[body valueForKey:ACCOUNT_TOTAL_ORDER_COUNT] forKey:ACCOUNT_TOTAL_ORDER_COUNT];

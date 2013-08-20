@@ -106,7 +106,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField.returnKeyType ==UIReturnKeyNext) {
+    if (textField.returnKeyType == UIReturnKeyNext) {
         //点击下一项，让输入密码框获得焦点
         [pwdTextField becomeFirstResponder];
     }
@@ -118,6 +118,16 @@
         [pwdTextField resignFirstResponder];
         isKeyBoardShow = NO;
     }
+    return YES;
+}
+
+#pragma mark UITextFieldDelegate Method
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    //输入框获取焦点，让背景ScrollView可以滑动
+    bgScrollView.contentSize = CGSizeMake(contentView.frame.size.width, contentView.frame.size.height+50);
+    bgScrollView.contentOffset = CGPointMake(0, 50);
+    isKeyBoardShow = YES;
     return YES;
 }
 
