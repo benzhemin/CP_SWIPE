@@ -43,19 +43,23 @@
     [userInfoDict setValue:[body valueForKey:ACCOUNT_TOTAL_ORDER_COUNT] forKey:ACCOUNT_TOTAL_ORDER_COUNT];
     [userInfoDict setValue:[body valueForKey:ACCOUNT_TOTAL_ORDER_AMOUNT] forKey:ACCOUNT_TOTAL_ORDER_AMOUNT];
     
-    //取现银行账户
-    if ([[[body valueForKey:ACCOUNT_CASHCARD_NUMBER] description] isEqualToString:@"<null>"]) {
-        [userInfoDict setValue:@"未设置" forKey:@"CashCardNo"];
-    }else{
-        [userInfoDict setValue:[body valueForKey:ACCOUNT_CASHCARD_NUMBER] forKey:ACCOUNT_CASHCARD_NUMBER];
+    if (NotNil(body, ACCOUNT_CASHCARD_NUMBER)) {
+        NSLog(@"%@", [body objectForKey:ACCOUNT_CASHCARD_NUMBER]);
     }
     
-    if ([[[body valueForKey:ACCOUNT_BINDED_MOUNT_ID] description] isEqualToString:@"<null>"]) {
-        [userInfoDict setValue:@"未绑定" forKey:ACCOUNT_BINDED_MOUNT_ID];
-        [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_MTP_BINDED_DEVICE_ID];
+    //取现银行账户
+    if (NotNil(body, ACCOUNT_CASHCARD_NUMBER)) {
+        [userInfoDict setValue:[body valueForKey:ACCOUNT_CASHCARD_NUMBER] forKey:ACCOUNT_CASHCARD_NUMBER];
     }else{
+        [userInfoDict setValue:@"未设置" forKey:@"CashCardNo"];
+    }
+    
+    if (NotNil(body, ACCOUNT_BINDED_MOUNT_ID)) {
         [userInfoDict setValue:[body valueForKey:ACCOUNT_BINDED_MOUNT_ID] forKey:ACCOUNT_BINDED_MOUNT_ID];
         [Helper saveValue:[body valueForKey:ACCOUNT_BINDED_MOUNT_ID] forKey:POSMINI_MTP_BINDED_DEVICE_ID];
+    }else{
+        [userInfoDict setValue:@"未绑定" forKey:ACCOUNT_BINDED_MOUNT_ID];
+        [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_MTP_BINDED_DEVICE_ID];
     }
     
     [userInfoDict setValue:[body valueForKey:ACCOUNT_AVAILIABLE_CASH_AMOUNT] forKey:ACCOUNT_AVAILIABLE_CASH_AMOUNT];

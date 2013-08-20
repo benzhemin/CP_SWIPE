@@ -472,8 +472,8 @@
 			isa = PBXGroup;
 			children = (
 				8B13B48117B8967B00082FC7 /* controller */,
-				8B13B48417B8967B00082FC7 /* textctrl.c */,
 				8B13B48517B8967B00082FC7 /* textctrl.h */,
+				8B13B48417B8967B00082FC7 /* textctrl.c */,
 				8B13B48617B8967B00082FC7 /* view */,
 			);
 			path = custom;

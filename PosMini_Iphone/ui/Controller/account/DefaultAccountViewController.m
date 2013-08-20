@@ -130,10 +130,10 @@
             break;
         case 1:
             title.text = @"自动取现:";
-            if ([userInfoDict valueForKey:@"CashCardNo"]!=nil) {
-                content.text = [userInfoDict valueForKey:ACCOUNT_CASHCARD_NUMBER];
+            if (![[userInfoDict valueForKey:@"CashCardNo"] isEqualToString:@"未设置"]) {
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
+            content.text = [userInfoDict valueForKey:ACCOUNT_CASHCARD_NUMBER];
             
             break;
         case 2:
@@ -162,10 +162,14 @@
         */
         case 3:
             title.text = @"设备编号:";
-            if ([userInfoDict valueForKey:ACCOUNT_BINDED_MOUNT_ID]!=nil) {
-                content.text = [userInfoDict valueForKey:ACCOUNT_BINDED_MOUNT_ID];
+            content.text = [userInfoDict valueForKey:ACCOUNT_BINDED_MOUNT_ID];
+            
+            /*
+            if (![[userInfoDict valueForKey:@"CashCardNo"] isEqualToString:@"未绑定"]) {
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
-            //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            */
+            
             break;
     }
     return cell;
