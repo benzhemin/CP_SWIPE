@@ -82,10 +82,10 @@ static PosMini *sInstance = nil;
     //单笔交易限额
     [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_SUM_LIMIT_AMOUNT];
     
-    //是否需要向下传递用户名
-    
-    //是否让用户输入密码
-    
+    [[NSNotificationCenter defaultCenter] addObserver:instance
+                                             selector:@selector(requireUserLogin:)
+                                                 name:NOTIFICATION_REQUIRE_USER_LOGIN
+                                               object:nil];
     
 	[[NSNotificationCenter defaultCenter] addObserver:instance
                                              selector:@selector(displayUIPromptAutomatically:)
@@ -125,7 +125,7 @@ static PosMini *sInstance = nil;
 }
 
 
-//Setting global PosMini request　
+//Set global PosMini request　
 -(void)performRequest:(ASIHTTPRequest *)req
 {
     //set CHINAPNR json post
@@ -138,7 +138,7 @@ static PosMini *sInstance = nil;
     //construct seession cookie
     //NSHTTPCookiePath and NSHTTPCookieDomain is required, or NSHTTPCookie will return nil
     NSString *sessionStr = [Helper getValueByKey:POSMINI_LOCAL_SESSION];
-    if (sessionStr!=nil && [sessionStr isEqualToString:@"#"]==NO)
+    if (sessionStr!=nil && ![sessionStr isEqualToString:@"#"])
     {
         NSMutableDictionary *properties = [[[NSMutableDictionary alloc] init] autorelease];
         [properties setValue:POSMINI_MTP_SESSION forKey:NSHTTPCookieName];
@@ -158,6 +158,8 @@ static PosMini *sInstance = nil;
     
     if ([[Helper getValueByKey:POSMINI_SHOW_USER_LOGIN] isEqualToString:NSSTRING_NO]) {
         RequireLoginViewController *rl = [[RequireLoginViewController alloc] init];
+        rl.isShowNaviBar = NO;
+        rl.isShowTabBar = NO;
         [[[UIApplication sharedApplication] keyWindow].rootViewController presentModalViewController:rl animated:YES];
         [rl release];
     }
