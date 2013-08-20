@@ -15,17 +15,20 @@
 #import "PayService.h"
 #import "RefundService.h"
 
-//防止服务端返回空值,客户端解析异常而退出
+//avoid serverside return nil, lead to app crash
+//JSON assign null value as [NSNull null], totally different from nil or NULL
 BOOL NotNil(id dict, NSString *k){
-    if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] && [dict objectForKey:k]!=nil) {
+    if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] &&
+        [dict objectForKey:k]!=nil && [dict objectForKey:k] != [NSNull null])
+    {
         return YES;
     }
     return NO;
 }
 
-//防止服务端返回空值,客户端解析异常而退出
+//avoid serverside return nil, lead to app crash
 BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
-    if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] && [dict valueForKey:k]!=nil && [[NSString stringWithFormat:@"%@", [dict valueForKey:k]] isEqualToString:value]) {
+    if (NotNil(dict, k) && [[NSString stringWithFormat:@"%@", [dict valueForKey:k]] isEqualToString:value]) {
         return YES;
     }
     return NO;
