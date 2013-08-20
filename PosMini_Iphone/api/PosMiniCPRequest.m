@@ -114,7 +114,7 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
     else if (NotNil(body, @"RespDesc"))
     {
         self.respDesc = [body objectForKey:@"RespDesc"];
-        if (target!=nil && [target respondsToSelector:@selector(processMTPRespDesc:)]) {
+        if (target && [target respondsToSelector:@selector(processMTPRespDesc:)]) {
             [target performSelector:@selector(processMTPRespDesc:) withObject:self];
         }
         
@@ -129,9 +129,8 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
     }
 }
 
-//处理失败消息分发
+//process failure messages dispatch
 - (void) requestFailed:(ASIHTTPRequest *)request{
-    //取消loading显示效果
     [[PosMini sharedInstance] hideUIPromptMessage:YES];
     
     NSError *error = [request error];

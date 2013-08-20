@@ -36,7 +36,7 @@ static PosMiniDevice *sInstance = nil;
 
 @synthesize pointsList;
 
-//重写set 方法
+//overwrite set method
 -(void)setPointsList:(NSMutableArray *)points{
     [self.pointsList removeAllObjects];
     //deep copy
@@ -49,6 +49,7 @@ static PosMiniDevice *sInstance = nil;
     }
 }
 
+//singlton
 +(PosMiniDevice *)sharedInstance
 {
     if (sInstance == nil)
