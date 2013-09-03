@@ -34,7 +34,6 @@
     
     [naviArray release];
     
-    [pb release];
     [vp release];
     
     [super dealloc];
@@ -79,8 +78,7 @@
     [PosMini initializePosMini];
     
     //请求uid
-    pb = [[PostBeService alloc] init];
-    [pb postBeForUID];
+    [[PostBeService sharedInstance] postBeForUID];
     
     //版本更新请求
     vp = [[VersionService alloc] init];
@@ -103,7 +101,9 @@
 -(void)changeToIndex:(int)index
 {
     [cpTabBar removeFromSuperview];
-    self.window.rootViewController = [naviArray objectAtIndex:index];
+    CPNavigationController *cpNavi = [naviArray objectAtIndex:index];
+    [PosMiniDevice sharedInstance].baseCTRL = cpNavi.viewControllers[0];
+    self.window.rootViewController = cpNavi;
     [self.window.rootViewController.view addSubview:cpTabBar];
 }
 

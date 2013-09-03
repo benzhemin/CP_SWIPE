@@ -33,8 +33,7 @@
     NSArray *naviArray;
     
     CPTabBar *cpTabBar;
-    
-    PostBeService *pb;
+
     VersionService *vp;
 }
 
