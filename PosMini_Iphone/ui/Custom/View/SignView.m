@@ -61,7 +61,7 @@
     }
     
     CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
-    CGContextSetLineWidth(context, 4);
+    CGContextSetLineWidth(context, 2);
     CGContextBeginPath(context);
     
     int index = 0;
