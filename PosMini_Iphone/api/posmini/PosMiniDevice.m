@@ -186,8 +186,9 @@ static PosMiniDevice *sInstance = nil;
         isDeviceLegal = NO;
         //当前用户未绑定刷卡器,查询用户和刷卡器状态
         if ([[Helper getValueByKey:POSMINI_MTP_BINDED_DEVICE_ID] isEqualToString:POSMINI_DEFAULT_VALUE]) {
-            if ([baseCTRL isKindOfClass:[DefaultReceiptViewController class]]) {
+            if ([[baseCTRL controllerName] rangeOfString:@"Default"].location != NSNotFound) {
                 [posService requestForPosBindStatus:serialNum];
+                self.deviceSN = serialNum;
             }
         }
         else {
