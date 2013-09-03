@@ -56,7 +56,7 @@
         }
         else
         {
-            if ([target respondsToSelector:selector])
+            if (target && [target respondsToSelector:selector])
             {
                 [target performSelector:selector];
             }
