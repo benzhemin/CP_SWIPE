@@ -172,8 +172,13 @@
     
     //设备与账户已绑定
     [Helper saveValue:[req.userInfo valueForKey:POSMINI_DEVICE_ID] forKey:POSMINI_DEVICE_ID];
+    //刷新账户页面
+    [Helper saveValue:NSSTRING_YES forKey:POSMINI_ACCOUNT_NEED_REFRESH];
     //绑定成功
     [PosMiniDevice sharedInstance].isDeviceLegal = YES;
+    
+    
+    [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"设备绑定成功!"];
 }
 
 //签到接口,获取工作密钥
