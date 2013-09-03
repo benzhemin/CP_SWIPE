@@ -30,7 +30,6 @@
     [uiPromptHUD release];
     [sysPromptHUD release];
     
-    [pb release];
     [super dealloc];
 }
 
@@ -41,14 +40,15 @@
         
         //设置self.view的高度包含statusBarHeight
         self.wantsFullScreenLayout = YES;
-        
-        pb = [[PostBeService alloc] init];
     }
     return self;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    //set baseCTRL
+    [PosMiniDevice sharedInstance].baseCTRL = self;
     
     //获取状态栏Frame
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
@@ -125,15 +125,12 @@
     contentView.frame = CGRectMake(0, naviBarHeight+statusBarHeight, viewWidth, viewHeight-naviBarHeight-tabBarHeight-statusBarHeight);
     
     if (![[self getViewId] isEqualToString:@"0"] && [Helper getValueByKey:POSTBE_UID]) {
-        [pb postBeRequest];
+        [[PostBeService sharedInstance] postBeRequest];
     }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
-    //防止popViewController时,设置错误的controller
-    [PosMiniDevice sharedInstance].baseCTRL = self;
     
     [self tabBarAnimation];
 }

@@ -36,8 +36,6 @@
     //Loading组件
     MBProgressHUD *uiPromptHUD;
     MBProgressHUD *sysPromptHUD;
-    
-    PostBeService *pb;
 }
 
 @property (nonatomic, retain) UIImageView *bgImageView;
