@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CPNavigationDelgate;
 
-@interface CPNavigationController : UINavigationController
+@interface CPNavigationController : UINavigationController {
+    CPNavigationDelgate *cpNaviDelegate;
+}
 
 @end
