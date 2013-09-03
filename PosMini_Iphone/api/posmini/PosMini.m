@@ -54,6 +54,7 @@ static PosMini *sInstance = nil;
     [LocationService sharedInstance];
     [DeviceIntrospection sharedInstance];
     [PosMiniSettings instance];
+    [PostBeService sharedInstance];
     
     
     //initialize NSDefault settings
@@ -122,6 +123,8 @@ static PosMini *sInstance = nil;
     [PosMiniSettings destroyInstance];
     
     [PosMini destroySharedInstance];
+    
+    [PostBeService destroySharedInstance];
 }
 
 

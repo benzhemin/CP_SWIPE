@@ -16,6 +16,9 @@
     
 }
 
++(PostBeService *)sharedInstance;
++(void)destroySharedInstance;
+
 -(void)postBeRequest;
 -(void)postBeForUID;
 

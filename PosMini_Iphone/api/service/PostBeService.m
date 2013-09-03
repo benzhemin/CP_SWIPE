@@ -16,7 +16,24 @@
 #import "JSON.h"
 #import "DeviceIntrospection.h"
 
+static PostBeService *sInstance = nil;
+
 @implementation PostBeService
+
+//singlton
++(PostBeService *)sharedInstance
+{
+    if (sInstance == nil)
+    {
+        sInstance = [[PostBeService alloc] init];
+    }
+    return sInstance;
+}
+
++(void)destroySharedInstance
+{
+    CPSafeRelease(sInstance);
+}
 
 -(void)postBeRequest{
     
