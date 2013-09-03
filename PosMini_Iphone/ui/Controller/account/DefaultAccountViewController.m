@@ -131,9 +131,10 @@
         case 1:
             title.text = @"自动取现:";
             if (![[userInfoDict valueForKey:@"CashCardNo"] isEqualToString:@"未设置"]) {
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
             }
             content.text = [userInfoDict valueForKey:ACCOUNT_CASHCARD_NUMBER];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
             break;
         case 2:
@@ -193,15 +194,12 @@
         //用户已设置取现银行
         else
         {
-            //设置取现银行
-            /*
-            SettingBankViewController *_settingBankViewController = [[SettingBankViewController alloc]init];
-            _settingBankViewController.defaultBankAccountString = [userInfoDict valueForKey:@"CashCardNo"];
-            [self.navigationController pushViewController:_settingBankViewController animated:YES];
-            [_settingBankViewController release];
-            */
+            SettingBankViewController *sb = [[SettingBankViewController alloc]init];
+            [self.navigationController pushViewController:sb animated:YES];
+            [sb release];
         }
     }
+    
     
     //屏蔽解绑
     return;
