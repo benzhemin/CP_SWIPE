@@ -17,8 +17,11 @@
 #import "DefaultOrderViewController.h"
 #import "DefaultAccountViewController.h"
 #import "DefaultHelpViewController.h"
+#import "DefaultBusinessViewController.h"
+#import "MerchantConfigurationViewController.h"
 #import "CPNavigationController.h"
 #import "LocationService.h"
+#import "MerchantService.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CPTabBarDelegate>{
     UIImageView *launchImgView;
@@ -35,6 +38,9 @@
     CPTabBar *cpTabBar;
 
     VersionService *vp;
+    /* Add_S 启明 费凯峰 功能点:新增我的业务*/
+    MerchantService *merchantService;
+    /* Add_E 启明 费凯峰 功能点:新增我的业务*/
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -46,7 +52,9 @@
 @property (nonatomic, retain) CPNavigationController *orderNaviController;
 @property (nonatomic, retain) CPNavigationController *acctNaviController;
 @property (nonatomic, retain) CPNavigationController *helpNaviController;
-
+/* Add_S 启明 费凯峰 功能点:新增我的业务*/
+@property (nonatomic,retain)CPNavigationController *businessNaviController;
+/* Add_E 启明 费凯峰 功能点:新增我的业务*/
 @property (nonatomic, retain) NSArray *naviArray;
 
 @property (nonatomic, retain) CPTabBar *cpTabBar;

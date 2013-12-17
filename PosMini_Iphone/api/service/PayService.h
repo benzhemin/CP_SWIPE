@@ -22,5 +22,7 @@ typedef enum{
 
 //请求查询支付状态接口
 -(void)requestForQueryTrans;
-
+/*Add_S 启明 费凯峰 功能点:我的业务*/
+-(void)requestForConveniencePayTrans;
+/*Add_E 启明 费凯峰 功能点:我的业务*/
 @end

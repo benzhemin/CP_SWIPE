@@ -63,7 +63,14 @@
     UILabel *accountLabel = [[UILabel alloc]init];
     accountLabel.textColor = [UIColor colorWithRed:115/250.0 green:115/250.0 blue:115/250.0 alpha:1.0];
     accountLabel.font = [UIFont systemFontOfSize:16];
-    accountLabel.text = [NSString stringWithFormat:@"%@ %@",[Helper getValueByKey:POSMINI_LOGIN_ACCOUNT],[Helper getValueByKey:POSMINI_LOGIN_USERNAME]];
+    /*Mod_S 启明 费凯峰 功能点:显示收款账户*/
+    if ([[[PosMiniDevice sharedInstance] differentBusiness] isEqualToString:NORMAL_BUSINESS]) {
+        accountLabel.text = [NSString stringWithFormat:@"%@ (%@)",[Helper getValueByKey:POSMINI_LOGIN_USERNAME],[Helper getValueByKey:POSMINI_LOGIN_ACCOUNT]];
+    }else{
+        accountLabel.text = @"上海银杏树网络";
+    }
+    /*Mod_E 启明 费凯峰 功能点:显示收款账户*/
+
     accountLabel.frame = CGRectMake(accountLabelTitle.frame.origin.x+accountLabelTitle.frame.size.width, 10, 190, 20);
     accountLabel.textAlignment = UITextAlignmentLeft;
     [recpBgView addSubview:accountLabel];
@@ -104,13 +111,16 @@
     UILabel *orderSum = [[UILabel alloc]init];
     orderSum.textColor = [UIColor colorWithRed:187/250.0 green:0 blue:0 alpha:1.0];
     orderSum.font = [UIFont boldSystemFontOfSize:16];
-    orderSum.text = [NSString stringWithFormat:@"%0.2f",[[PosMiniDevice sharedInstance].paySum floatValue]];
+    /*Mod_S 启明 张翔 功能点:故障对应#0002513*/
+//    orderSum.text = [NSString stringWithFormat:@"%0.2f",[[PosMiniDevice sharedInstance].paySum floatValue]];
+    orderSum.text = [NSString stringWithFormat:@"%0.2f",[[PosMiniDevice sharedInstance].paySum doubleValue]];
+    /*Mod_E 启明 张翔 功能点:故障对应#0002513*/
     float labelWidth = [Helper getLabelWidth:orderSum.text setFont:orderSum.font setHeight:20];
     orderSum.frame = CGRectMake(orderSumTitle.frame.origin.x+orderSumTitle.frame.size.width, 60, labelWidth, 20);
     orderSum.textAlignment = UITextAlignmentLeft;
     [recpBgView addSubview:orderSum];
     [orderSum release];
-    
+    //签名
     UIImageView *signImgView = [[UIImageView alloc] initWithImage:[PosMiniDevice sharedInstance].signImg];
     signImgView.frame = CGRectMake(0, 90, 296, 172);
     [recpBgView addSubview:signImgView];
@@ -130,6 +140,7 @@
 //确定支付
 -(void)confirmPay:(id)sender{
     self.ps = [[[PayService alloc] init] autorelease];
+    
     [ps onRespondTarget:self];
     
     LocationService *loc = [LocationService sharedInstance];
@@ -137,12 +148,23 @@
     if ([loc isCoordinationEmpty] == YES) {
         if ([loc startToLocateWithAuthentication:YES]) {
             //等待定位成功
-            [ps performSelector:@selector(requestForPayTrans) withObject:nil];
+            /*Mod_S 启明 费凯峰 功能点:我的业务*/
+            if ([[[PosMiniDevice sharedInstance] differentBusiness] isEqualToString:NORMAL_BUSINESS]) {
+               [ps performSelector:@selector(requestForPayTrans) withObject:nil]; 
+            }else{
+            [ps performSelector:@selector(requestForConveniencePayTrans) withObject:nil];
+            }
+            /*Mod_E 启明 费凯峰 功能点:我的业务*/
         }else{
             return;
         }
     }else{
-        [ps requestForPayTrans];
+        if ([[[PosMiniDevice sharedInstance] differentBusiness] isEqualToString:NORMAL_BUSINESS]) {
+            [ps requestForPayTrans];
+        }else{
+            [ps performSelector:@selector(requestForConveniencePayTrans) withObject:nil];
+        }
+        
     }
 }
 

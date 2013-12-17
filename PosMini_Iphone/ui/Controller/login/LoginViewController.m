@@ -85,7 +85,7 @@
     
     //输入登录账户
     self.accountTextField = [[UITextField alloc]initWithFrame:CGRectMake(80, 17, 200, 30)];
-    accountTextField.placeholder= @"请输入登录账户";
+    accountTextField.placeholder= @"请输入您注册的手机号";
     accountTextField.tag = 1;
     accountTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     accountTextField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -208,6 +208,26 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    /* Add_S 启明 张翔 功能点:升级后或安装后第一次启动显示用户协议*/
+    NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary]objectForKey:@"CFBundleShortVersionString"];
+    NSString *lastRunVersion = [Helper getValueByKey:LASTRUN_VERSION];
+    //安装后第一次启动
+    if (lastRunVersion == nil)
+    {
+        [Helper saveValue:NSSTRING_NO forKey:POSMINI_HAVE_READ_LICENSE];
+    }
+    //升级后第一次启动
+    else if (![lastRunVersion isEqualToString:currentVersion])
+    {
+        if ([currentVersion isEqualToString:@"2.1.0"])
+        {
+            [Helper saveValue:NSSTRING_NO forKey:POSMINI_HAVE_READ_LICENSE];
+        }
+    }
+    [Helper saveValue:currentVersion forKey:LASTRUN_VERSION];
+    /* Add_E 启明 张翔 功能点:升级后或安装后第一次启动显示用户协议*/
+    
+    
     NSString *readLicense = [Helper getValueByKey:POSMINI_HAVE_READ_LICENSE];
     if (readLicense!=nil && [readLicense isEqualToString:@"YES"]) {
         return;
@@ -216,6 +236,7 @@
         [self presentModalViewController:lc animated:YES];
         [lc release];
     }
+
 }
 
 //处理触摸屏幕事件，隐藏键盘
@@ -259,11 +280,31 @@
 
 -(void) login:(id)sender
 {
+
+    
     //判断用户名是否为空
     if ([Helper StringIsNullOrEmpty:accountTextField.text]) {
         [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请输入账户名!"];
         return;
     }
+    
+    /*Add_S 启明 张翔 功能点:手机判断*/
+    if ([accountTextField.text length]!= 11)
+    {
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请输入11位手机号!"];
+        return;
+    }
+    
+    NSString * regex = @"^1[0-9]\\d{9}$";
+    NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isMatch = [pred evaluateWithObject:accountTextField.text];
+    if (isMatch==NO) {
+        
+        [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请输入正确的手机号!"];
+        return;
+    }
+    /*Add_E 启明 张翔 功能点:手机判断*/
+    
     //判断输入密码是否为空
     if ([Helper StringIsNullOrEmpty:pwdTextField.text]) {
         [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请输入密码!"];
@@ -374,6 +415,51 @@
         isKeyBoardShow = NO;
     }
     return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField.tag == 1)
+    {
+        //判断输入的是否为数字
+        if (![self validateNumber:string])
+        {
+            return NO;
+        }
+        
+        //判断输入长度是否超过11
+        if (![string isEqualToString:@""])
+        {
+            if (textField.text.length>=11)
+            {
+                return NO;
+            }
+        }
+    }
+    
+    return YES;
+}
+
+/**
+ 判断输入的是否为数字
+ @param number 输入字符
+ @returns 是否为数字
+ */
+- (BOOL)validateNumber:(NSString*)number
+{
+    BOOL res = YES;
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    int i = 0;
+    while (i < number.length) {
+        NSString * string = [number substringWithRange:NSMakeRange(i, 1)];
+        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+        if (range.length == 0) {
+            res = NO;
+            break;
+        }
+        i++;
+    }
+    return res;
 }
 
 @end

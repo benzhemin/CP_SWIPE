@@ -17,6 +17,7 @@
 
 @property (assign, nonatomic) CLLocationCoordinate2D coordination;
 
+
 +(LocationService *)sharedInstance;
 +(void)destroySharedInstance;
 

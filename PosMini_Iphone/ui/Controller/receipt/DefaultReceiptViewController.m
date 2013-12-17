@@ -22,7 +22,7 @@
     [recpBgView release];
     [inputField release];
     [confirmBtn release];
-    
+
     [super dealloc];
 }
 
@@ -69,7 +69,10 @@
     inputField.returnKeyType = UIReturnKeyDone;
     inputField.frame = CGRectMake(24, 73, 200, 40);
     [recpBgView addSubview:inputField];
-    [inputField release];
+    /*Del_S 启明 张翔 功能点：点击返回按钮抛出异常*/
+//    [inputField release];
+    /*Del_E 启明 张翔 功能点：点击返回按钮抛出异常*/
+
     
     //显示单位
     UILabel *unitLabel = [[UILabel alloc]init];
@@ -192,7 +195,10 @@
     }
     else {
         //如果输入收款超过999999.99，使输入无效
-        if (textField.text.length>=12) {
+        /*Mod_S 启明 张翔 功能点:故障对应#0002513*/
+//        if (textField.text.length>=12) {
+        if (textField.text.length>=9) {
+        /*Mod_E 启明 张翔 功能点:故障对应#0002513*/
             return NO;
         }
         insert_amount(text, *[string UTF8String]);
@@ -202,11 +208,6 @@
     
     return NO;
 }
-
-
-
-
-
 
 /**
  返回用户行为跟踪Id号

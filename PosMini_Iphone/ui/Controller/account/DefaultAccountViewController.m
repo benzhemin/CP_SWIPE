@@ -8,6 +8,8 @@
 
 #import "DefaultAccountViewController.h"
 #import "SettingBankViewController.h"
+#import "MerchantConfigurationViewController.h"
+#import "UnbindDeviceViewController.h"
 #import "Helper.h"
 
 @interface DefaultAccountViewController ()
@@ -30,16 +32,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    
 	[self setNavigationTitle:@"账户信息"];
     
     //设置显示账户信息Table
-    
+
     self.acctInfoTableView = [[[UITableView alloc]initWithFrame:CGRectMake(0, 15, contentView.frame.size.width,contentView.frame.size.height-15) style:UITableViewStyleGrouped] autorelease];
     acctInfoTableView.backgroundView = nil;
     acctInfoTableView.backgroundColor = [UIColor clearColor];
     acctInfoTableView.delegate = self;
     acctInfoTableView.dataSource = self;
     [contentView addSubview:acctInfoTableView];
+    
+    
+    /*Add_S 启明 费凯峰 功能点:强制商户配置*/
+    if (![PosMiniDevice sharedInstance].isSetedMerTel)
+    {
+        MerchantConfigurationViewController *mc = [[MerchantConfigurationViewController alloc]init];
+        [self.navigationController pushViewController:mc animated:YES];
+        [mc release];
+    }
+    /*Add_E 启明 费凯峰 功能点:强制商户配置*/
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -63,6 +77,7 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView) name:NOTIFICATION_REFRESH_ACCOUNT object:nil];
+
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -73,6 +88,7 @@
 
 -(void)accountRequestDidFinished{
     self.userInfoDict = acctService.userInfoDict;
+    
     [self refreshTableView];
 }
 
@@ -83,7 +99,10 @@
 #pragma mark UITableViewDataSource Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    //return 4;
+    /* Mod_S 启明 费凯峰 功能点:商户信息配置*/
+    return 5;
+    /* Mod_E 启明 费凯峰 功能点:商户信息配置*/
 }
 
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,7 +145,10 @@
     switch (indexPath.row) {
         case 0:
             title.text = @"登录账户:";
-            content.text = [NSString stringWithFormat:@"%@(%@)",[Helper getValueByKey:POSMINI_LOGIN_USERNAME],[Helper getValueByKey:POSMINI_LOGIN_ACCOUNT]];
+            /*Mod_S 启明 张翔 功能点:需求变更*/
+//            content.text = [NSString stringWithFormat:@"%@(%@)",[Helper getValueByKey:POSMINI_LOGIN_USERNAME],[Helper getValueByKey:POSMINI_LOGIN_ACCOUNT]];
+            content.text = [Helper getValueByKey:POSMINI_LOGIN_USERNAME];
+            /*Mod_E 启明 张翔 功能点:需求变更*/
             break;
         case 1:
             title.text = @"自动取现:";
@@ -165,13 +187,21 @@
             title.text = @"设备编号:";
             content.text = [userInfoDict valueForKey:ACCOUNT_BINDED_MOUNT_ID];
             
-            /*
-            if (![[userInfoDict valueForKey:@"CashCardNo"] isEqualToString:@"未绑定"]) {
+            if (![[userInfoDict valueForKey:@"BindedMtId"] isEqualToString:@"未绑定"]) {
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
-            */
+            
             
             break;
+        /* Add_S 启明 费凯峰 功能点:商户信息配置*/
+        case 4:
+   
+            title.text=@"商户信息:";
+            
+            content.text=[[PosMiniDevice sharedInstance] simpeName];
+            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            break;
+        /* Add_E 启明 费凯峰 功能点:商户信息配置*/
     }
     return cell;
 }
@@ -198,9 +228,28 @@
             [self.navigationController pushViewController:sb animated:YES];
             [sb release];
         }
+
+    }
+    /* Add_S 启明 费凯峰 功能点:商户信息配置*/
+    if (indexPath.row==4) {
+        MerchantConfigurationViewController *mc = [[MerchantConfigurationViewController alloc]init];
+        [self.navigationController pushViewController:mc animated:YES];
+        [mc release];
+
     }
     
+    if (indexPath.row==3) {
+        if (![[userInfoDict valueForKey:@"BindedMtId"] isEqualToString:@"未绑定"]) {
+            UnbindDeviceViewController *ud=[[UnbindDeviceViewController alloc]init];
+            ud.userInfoDic=self.userInfoDict;
+            [self.navigationController pushViewController:ud animated:YES];
+            [ud release];
+        }
+    }
+    /* Add_E 启明 费凯峰 功能点:商户信息配置*/
     
+    
+    /*
     //屏蔽解绑
     return;
     
@@ -212,6 +261,7 @@
             [alertView release];
         }
     }
+     */
 }
 
 #pragma mark UIAlertViewDelegate Method
@@ -269,6 +319,33 @@
     //刷新显示用户信息Table
     [acctInfoTableView reloadData];
 }
+
+/*Add_S 启明 张翔 功能点:商户信息配置*/
+/**
+ 设置商户简称
+ @param merchantString 商户简称
+ */
+-(void) setMerchantString:(NSString *)merchantString
+{
+    NSLog(@"商户简称:%@",merchantString);
+    
+    [[PosMiniDevice sharedInstance]setSimpeName:merchantString];
+    [acctInfoTableView reloadData];
+}
+/*Add_E 启明 张翔 功能点:商户信息配置*/
+
+/*Add_S 启明 张翔 功能点:解除绑定*/
+/**
+ 设置设备编号
+ @param bindedMtId 设备编号
+ */
+-(void) setBindedMtId
+{    
+    self.acctService = [[[AccountService alloc] init] autorelease];
+    [acctService onRespondTarget:self selector:@selector(accountRequestDidFinished)];
+    [acctService requestForUserInfo];
+}
+/*Add_E 启明 张翔 功能点:解除绑定*/
 
 
 

@@ -10,6 +10,8 @@
 #import "RefundViewController.h"
 #import "OrderCell.h"
 
+#import "SearchOrderViewController.h"
+
 @interface DefaultOrderViewController ()
 //响应UIButton事件
 -(void) btnClick:(id)sender;
@@ -69,6 +71,17 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    /*Add_S 启明 费凯峰 功能点:增加阶段查询*/
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+    [button setFrame:CGRectMake(230, 30, 80, 26)];
+    [button setTitle:@"历史查询" forState:UIControlStateNormal];
+    button.titleLabel.font=[UIFont systemFontOfSize:15];
+    [button setBackgroundImage:[UIImage imageNamed:@"nav_query"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(searchRecord:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    /*Add_E 启明 费凯峰 功能点:增加阶段查询*/
+    
 	[self setNavigationTitle:@"订单查询"];
     
     self.orderList = [[[NSMutableArray alloc]init] autorelease];
@@ -141,20 +154,24 @@
     }
 }
 
--(void) requestOrderRecordByDate:(NSString *)dateStr{
+-(void) requestOrderRecordByDate:(NSString *)dateStr
+{
     NSMutableDictionary *param = [[[NSMutableDictionary alloc] init] autorelease];
-    [param setObject:@"S" forKey:PARAM_ORDER_TRANS_STATUS];
     [param setObject:dateStr forKey:PARAM_ORDER_BEGIN_DATE];
     [param setObject:dateStr forKey:PARAM_ORDER_END_DATE];
+    [param setObject:@"S" forKey:PARAM_ORDER_TRANS_STATUS];
+    [param setObject:@"" forKey:PARAM_ORDER_BUSINESS_TYPE];
     [param setObject:[NSString stringWithFormat:@"%d", pageIndex] forKey:PARAM_ORDER_PAGE_NUMBER];
+    
     [orderService requestForOrderRecord:param];
 }
 
 -(void)orderRecordDidFinished:(NSDictionary *)body{
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     [formatter setDateFormat:@"yyyyMMdd"];
-    
+
     self.mtpCurDate = [formatter dateFromString:[body valueForKey:@"CurrentDate"]];
+
     if (curDate == nil) {
         self.curDate = [[mtpCurDate copy] autorelease];
         [self setCurrentDate:curDate];
@@ -162,6 +179,7 @@
     
     int totalOrderCount = [[body objectForKey:@"TotalNum"] intValue];
     id orderInfo = [body objectForKey:@"OrdersInfo"];
+    /*Mod_S 启明 费凯峰 功能点:订单查询，便民付款不能退款*/
     if (orderInfo!=nil && [orderInfo isKindOfClass:[NSArray class]]) {
         for (NSDictionary *dict in [body objectForKey:@"OrdersInfo"]) {
             NSArray *orderInfo = [NSArray arrayWithObjects:
@@ -172,10 +190,14 @@
                                   [dict valueForKey:@"OrdStat"],
                                   [dict valueForKey:@"PayCard"],
                                   [dict valueForKey:@"SysSeqId"],
-                                  [dict valueForKey:@"SysTime"], nil];
+                                  [dict valueForKey:@"SysTime"],
+                                  [dict valueForKey:@"BusiType"],
+                                  [dict valueForKey:@"TransType"],
+                                  nil];
             [orderList addObject:orderInfo];
         }
     }
+    /*Mod_S 启明 费凯峰 功能点:订单查询，便民付款不能退款*/
     if (totalOrderCount > orderList.count) {
         isShowMore = YES;
     }else{
@@ -252,11 +274,13 @@
                 I   初始化
              */
             [cell setShowArrow:NO];
-            if ([[orderInfo objectAtIndex:OrderStatus] isEqualToString:@"S"] && [mtpCurDate compare:curDate]==NSOrderedSame)
+            /*Mod_S 启明 费凯峰 功能点:增加阶段查询*/
+            if ([[orderInfo objectAtIndex:OrderStatus] isEqualToString:@"S"] && [mtpCurDate compare:curDate]==NSOrderedSame && [[orderInfo objectAtIndex:OrderBusiType] isEqualToString:@"R"])
             {
                 [cell setShowArrow:YES];
             }
             
+            /*Mod_S 启明 费凯峰 功能点:增加阶段查询*/
             [cell setOrderId:[orderInfo objectAtIndex:OrderId] setOrderSum:[[orderInfo objectAtIndex:OrderAmount] floatValue] setOrederState:[orderInfo objectAtIndex:OrderStatus] setTradeTime:[orderInfo objectAtIndex:OrderSysTimer] setBankNum:[orderInfo objectAtIndex:OrderPayCard]];
             return cell;
         }
@@ -311,7 +335,9 @@
         
         
         NSArray *orderInfo = [orderList objectAtIndex:indexPath.row];
-        if ([[orderInfo objectAtIndex:OrderStatus] isEqualToString:@"S"] && [mtpCurDate compare:curDate]==NSOrderedSame)
+        if ([[orderInfo objectAtIndex:OrderStatus] isEqualToString:@"S"] &&
+            [mtpCurDate compare:curDate]==NSOrderedSame &&
+            [[orderInfo objectAtIndex:OrderBusiType] isEqualToString:@"R"])
         {
             selectedIndex = indexPath.row;
             
@@ -332,7 +358,14 @@
         }
     }
 }
-
+#pragma mark - 历史查询
+-(void)searchRecord:(id)sender{
+    SearchOrderViewController *so=[[SearchOrderViewController alloc]init];
+    so.mtpDate=self.mtpCurDate;
+    [self.navigationController pushViewController:so animated:YES];
+    [so release];
+}
+#pragma mark -
 //响应UIButton事件
 -(void) btnClick:(id)sender
 {

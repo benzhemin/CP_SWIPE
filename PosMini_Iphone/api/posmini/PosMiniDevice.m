@@ -14,6 +14,8 @@
 #import "DefaultHelpViewController.h"
 #import "DefaultOrderViewController.h"
 
+#import "ConvenienceBusinessViewController.h"
+
 #import "ReceiptConfirmViewController.h"
 #import "SwipeCardViewController.h"
 #import "SignLandscapeViewController.h"
@@ -88,6 +90,24 @@ static PosMiniDevice *sInstance = nil;
     
     [rfService release];
     
+    [_queryPayOrderBusinessType release];
+    [_queryPayOrderBeginDate release];
+    [_queryPayOrderEndDate release];
+    [_providerOrdId release];
+    [_businessType release];
+    [_simpeName release];
+    [_differentBusiness release];
+    
+    /*Add_S 启明 张翔 功能点:增加电子签购单*/
+    [_esMerName release];
+    [_esOrdId release];
+    [_esCardNo release];
+    [_esCurrentDate release];
+    [_esCurrentTime release];
+    [_esOrdAmt release];
+    [_esProviderCustId release];
+    /*Add_E 启明 张翔 功能点:增加电子签购单*/
+    
     [super dealloc];
 }
 
@@ -108,6 +128,13 @@ static PosMiniDevice *sInstance = nil;
         posService = [[PosMiniService alloc] init];
         
         rfService = [[RefundService alloc] init];
+        /*Add_S 启明 费凯峰 功能点:全局变量*/
+        self.simpeName=[NSString stringWithFormat:@""];
+        self.differentBusiness=[NSString stringWithFormat:@""];
+        self.businessType=[NSString stringWithFormat:@""];
+        self.providerOrdId=[NSString stringWithFormat:@""];
+        self.queryPayOrderBusinessType=[NSString stringWithFormat:@""];
+        /*Add_E 启明 费凯峰 功能点:全局变量*/
     }
     return self;
 }
@@ -242,6 +269,13 @@ static PosMiniDevice *sInstance = nil;
             return;
         }
         
+        /* Add_S 启明 费凯峰 功能点:我的业务*/
+        if ([baseCTRL isKindOfClass:ConvenienceBusinessViewController.class]) {
+            [posService requestForPosTradeSignIn:deviceSN];
+            return;
+        }
+        /* Add_E 启明 费凯峰 功能点:我的业务*/
+        
         if ([baseCTRL isKindOfClass:ReceiptConfirmViewController.class] || [baseCTRL isKindOfClass:[RefundViewController class]]) {
             [posReq setTimeOutWithTime:READ_CARD_TIMEOUT];
         }
@@ -360,7 +394,10 @@ static PosMiniDevice *sInstance = nil;
     
     if (statusCode==SUCCESS) {
         //注入成功,跳转到确认订单页面
-        if ([baseCTRL isKindOfClass:[DefaultReceiptViewController class]]) {
+        
+        /* Mod_S 启明 费凯峰 功能点:我的业务*/
+        if ([baseCTRL isKindOfClass:[DefaultReceiptViewController class]] || [baseCTRL isKindOfClass:[ConvenienceBusinessViewController class]] ) {
+        /* Mod_E启明 费凯峰 功能点:我的业务*/
             ReceiptConfirmViewController *receiptCTRL = [[ReceiptConfirmViewController alloc] init];
             receiptCTRL.isShowTabBar = NO;
             [baseCTRL.navigationController pushViewController:receiptCTRL animated:YES];
@@ -368,6 +405,7 @@ static PosMiniDevice *sInstance = nil;
             
             [[PosMini sharedInstance] hideUIPromptMessage:YES];
         }
+        
         
         //注入成功,退款页面发起的注入签名请求
         else if ([baseCTRL isKindOfClass:[RefundViewController class]]){

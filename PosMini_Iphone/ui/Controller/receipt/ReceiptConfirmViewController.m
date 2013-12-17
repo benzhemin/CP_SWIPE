@@ -64,8 +64,14 @@
     UILabel *accountLabel = [[UILabel alloc] init];
     accountLabel.textColor = [UIColor colorWithRed:115/250.0 green:115/250.0 blue:115/250.0 alpha:1.0];
     accountLabel.font = [UIFont systemFontOfSize:16];
-    accountLabel.text = [NSString stringWithFormat:@"%@ %@",[Helper getValueByKey:POSMINI_LOGIN_ACCOUNT],
-                         [Helper getValueByKey:POSMINI_LOGIN_USERNAME]];
+     /*Mod_S 启明 费凯峰 功能点:我的业务*/
+    if ([[[PosMiniDevice sharedInstance] differentBusiness] isEqualToString:NORMAL_BUSINESS]) {
+        accountLabel.text = [NSString stringWithFormat:@"%@ (%@)",[Helper getValueByKey:POSMINI_LOGIN_USERNAME],[Helper getValueByKey:POSMINI_LOGIN_ACCOUNT]];
+    }else{
+         accountLabel.text = @"上海银杏树网络";
+    }
+    
+     /*Mod_E 启明 费凯峰 功能点:我的业务*/
     accountLabel.frame = CGRectMake(accountLabelTitle.frame.origin.x+accountLabelTitle.frame.size.width, 10, 190, 20);
     accountLabel.textAlignment = UITextAlignmentLeft;
     [recpBgView addSubview:accountLabel];
@@ -105,7 +111,10 @@
     UILabel *figureLabel = [[UILabel alloc]init];
     figureLabel.textColor = [UIColor colorWithRed:186/250.0 green:0/250.0 blue:0/250.0 alpha:1.0];
     figureLabel.font = [UIFont boldSystemFontOfSize:24];
-    figureLabel.text = [NSString stringWithFormat:@"%0.2f",[[PosMiniDevice sharedInstance].paySum floatValue]];
+    /*Mod_S 启明 张翔 功能点:故障对应#0002513*/
+//    figureLabel.text = [NSString stringWithFormat:@"%0.2f",[[PosMiniDevice sharedInstance].paySum floatValue]];
+    figureLabel.text = [NSString stringWithFormat:@"%0.2f",[[PosMiniDevice sharedInstance].paySum doubleValue]];
+    /*Mod_E 启明 张翔 功能点:故障对应#0002513*/
     figureLabel.adjustsFontSizeToFitWidth = YES;
     figureLabel.frame = CGRectMake(20, noticeLabel.frame.size.height+noticeLabel.frame.origin.y, 210, 30);
     figureLabel.textAlignment = UITextAlignmentRight;
@@ -158,6 +167,21 @@
     return @"pos00003";
 }
 
-
+/*Add_S 启明 张翔 功能点：便民业务*/
+-(void)backToPreviousView:(id)sender{
+    
+    if ([[[PosMiniDevice sharedInstance] differentBusiness] isEqualToString:NORMAL_BUSINESS])
+    {
+        //如果当前NavigationController中ViewController超过1个，移除最上面的一个
+        if (self.navigationController.viewControllers.count>1) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    else
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
+/*Add_E 启明 张翔 功能点：便民业务*/
 
 @end

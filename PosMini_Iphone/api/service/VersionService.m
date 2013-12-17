@@ -18,7 +18,7 @@
 {
     [[PosMini sharedInstance] showUIPromptMessage:@"检查版本更新" animated:YES];
     
-    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     NSString *url = [NSString stringWithFormat:@"http://www.ttyfund.com/api/services/checkupdate_posmini.php?key=TTYFUND-CHINAPNR&app_client=posmini_app&app_platform=ios&app_version=%@",version];
     
     ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];

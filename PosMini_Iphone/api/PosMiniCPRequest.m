@@ -18,7 +18,7 @@
 //avoid serverside return nil, lead to app crash
 //JSON assign null value as [NSNull null], totally different from nil or NULL
 BOOL NotNil(id dict, NSString *k){
-    if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] &&
+    if (dict!=nil && [dict isKindOfClass:[NSDictionary class]] && 
         [dict objectForKey:k]!=nil && [dict objectForKey:k] != [NSNull null])
     {
         return YES;
@@ -80,7 +80,7 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
 {
     [self onRespondJSON:nil];
     
-    NSLog(@"%@", body);
+    NSLog(@"onResponseJSON%@", body);
     //统一判断状态码返回
     //状态码返回成功
     if (NotNilAndEqualsTo(body, MTP_POS_RESPONSE_CODE, @"000"))
@@ -142,6 +142,14 @@ BOOL NotNilAndEqualsTo(id dict, NSString *k, NSString *value){
             [target performSelector:@selector(requestTimeOut:) withObject:self];
         }
     }
+    /*Add_S 启明 张翔 功能点:故障对应＃0002517*/
+    else
+    {
+        if ([target respondsToSelector:@selector(requestFailed:)]) {
+            [target performSelector:@selector(requestFailed:) withObject:request];
+        }
+    }
+    /*Add_E 启明 张翔 功能点:故障对应＃0002517*/
 }
 
 -(void)setDidFinishSelector:(SEL)_selector{

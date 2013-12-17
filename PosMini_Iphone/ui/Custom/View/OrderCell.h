@@ -41,7 +41,21 @@
  @param tradetime 交易时间
  @param bankNum 银行卡后四位
  */
+
 -(void) setOrderId:(NSString *)orderId setOrderSum:(float)orderSum setOrederState:(NSString *)orderStatus setTradeTime:(NSString *)tradetime setBankNum:(NSString *)bankNum;
+
+/*Add_S 启明 张翔 功能点:交易明细*/
+/**
+ 设置订单详细信息
+ @param orderId 订单编号
+ @param orderSum 订单金额
+ @param orderStatus 订单状态
+ @param tradedata 交易日期
+ @param tradetime 交易时间
+ @param bankNum 银行卡后四位
+ */
+-(void) setOrderId:(NSString *)orderId setOrderSum:(float)orderSum setOrederState:(NSString *)orderStatus setTradeData:(NSString *)tradedata setTradeTime:(NSString *)tradetime setBankNum:(NSString *)bankNum;
+/*Add_E 启明 张翔 功能点:交易明细*/
 
 /**
 	是否显示右边箭头，退款选项

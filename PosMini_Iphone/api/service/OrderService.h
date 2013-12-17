@@ -12,4 +12,7 @@
 
 -(void)requestForOrderRecord:(NSDictionary *)param;
 
+/*Add_S 启明 费凯峰 功能点:增加阶段查询*/
+-(void)requestForOrderRecordStatistics:(NSDictionary *)param;
+/*Add_E 启明 费凯峰 功能点:增加阶段查询*/
 @end

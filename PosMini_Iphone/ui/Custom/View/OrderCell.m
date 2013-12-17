@@ -10,7 +10,10 @@
 #define TITLE_WIDTH 55
 #define CONTENT_WIDTH 140
 #define TITLE_HEIGHT 20
-#define RIGHTCONTENT_WIDTH 77
+/*Mod_S 启明 张翔 功能点：ios7适配*/
+//#define RIGHTCONTENT_WIDTH 77
+#define RIGHTCONTENT_WIDTH 80
+/*Mod_E 启明 张翔 功能点：ios7适配*/
 #define CELL_MARGINTOP 5
 #define CELL_PADDINGLEFT 10
 #define CELL_PADDINGRIGHT 30
@@ -163,7 +166,6 @@
 {
     [super setSelected:selected animated:animated];
 }
-
 /**
  设置订单详细信息
  @param orderId 订单编号
@@ -195,6 +197,47 @@
     
     bankAccountLabel.text = [NSString stringWithFormat:@"卡号末四位:%@",bankNum];
 }
+
+/*Add_S 启明 张翔 功能点:交易明细*/
+/**
+ 设置交易明细信息
+ @param orderId 订单编号
+ @param orderSum 订单金额
+ @param orderStatus 订单状态
+ @param tradedata 交易日期
+ @param tradetime 交易时间
+ @param bankNum 银行卡后四位
+ */
+-(void) setOrderId:(NSString *)orderId setOrderSum:(float)orderSum setOrederState:(NSString *)orderStatus setTradeData:(NSString *)tradedata setTradeTime:(NSString *)tradetime setBankNum:(NSString *)bankNum
+{
+    orderNumberContentLabel.text = orderId;
+    
+    //计算订单金额长度，重设位置
+    orderSumCountLabel.text = [NSString stringWithFormat:@"%0.2f",orderSum];
+    float labelWidth = [Helper getLabelWidth:orderSumCountLabel.text  setFont:orderSumCountLabel.font setHeight:orderSumCountLabel.frame.size.height];
+    orderSumCountLabel.frame = CGRectMake(orderSumCountLabel.frame.origin.x, orderSumCountLabel.frame.origin.y, labelWidth, orderSumCountLabel.frame.size.height);
+    
+    //重设单位位置
+    showUnitLabel.frame = CGRectMake(orderSumCountLabel.frame.origin.x+orderSumCountLabel.frame.size.width+5, showUnitLabel.frame.origin.y, showUnitLabel.frame.size.width, showUnitLabel.frame.size.height);
+    
+    if([orderStatus isEqualToString:@"R"]) {
+        orderStatusCountLabel.text = @"已退款";
+    }
+    else{
+        orderStatusCountLabel.text =@"已支付";
+    }
+    
+    tradeTimeLabel.frame = CGRectMake(self.frame.size.width-RIGHTCONTENT_WIDTH-CELL_PADDINGRIGHT-TITLE_WIDTH+30, orderSumCountLabel.frame.origin.y, TITLE_WIDTH, TITLE_HEIGHT);
+    tradeTimeContentLabel.frame = CGRectMake(tradeTimeLabel.frame.origin.x+tradeTimeLabel.frame.size.width, orderSumCountLabel.frame.origin.y, RIGHTCONTENT_WIDTH-10, TITLE_HEIGHT);
+    tradeTimeContentLabel.text = [NSString stringWithFormat:@"%@/%@ %@:%@",
+                                  [tradedata substringWithRange:NSMakeRange(4, 2)],
+                                  [tradedata substringWithRange:NSMakeRange(6, 2)],
+                                  [tradetime substringWithRange:NSMakeRange(0, 2)],
+                                  [tradetime substringWithRange:NSMakeRange(2, 2)]];
+    
+    bankAccountLabel.text = [NSString stringWithFormat:@"卡号末四位:%@",bankNum];
+}
+/*Add_E 启明 张翔 功能点:交易明细*/
 
 /**
  是否显示右边箭头，退款选项

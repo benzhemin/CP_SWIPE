@@ -18,7 +18,7 @@
 -(void)loginRequest:(NSString *)acct withSecret:(NSString *)secret{
     [[PosMini sharedInstance] showUIPromptMessage:@"登录中" animated:YES];
     
-    NSString* url = [NSString stringWithFormat:@"/mtp/login"];
+    NSString* url = [NSString stringWithFormat:@"/mtp/mini/login"];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:acct forKey:@"LoginId"];
     [dict setValue:[Helper md5_16:[NSString stringWithFormat:@"%@%@",MD5_SEED,secret]] forKey:@"LoginPwd"];

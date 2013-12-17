@@ -24,7 +24,7 @@
 +(void)shutdown;
 
 -(void) showUIPromptMessage:(NSString *)message animated:(BOOL)animated;
--(void)postHideUIPromptMessage;
+-(void) postHideUIPromptMessage;
 -(void) hideUIPromptMessage:(BOOL)animated;
 -(void) changeUIPromptMessage:(NSString *)message;
 

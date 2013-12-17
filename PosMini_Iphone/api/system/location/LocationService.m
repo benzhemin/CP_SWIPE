@@ -92,7 +92,7 @@ static LocationService *sInstance = nil;
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     CLLocation* location = [locations lastObject];
-    
+
     self.coordination = location.coordinate;
     
     [locationManager stopUpdatingLocation];
@@ -105,9 +105,11 @@ static LocationService *sInstance = nil;
 
 -(BOOL)isCoordinationEmpty
 {
+
     if (coordination.latitude!=0.0f && coordination.longitude!=0.0f)
         return NO;
     return YES;
+     
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

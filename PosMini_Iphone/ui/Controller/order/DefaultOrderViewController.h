@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "OrderService.h"
-
+/*Mod_S 启明 费凯峰 功能点:订单查询，便民付款不能退款*/
 typedef enum {
     OrderAccountDate = 0,
     OrderPosId,
@@ -17,9 +17,11 @@ typedef enum {
     OrderStatus,
     OrderPayCard,
     OrderSysSeqId,
-    OrderSysTimer
+    OrderSysTimer,
+    OrderBusiType,
+    OrderTransType,
 } OrderInfoSeq;
-
+/*Mod_S 启明 费凯峰 功能点:订单查询，便民付款不能退款*/
 typedef enum {
     PreDay = 1,
     CurDay,

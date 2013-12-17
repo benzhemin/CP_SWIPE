@@ -32,16 +32,30 @@
     [dict setValue:[Helper getValueByKey:POSMINI_CUSTOMER_ID] forKey:PARAM_CUSTOMER_ID];
     [dict setValue:pos.deviceSN forKey:@"MtId"];
     [dict setValue:pos.orderId forKey:@"OrdId"];
+    /*Add_S 启明 张翔 功能点:接口变更*/
+    [dict setValue:pos.paySum forKey:@"OrdAmt"];
+    /*Add_E 启明 张翔 功能点:接口变更*/
     [dict setValue:pos.refundOrderId forKey:@"PayOrdId"];
     [dict setValue:pos.bankCardAndPassData forKey:@"InfoField"];
-    [dict setValue:[Helper md5_16:[NSString stringWithFormat:@"%@%@%@%@%@%@",
-                                                 pos.md5Key,
-                                                 [Helper getValueByKey:POSMINI_CUSTOMER_ID],
-                                                 pos.deviceSN,
-                                                 pos.orderId,
-                                                 pos.refundOrderId,
-                                                 pos.bankCardAndPassData
-                                                 ]] forKey:@"ChkValue"];
+    /*Mod_S 启明 张翔 功能点:接口变更*/
+//    [dict setValue:[Helper md5_16:[NSString stringWithFormat:@"%@%@%@%@%@%@",
+//                                                 pos.md5Key,
+//                                                 [Helper getValueByKey:POSMINI_CUSTOMER_ID],
+//                                                 pos.deviceSN,
+//                                                 pos.orderId,
+//                                                 pos.refundOrderId,
+//                                                 pos.bankCardAndPassData
+//                                                 ]] forKey:@"ChkValue"];
+    [dict setValue:[Helper md5_16:[NSString stringWithFormat:@"%@%@%@%@%@%@%@",
+                                   pos.md5Key,
+                                   [Helper getValueByKey:POSMINI_CUSTOMER_ID],
+                                   pos.deviceSN,
+                                   pos.orderId,
+                                   pos.paySum,
+                                   pos.refundOrderId,
+                                   pos.bankCardAndPassData
+                                   ]] forKey:@"ChkValue"];
+    /*Mod_E 启明 张翔 功能点:接口变更*/
     NSLog(@"%@", dict);
 
     PosMiniCPRequest *posReq = [PosMiniCPRequest postRequestWithPath:url andBody:dict];
@@ -61,7 +75,10 @@
 
 -(void)queryForRefundState{
     PosMiniDevice *pos = [PosMiniDevice sharedInstance];
+    /*Mod_S 启明 张翔 功能点:修改前版本BUG*/
+    //NSString* url = [NSString stringWithFormat:@"/mtp/action/trade/doCancel"];
     NSString* url = [NSString stringWithFormat:@"/mtp/action/query/queryRefundOrder"];
+    /*Mod_E 启明 张翔 功能点:修改前版本BUG*/
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[Helper getValueByKey:POSMINI_CUSTOMER_ID] forKey:PARAM_CUSTOMER_ID];
     [dict setValue:pos.orderId forKey:@"RefOrdId"];

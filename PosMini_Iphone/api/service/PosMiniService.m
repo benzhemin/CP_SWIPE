@@ -9,6 +9,7 @@
 #import "PosMiniService.h"
 #import "BaseViewController.h"
 #import "PosMiniDevice.h"
+#import "DefaultAccountViewController.h"
 
 @interface AlertDelegateClass : NSObject<UIAlertViewDelegate>{
     NSString *deviceSN;
@@ -58,7 +59,10 @@
     
     [[PosMini sharedInstance] showUIPromptMessage:@"请求交易限额..." animated:YES];
     
-    NSString* url = [NSString stringWithFormat:@"/mtp/action/query/mini/limitAmt"];
+    /*Mod_S 启明 张翔 功能点：接口变更*/
+    //NSString* url = [NSString stringWithFormat:@"/mtp/action/query/mini/limitAmt"];
+    NSString* url = [NSString stringWithFormat:@"/mtp/action/query/mini/v2/limitAmt"];
+    /*Mod_E 启明 张翔 功能点：接口变更*/
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:[Helper getValueByKey:POSMINI_CUSTOMER_ID] forKey:@"CustId"];
@@ -126,7 +130,10 @@
         {
             [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"设备尚未灌注密钥!"];
         }
-        else if([bindStatus isEqualToString:@"K"])
+        /*Mod_S 启明 张翔 功能点:解除绑定*/
+//        else if([bindStatus isEqualToString:@"K"])
+        else if([bindStatus isEqualToString:@"K"] || [bindStatus isEqualToString:@"U"])
+        /*Mod_E 启明 张翔 功能点:解除绑定*/
         {
             [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"终端未绑定"];
             
@@ -177,8 +184,15 @@
     //绑定成功
     [PosMiniDevice sharedInstance].isDeviceLegal = YES;
     
-    
     [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"设备绑定成功!"];
+    
+    /*Add_S 启明 张翔 功能点：解除绑定*/
+    if ([[[PosMiniDevice sharedInstance].baseCTRL controllerName]isEqualToString:@"DefaultAccountViewController"])
+    {
+        DefaultAccountViewController *accountCTRL = (DefaultAccountViewController *)[PosMiniDevice sharedInstance].baseCTRL;
+        [accountCTRL setBindedMtId];
+    }
+    /*Add_E 启明 张翔 功能点：解除绑定*/
 }
 
 //签到接口,获取工作密钥
@@ -201,7 +215,7 @@
     
     NSDictionary *body = (NSDictionary *)req.responseAsJson;
     
-    NSLog(@"%@", body);
+    NSLog(@"posTradeSignInDidFinished:%@", body);
     
     PosMiniDevice *pos = [PosMiniDevice sharedInstance];
     

@@ -195,9 +195,25 @@
 
 //返回之前调整StatusBar
 -(void)backToPreviousView:(id)sender{
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
+//    
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"提示" message:@"是否取消交易？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+    alertView.tag=1;
+    [alertView show];
+    [alertView release];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //是否取消支付
+    if (alertView.tag==1)
+    {
+        if (buttonIndex == 1)
+        {
+            [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+    }
 }
 
 

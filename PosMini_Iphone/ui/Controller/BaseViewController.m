@@ -133,6 +133,10 @@
     [super viewDidAppear:animated];
     
     [self tabBarAnimation];
+    
+    /*Add_S 启明 张翔 功能点:解除绑定*/
+    [PosMiniDevice sharedInstance].baseCTRL = self;
+    /*Add_E 启明 张翔 功能点:解除绑定*/
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -140,7 +144,9 @@
 }
 
 -(void)tabBarAnimation{
-    UIViewController *rootController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    /*Del_S 启明 张翔 功能点:故障对应#0002608*/
+//    UIViewController *rootController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    /*Del_E 启明 张翔 功能点:故障对应#0002608*/
     
     //以动画形式隐藏或显示下面Tabbar
     if (self.navigationController!=nil) {
@@ -152,9 +158,12 @@
             [UIView beginAnimations:@"Dialog" context:context];
             [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
             [UIView setAnimationDuration:0.2];
-            
-            subView.frame = CGRectMake(0, rootController.view.frame.size.height-DEFAULT_TAB_BAR_HEIGHT,
+            /*Mod_S 启明 张翔 功能点:故障对应#0002608*/
+//            subView.frame = CGRectMake(0, rootController.view.frame.size.height-DEFAULT_TAB_BAR_HEIGHT,
+//                                       self.view.frame.size.width, DEFAULT_TAB_BAR_HEIGHT);
+            subView.frame = CGRectMake(0, self.view.frame.size.height-DEFAULT_TAB_BAR_HEIGHT,
                                        self.view.frame.size.width, DEFAULT_TAB_BAR_HEIGHT);
+            /*Mod_E 启明 张翔 功能点:故障对应#0002608*/
             [UIView commitAnimations];
         }
         else
@@ -163,7 +172,10 @@
             [UIView beginAnimations:@"Dialog" context:context];
             [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
             [UIView setAnimationDuration:0.2];
-            subView.frame = CGRectMake(0, rootController.view.frame.size.height, self.view.frame.size.width, DEFAULT_TAB_BAR_HEIGHT);
+            /*Mod_S 启明 张翔 功能点:故障对应#0002608*/
+//            subView.frame = CGRectMake(0, rootController.view.frame.size.height, self.view.frame.size.width, DEFAULT_TAB_BAR_HEIGHT);
+            subView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, DEFAULT_TAB_BAR_HEIGHT);
+            /*Mod_E 启明 张翔 功能点:故障对应#0002608*/
             [UIView commitAnimations];
         }
     }
@@ -198,6 +210,19 @@
 {
     return @"0";
 }
+
+/*Add_S 启明 张翔 功能点:IOS5上按钮无效*/
+#pragma mark - UIGestureRecognizerDelegate methods
+#pragma mark   IOS5手势与按钮响应冲突
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isKindOfClass:[UIButton class]]){
+        
+        return NO;
+        
+    }
+    return YES;
+}
+/*Add_E 启明 张翔 功能点:IOS5手势与按钮响应冲突*/
 
 // -------------------------------------------------------------------------------
 //	supportedInterfaceOrientations

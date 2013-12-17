@@ -32,9 +32,13 @@
     [acctNaviController release];
     [helpNaviController release];
     
+    [_businessNaviController release];
+    
     [naviArray release];
     
     [vp release];
+    
+    [merchantService release];
     
     [super dealloc];
 }
@@ -50,10 +54,20 @@
     self.loginNaviController = [[[CPNavigationController alloc] initWithRootViewController:loginController] autorelease];
     self.window.rootViewController = loginNaviController;
     
+    /* Add_S 启明 费凯峰 功能点:新增我的业务*/
+    DefaultBusinessViewController *businessViewController=[[DefaultBusinessViewController alloc]init];
+    businessViewController.isShowNaviBar=NO;
+    self.businessNaviController=[[[CPNavigationController alloc]initWithRootViewController:businessViewController]autorelease];
+    [businessViewController release];
+    
+    /*
     DefaultReceiptViewController *receiptController = [[DefaultReceiptViewController alloc] init];
     self.receiptNaviController = [[[CPNavigationController alloc] initWithRootViewController:receiptController] autorelease];
     [receiptController release];
+    */
+    /*Add_E 启明 费凯峰 功能点:新增我的业务*/
     
+
     DefaultOrderViewController *orderController = [[DefaultOrderViewController alloc] init];
     self.orderNaviController = [[[CPNavigationController alloc] initWithRootViewController:orderController] autorelease];
     [orderController release];
@@ -66,8 +80,9 @@
     self.helpNaviController = [[[CPNavigationController alloc] initWithRootViewController:helpController] autorelease];
     [helpController release];
     
-    self.naviArray = [NSArray arrayWithObjects:receiptNaviController, orderNaviController, acctNaviController, helpNaviController, nil];
-    
+    /* Mod_S 启明 费凯峰 功能点:新增我的业务*/
+    self.naviArray = [NSArray arrayWithObjects:_businessNaviController, orderNaviController, acctNaviController, helpNaviController, nil];
+    /* Mod_E 启明 费凯峰 功能点:新增我的业务*/
     UIImage *launchImg = IS_IPHONE5 ? [UIImage imageNamed:@"Default-568h.png"]:[UIImage imageNamed:@"Default.png"];
     
     self.launchImgView = [[[UIImageView alloc] initWithImage:launchImg] autorelease];
@@ -87,15 +102,22 @@
 }
 
 -(void)loginSuccess{
-    self.window.rootViewController = acctNaviController;
+    /* Mod_S 启明 费凯峰 功能点:查询商户信息*/
+    merchantService =[[MerchantService alloc]init];
+    [merchantService onRespondTarget:self selector:@selector(merchantRequestDidFinished)];
+    [merchantService requestForMerchantInfo];
     
-    self.cpTabBar = [[[CPTabBar alloc] initWithFrame:CGRectMake(0, self.window.rootViewController.view.frame.size.height-DEFAULT_TAB_BAR_HEIGHT, self.window.frame.size.width, DEFAULT_TAB_BAR_HEIGHT)] autorelease];
-    cpTabBar.delegate = self;
-    [cpTabBar setTabSelected:2];
-    [self.window.rootViewController.view addSubview:cpTabBar];
-     
-    //请求定位
-    [[LocationService sharedInstance] startToLocateWithAuthentication:NO];
+//    self.window.rootViewController = acctNaviController;
+//    self.cpTabBar = [[[CPTabBar alloc] initWithFrame:CGRectMake(0, self.window.rootViewController.view.frame.size.height-DEFAULT_TAB_BAR_HEIGHT, self.window.frame.size.width, DEFAULT_TAB_BAR_HEIGHT)] autorelease];
+//    cpTabBar.delegate = self;
+//    [cpTabBar setTabSelected:2];
+//    [self.window.rootViewController.view addSubview:cpTabBar];
+//
+//    //请求定位
+//    [[LocationService sharedInstance] startToLocateWithAuthentication:NO];
+    
+    /* Mod_E 启明 费凯峰 功能点:查询商户信息*/
+
 }
 
 -(void)changeToIndex:(int)index
@@ -115,8 +137,21 @@
     self.launchImgView = nil;
 }
 
+/* Add_S 启明 费凯峰 功能点:查询商户信息*/
+-(void)merchantRequestDidFinished{
+    self.window.rootViewController = acctNaviController;
+    self.cpTabBar = [[[CPTabBar alloc] initWithFrame:CGRectMake(0, self.window.rootViewController.view.frame.size.height-DEFAULT_TAB_BAR_HEIGHT, self.window.frame.size.width, DEFAULT_TAB_BAR_HEIGHT)] autorelease];
+    cpTabBar.delegate = self;
+    [cpTabBar setTabSelected:2];
+    [self.window.rootViewController.view addSubview:cpTabBar];
+    
+    //请求定位
+    [[LocationService sharedInstance] startToLocateWithAuthentication:NO];
+}
+/* Add_E 启明 费凯峰 功能点:查询商户信息*/
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
     [self performApplicationStartupLogic];
     return YES;
 }

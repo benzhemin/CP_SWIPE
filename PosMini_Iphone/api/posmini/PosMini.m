@@ -15,7 +15,6 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "Helper.h"
-
 #import "RequireLoginViewController.h"
 
 static PosMini *sInstance = nil;
@@ -63,6 +62,9 @@ static PosMini *sInstance = nil;
     [Helper saveValue:NSSTRING_YES forKey:POSMINI_ACCOUNT_NEED_REFRESH];
     //设置刷新订单信息
     [Helper saveValue:NSSTRING_YES forKey:POSMINI_ORDER_NEED_REFRESH];
+    /*Add_S 启明 张翔 功能点:商户配置信息*/
+    [Helper saveValue:NSSTRING_YES forKey:POSMINI_MERCHANT_NEED_REFRESH];
+    /*Add_E 启明 张翔 功能点:商户配置信息*/
     //初始设备号
     [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_DEVICE_ID];
     //POSmini绑定设备号
@@ -123,7 +125,7 @@ static PosMini *sInstance = nil;
     [PosMiniSettings destroyInstance];
     
     [PosMini destroySharedInstance];
-    
+
     [PostBeService destroySharedInstance];
 }
 
@@ -275,7 +277,10 @@ static PosMini *sInstance = nil;
 
 -(void) displaySysPromptAutomatically:(NSNotification *)notification
 {
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    /*Mod_S 启明 张翔 功能点：故障对应 弹出alertView后MBProgressHUD不表示*/
+    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    /*Mod_E 启明 张翔 功能点：故障对应 弹出alertView后MBProgressHUD不表示*/
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
 	
 	// Configure for text only and offset down

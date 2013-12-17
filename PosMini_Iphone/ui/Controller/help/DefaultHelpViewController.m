@@ -8,6 +8,7 @@
 
 #import "DefaultHelpViewController.h"
 #import "QAHelpCell.h"
+#import "HelpLicenseViewController.h"
 
 @interface DefaultHelpViewController ()
 
@@ -31,6 +32,16 @@
     helpTableView.delegate = self;
     helpTableView.dataSource = self;
     [contentView addSubview:helpTableView];
+    
+    /*Add_S 启明 费凯峰 功能点:更新帮助信息*/
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+    [button setFrame:CGRectMake(230, 30, 80, 26)];
+    [button setTitle:@"使用协议" forState:UIControlStateNormal];
+    button.titleLabel.font=[UIFont systemFontOfSize:15];
+    [button setBackgroundImage:[UIImage imageNamed:@"nav_query"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    /*Add_E 启明 费凯峰 功能点:更新帮助信息*/
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -42,6 +53,13 @@
     }
 }
 
+#pragma mark - buttonClick
+-(void)buttonClick:(id)sender{
+    HelpLicenseViewController *hl=[[HelpLicenseViewController alloc]init];
+    [self.navigationController pushViewController:hl animated:YES];
+    [hl release];
+}
+
 -(NSString *)controllerName{
     return @"DefaultHelpViewController";
 }
@@ -49,7 +67,7 @@
 #pragma mark UITableViewDataSource Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 //返回Table每行的Cell
@@ -80,6 +98,9 @@
             break;
         case 5:
             [cell setQuestion:@"APP提示交易失败，但是消费者已收到银行扣款通知时，商户该怎么处理？" setAnswer:@"商户可告知消费者，第二天银行会做退款处理。"];
+            break;
+        case 6:
+            [cell setQuestion:@"使用手机充值、电影票、交通违章三项服务出现问题，应该怎么办？" setAnswer:@"这三项服务由上海银杏树网络公司提供业务支持，如果有任何疑问请拨打对方的客服电话：4006889915。"];
             break;
     }
     return cell;

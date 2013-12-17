@@ -144,7 +144,7 @@
     sendMessageButton.tag = 2;
     sendMessageButton.frame = CGRectMake(phoneMessageSafeCodeTextField.frame.origin.x+phoneMessageSafeCodeTextField.frame.size.width+5, _begY, contentView.frame.size.width-2*MARGIN_LEFT-phoneMessageSafeCodeTextField.frame.size.width-5, INPUTTEXTFILED_HEIGHT);
     [sendMessageButton setBackgroundImage:[[UIImage imageNamed:@"code-bg.png"]stretchableImageWithLeftCapWidth:10 topCapHeight:0] forState:UIControlStateNormal];
-    [sendMessageButton setTitle:@"点击获取短信验证码" forState:UIControlStateNormal];
+    [sendMessageButton setTitle:@" 点击获取短信验证码" forState:UIControlStateNormal];
     [sendMessageButton setTitleColor:[UIColor colorWithRed:57/255.0 green:84/255.0 blue:134/255.0 alpha:1.0] forState:UIControlStateNormal];
     sendMessageButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [bgScrollView addSubview:sendMessageButton];

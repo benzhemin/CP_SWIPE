@@ -7,6 +7,8 @@
 //
 
 #import "CPTabBar.h"
+#import "PosMiniDevice.h"
+#import "NSNotificationCenter+CP.h"
 
 @implementation CPTabBar
 
@@ -44,7 +46,7 @@
                             [UIImage imageNamed:@"info-icon-hover.png"],
                             [UIImage imageNamed:@"help-icon-hover.png"], nil];
         
-        tabTitleList = [[NSMutableArray alloc] initWithObjects: @"商户收款", @"订单查询", @"账户信息", @"使用帮助", nil];
+        tabTitleList = [[NSMutableArray alloc] initWithObjects: @"我的业务", @"订单查询", @"账户信息", @"使用帮助", nil];
         
         
         for (int i=0; i<tabIconList.count; i++) {
@@ -84,12 +86,21 @@
 -(void) tapGesture:(UITapGestureRecognizer *)tapGesuture{
     CGPoint tapPoint = [tapGesuture locationInView:self];//触摸点
     if (self.delegate!=nil) {
-        int tab_index = tapPoint.x / DEFAULT_TAB_WIDTH;
-        [self.delegate changeToIndex:tab_index];
-        [self setTabSelected:tab_index];
+        /* Mod_S 启明 费凯峰 功能点:强制商户配置*/
+        if (![PosMiniDevice sharedInstance].isSetedMerTel)
+        {
+            [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请完成商户配置!"];
+            return;
+        }
+        else
+        {
+            int tab_index = tapPoint.x / DEFAULT_TAB_WIDTH;
+            [self.delegate changeToIndex:tab_index];
+            [self setTabSelected:tab_index];
+        }
+        /* Mod_E 启明 费凯峰 功能点:强制商户配置*/
     }
 }
-
 //设置选中Tab
 -(void) setTabSelected:(int)tab_index{
     UIImageView *preTabView = (UIImageView *)[tabViewList objectAtIndex:index];

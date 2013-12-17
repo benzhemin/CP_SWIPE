@@ -30,6 +30,21 @@
  */
 -(void) setBankNumString:(NSString *)bankCardNum;
 
+/*Add_S 启明 张翔 功能点:商户信息配置*/
+/**
+ 设置商户简称
+ @param merchantString 商户简称
+ */
+-(void) setMerchantString:(NSString *)merchantString;
+/*Add_E 启明 张翔 功能点:商户信息配置*/
+
+/*Add_S 启明 张翔 功能点:解除绑定*/
+/**
+ 设置设备编号
+ */
+-(void) setBindedMtId;
+/*Add_E 启明 张翔 功能点:解除绑定*/
+
 -(void)refreshTableView;
 
 @end

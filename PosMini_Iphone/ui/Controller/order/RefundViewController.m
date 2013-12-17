@@ -125,12 +125,14 @@
     UILabel *tradeamountLabel = [[UILabel alloc]init];
     tradeamountLabel.textColor = [UIColor colorWithRed:115/250.0 green:115/250.0 blue:115/250.0 alpha:1.0];
     tradeamountLabel.font = [UIFont systemFontOfSize:16];
-    tradeamountLabel.text = self.paySum;
+    /*Mod_S 启明 张翔 功能点:追加金额单位*/
+//    tradeamountLabel.text = self.paySum;
+    tradeamountLabel.text = [NSString stringWithFormat:@"%@元",self.paySum];
+    /*Mod_D 启明 张翔 功能点:追加金额单位*/
     tradeamountLabel.frame = CGRectMake(tradeTimeLabelTitle.frame.origin.x+tradeTimeLabelTitle.frame.size.width, 70, 190, 20);
     tradeamountLabel.textAlignment = UITextAlignmentLeft;
     [recpBgView addSubview:tradeamountLabel];
     [tradeamountLabel release];
-    
     
     //订单状态标题
     UILabel *orderStatusTitle = [[UILabel alloc]init];

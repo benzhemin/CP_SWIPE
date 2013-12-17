@@ -36,7 +36,7 @@
     
     NSDictionary *body = (NSDictionary *)req.responseAsJson;
     
-    NSLog(@"%@", body);
+    NSLog(@"userInfo %@", body);
     
     self.userInfoDict = [[[NSMutableDictionary alloc] init] autorelease];
     //存储登录信息
@@ -73,6 +73,7 @@
     
     [target performSelector:selector];
 }
+
 
 @end
 

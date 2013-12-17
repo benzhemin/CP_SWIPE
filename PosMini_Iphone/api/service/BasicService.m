@@ -33,6 +33,10 @@
     NSLog(@"%@", description);
     
     NSLog(@"网络异常　url:%@", req.url);
+    
+    /*Add_S 启明 张翔 功能点:故障对应#0002517*/
+    [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"网络连接失败"];
+    /*Add_E 启明 张翔 功能点:故障对应#0002517*/
 }
 
 //默认提示超时
