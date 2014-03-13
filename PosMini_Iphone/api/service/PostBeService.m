@@ -43,7 +43,7 @@ static PostBeService *sInstance = nil;
     
     
     NSString *url = [NSString stringWithFormat:@"http://www.ttyfund.com/api/services/postbe.php?act=postbe&key=TTYFUND-CHINAPNR&app_client=minipos_client&app_platform=ios&app_version=%@&id=%@&uid=%@&model=%@&channel=&mail=&date=%@",
-                                                [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"],
+                                                [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"],
                                                 [[DeviceIntrospection sharedInstance] uuid],
                                                 [Helper getValueByKey:POSTBE_UID],
                                                 [[DeviceIntrospection sharedInstance] platformName],
@@ -51,14 +51,13 @@ static PostBeService *sInstance = nil;
     
     ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     //postbe经常超时,要设置超时时间
-    req.timeOutSeconds = 30;
+    req.timeOutSeconds = 50;
     
     [req setDidFinishSelector:@selector(postBeDidFinished:)];
     req.delegate = self;
     [req startAsynchronous];
 }
 -(void)postBeDidFinished:(ASIHTTPRequest *)req{
-    //NSLog(@"postBe req finished");
     
 }
 
@@ -68,6 +67,7 @@ static PostBeService *sInstance = nil;
     NSString *url = [NSString stringWithFormat:@"%@?%@", host, param];
     
     ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    req.timeOutSeconds = 60;
     [req setDidFinishSelector:@selector(UIDRequestDidFinished:)];
     req.delegate = self;
     [req startAsynchronous];

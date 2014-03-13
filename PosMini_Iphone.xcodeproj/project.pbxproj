@@ -12,7 +12,8 @@
 		0F45A90117BF1BC400A1DB11 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F45A90017BF1BC400A1DB11 /* libsqlite3.0.dylib */; };
 		0FB866B317C063910059205E /* BindCardService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB866B217C063910059205E /* BindCardService.m */; };
 		0FB866B517C07A230059205E /* prov_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0FB866B417C07A230059205E /* prov_area.sqlite */; };
-		175EFE50185FE7C5000A63F7 /* libPosRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BEACB9184D824D00CA71EC /* libPosRequest.a */; };
+		1746D5371889268100CA1C24 /* Icon-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1746D5361889268100CA1C24 /* Icon-568h@2x.png */; };
+		1767D7981871164700FE3622 /* libPosRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BEACB9184D824D00CA71EC /* libPosRequest.a */; };
 		5F23CA43181E2840006B2E63 /* AuthorityService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F23CA3C181E283F006B2E63 /* AuthorityService.m */; };
 		5F23CA44181E2840006B2E63 /* ESignatureService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F23CA3E181E283F006B2E63 /* ESignatureService.m */; };
 		5F23CA45181E2840006B2E63 /* MerchantService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F23CA40181E283F006B2E63 /* MerchantService.m */; };
@@ -233,6 +234,7 @@
 		0FB866B117C063910059205E /* BindCardService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindCardService.h; sourceTree = "<group>"; };
 		0FB866B217C063910059205E /* BindCardService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindCardService.m; sourceTree = "<group>"; };
 		0FB866B417C07A230059205E /* prov_area.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = prov_area.sqlite; sourceTree = "<group>"; };
+		1746D5361889268100CA1C24 /* Icon-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-568h@2x.png"; sourceTree = "<group>"; };
 		56BEACB9184D824D00CA71EC /* libPosRequest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPosRequest.a; sourceTree = "<group>"; };
 		5F23CA3B181E283F006B2E63 /* AuthorityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorityService.h; sourceTree = "<group>"; };
 		5F23CA3C181E283F006B2E63 /* AuthorityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityService.m; sourceTree = "<group>"; };
@@ -538,7 +540,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				175EFE50185FE7C5000A63F7 /* libPosRequest.a in Frameworks */,
+				1767D7981871164700FE3622 /* libPosRequest.a in Frameworks */,
 				0F45A90117BF1BC400A1DB11 /* libsqlite3.0.dylib in Frameworks */,
 				8B48CF5717A2201B00988311 /* QuartzCore.framework in Frameworks */,
 				8B48CF49179CF6D000988311 /* MediaPlayer.framework in Frameworks */,
@@ -876,6 +878,7 @@
 				8BC76275178A7A7F00AD74C0 /* Default-568h@2x.png */,
 				8BC76276178A7A7F00AD74C0 /* Default.png */,
 				8BC76277178A7A7F00AD74C0 /* Default@2x.png */,
+				1746D5361889268100CA1C24 /* Icon-568h@2x.png */,
 				8B31E87D178F934600AA5B5F /* Icon.png */,
 				8B31E87E178F934600AA5B5F /* Icon@2x.png */,
 			);
@@ -1287,6 +1290,7 @@
 				5F4CF57C181FB30500890098 /* business-top_logo@2x.png in Resources */,
 				5F4CF57D181FB30500890098 /* business-traffic@2x.png in Resources */,
 				5F4CF57E181FB30500890098 /* detail_red_btn@2x.png in Resources */,
+				1746D5371889268100CA1C24 /* Icon-568h@2x.png in Resources */,
 				5F4CF57F181FB30500890098 /* e_receipt_bg-568@2x.png in Resources */,
 				5F4CF580181FB30500890098 /* e_receipt_bg@2x.png in Resources */,
 				5F4CF581181FB30500890098 /* e_receipt_blue_btn@2x.png in Resources */,
@@ -1425,7 +1429,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yi jun (UP2W7HXJFN)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1440,6 +1445,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "ED5713FB-DCB5-4F52-B541-0F99781A79BB";
 				SDKROOT = iphoneos6.0;
 			};
 			name = Debug;
@@ -1455,7 +1461,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yi jun (UP2W7HXJFN)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1463,6 +1470,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "ED5713FB-DCB5-4F52-B541-0F99781A79BB";
 				SDKROOT = iphoneos6.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1471,15 +1479,19 @@
 		8BC76243178A797700AD74C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yi jun (UP2W7HXJFN)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/PosMini_Iphone-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/App/PosMini_Iphone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/peer/Desktop/M_PosMini/PosMini/PosMini_Iphone/api/vendor/pos-mini",
+					"/Users/peer/Desktop/M_PosMini/PosMini_Iphone/api/vendor/pos-mini",
 				);
 				PRODUCT_NAME = POSmini;
+				PROVISIONING_PROFILE = "ED5713FB-DCB5-4F52-B541-0F99781A79BB";
+				SDKROOT = iphoneos6.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1487,15 +1499,19 @@
 		8BC76244178A797700AD74C0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: yi jun (UP2W7HXJFN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yi jun (UP2W7HXJFN)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/PosMini_Iphone-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/App/PosMini_Iphone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/peer/Desktop/M_PosMini/PosMini/PosMini_Iphone/api/vendor/pos-mini",
+					"/Users/peer/Desktop/M_PosMini/PosMini_Iphone/api/vendor/pos-mini",
 				);
 				PRODUCT_NAME = POSmini;
+				PROVISIONING_PROFILE = "ED5713FB-DCB5-4F52-B541-0F99781A79BB";
+				SDKROOT = iphoneos6.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

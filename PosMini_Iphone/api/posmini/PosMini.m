@@ -65,6 +65,7 @@ static PosMini *sInstance = nil;
     /*Add_S 启明 张翔 功能点:商户配置信息*/
     [Helper saveValue:NSSTRING_YES forKey:POSMINI_MERCHANT_NEED_REFRESH];
     /*Add_E 启明 张翔 功能点:商户配置信息*/
+    
     //初始设备号
     [Helper saveValue:POSMINI_DEFAULT_VALUE forKey:POSMINI_DEVICE_ID];
     //POSmini绑定设备号
@@ -294,7 +295,6 @@ static PosMini *sInstance = nil;
 }
 
 -(void)applicationWillTerminate{
-	
 	[PosMini shutdown];
 }
 

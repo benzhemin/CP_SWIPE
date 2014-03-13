@@ -507,8 +507,12 @@
                          andPassword:[pwdTextField getInputText]
                       forServiceName:KEYCHAIN_SFHF_SERVICE
                       updateExisting:YES error:nil];
+    
     [Helper saveValue:[usernameTextField getInputText] forKey:POSMINI_LOGIN_USERNAME];
     [Helper saveValue:[req.responseAsJson valueForKey:@"CustId"] forKey:POSMINI_CUSTOMER_ID];
+    
+    [Helper saveValue:NSSTRING_YES forKey:ACCOUNT_CHECK_BOX];
+    [Helper saveValue:NSSTRING_YES forKey:SECRET_CHECK_BOX];
     
     [((AppDelegate *)[UIApplication sharedApplication].delegate) loginSuccess];
 }

@@ -55,6 +55,7 @@
     _businessNameLabel.backgroundColor=[UIColor clearColor];
     [contentView addSubview:_businessNameLabel];
     
+    /*
     self.phoneButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [_phoneButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     _phoneButton.tag=1;
@@ -102,16 +103,19 @@
     _trafficLabel.textColor=[UIColor colorWithRed:49/255.0 green:92/255.0 blue:137/255.0 alpha:1.0];
     self.trafficLabel.backgroundColor=[UIColor clearColor];
     [contentView addSubview:_trafficLabel];
+     */
     
     self.moneyButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [_moneyButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     _moneyButton.tag=10;
     _moneyButton.exclusiveTouch=YES;
     [_moneyButton setImage:[UIImage imageNamed:@"business-pos"] forState:UIControlStateNormal];
-    _moneyButton.frame= CGRectMake(233,150, 64, 64);
+    //_moneyButton.frame= CGRectMake(233,150, 64, 64);
+    _moneyButton.frame = CGRectMake(23,150, 64, 64);
     [contentView addSubview:_moneyButton];
     
-    self.moneyLabel=[[[UILabel alloc]initWithFrame:CGRectMake(235, 215, 60, 30)]autorelease];
+    //self.moneyLabel=[[[UILabel alloc]initWithFrame:CGRectMake(235, 215, 60, 30)]autorelease];
+    self.moneyLabel = [[[UILabel alloc] initWithFrame:CGRectMake(25, 215, 60, 30)] autorelease];
     _moneyLabel.text=@"我要收款";
     _moneyLabel.textAlignment=NSTextAlignmentCenter;
     _moneyLabel.font=[UIFont systemFontOfSize:14];
@@ -120,9 +124,11 @@
     [contentView addSubview:_moneyLabel];
     
     //取得权限信息
+    /*
     NSMutableDictionary *dict = [[[NSMutableDictionary alloc] init] autorelease];
     [dict setValue:[Helper getValueByKey:POSMINI_CUSTOMER_ID] forKey:@"CustId"];
     [authorityService requestForAuthority:dict];
+    */
 }
 
 -(void)viewDidAppear:(BOOL)animated{

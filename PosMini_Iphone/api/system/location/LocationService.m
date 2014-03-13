@@ -71,21 +71,19 @@ static LocationService *sInstance = nil;
 -(void)startToLocatePosMini
 {
     //登录成功进行GPS定位
-    if ([CLLocationManager locationServicesEnabled]) {
-        if (locationManager == nil)
-        {
-            locationManager = [[CLLocationManager alloc] init];
-        }
-        
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
-        locationManager.distanceFilter = 1000;
-        [locationManager stopUpdatingLocation];
-        
-        //NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"定位中...", NOTIFICATION_MESSAGE, nil];
-        //[[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_UI_AUTO_PROMPT object:nil userInfo:dict];
-        [locationManager startUpdatingLocation];
+    if (locationManager == nil)
+    {
+        locationManager = [[CLLocationManager alloc] init];
     }
+    
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+    locationManager.distanceFilter = 1000;
+    [locationManager stopUpdatingLocation];
+    
+    //NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"定位中...", NOTIFICATION_MESSAGE, nil];
+    //[[NSNotificationCenter defaultCenter] postNotificationOnMainThreadName:NOTIFICATION_UI_AUTO_PROMPT object:nil userInfo:dict];
+    [locationManager startUpdatingLocation];
 }
 
 #pragma mark LocationDelegate Method

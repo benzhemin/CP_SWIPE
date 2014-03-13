@@ -1,13 +1,15 @@
 //
 //  DeviceIntrospection.h
-//  PosMini_Iphone
+//  Acquirer
 //
-//  Created by chinapnr on 13-7-8.
+//  Created by chinaPnr on 13-7-8.
 //  Copyright (c) 2013年 chinaPnr. All rights reserved.
 //
 
+NSString* getHardwareVersion();
 NSString *platform();
 NSString * platformString();
+NSString * platformConvertString();
 
 @interface DeviceIntrospection : NSObject
 
@@ -16,5 +18,8 @@ NSString * platformString();
 
 -(NSString *)uuid;
 -(NSString *)platformName;
+
+//achieve ip address
+-(NSString *)IPAddress;
 
 @end

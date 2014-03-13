@@ -133,6 +133,13 @@
 
 -(void) login:(id)sender
 {
+    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized ){
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请打开定位服务" message:@"" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
+        return;
+    }
+    
     //判断用户是否输入密码
     if ([Helper StringIsNullOrEmpty:pwdTextField.text]) {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"请输入密码", NOTIFICATION_MESSAGE, nil];

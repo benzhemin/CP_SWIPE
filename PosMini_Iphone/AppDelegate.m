@@ -10,12 +10,14 @@
 #import "PostBeService.h"
 #import "PosMini.h"
 #import "LoginViewController.h"
+#import "LocationService.h"
 
 @implementation AppDelegate
 
 @synthesize launchImgView, cpTabBar;
 
 @synthesize loginNaviController;
+@synthesize businessNaviController;
 @synthesize receiptNaviController, orderNaviController, acctNaviController, helpNaviController;
 @synthesize naviArray;
 
@@ -32,7 +34,7 @@
     [acctNaviController release];
     [helpNaviController release];
     
-    [_businessNaviController release];
+    [businessNaviController release];
     
     [naviArray release];
     
@@ -81,7 +83,7 @@
     [helpController release];
     
     /* Mod_S 启明 费凯峰 功能点:新增我的业务*/
-    self.naviArray = [NSArray arrayWithObjects:_businessNaviController, orderNaviController, acctNaviController, helpNaviController, nil];
+    self.naviArray = [NSArray arrayWithObjects:businessNaviController, orderNaviController, acctNaviController, helpNaviController, nil];
     /* Mod_E 启明 费凯峰 功能点:新增我的业务*/
     UIImage *launchImg = IS_IPHONE5 ? [UIImage imageNamed:@"Default-568h.png"]:[UIImage imageNamed:@"Default.png"];
     
@@ -99,6 +101,8 @@
     vp = [[VersionService alloc] init];
     [vp onRespondTarget:self selector:@selector(versionReqFinished)];
     [vp checkForUpdate];
+    
+    [[LocationService sharedInstance] startToLocateWithAuthentication:NO];
 }
 
 -(void)loginSuccess{
@@ -146,7 +150,7 @@
     [self.window.rootViewController.view addSubview:cpTabBar];
     
     //请求定位
-    [[LocationService sharedInstance] startToLocateWithAuthentication:NO];
+    //[[LocationService sharedInstance] startToLocateWithAuthentication:NO];
 }
 /* Add_E 启明 费凯峰 功能点:查询商户信息*/
 

@@ -206,7 +206,7 @@
     [dict setValue:deviceSN forKey:@"MtId"];
     
     PosMiniCPRequest *posReq = [PosMiniCPRequest postRequestWithPath:url andBody:dict];
-    posReq.userInfo = [NSDictionary dictionaryWithObject:deviceSN forKey:POSMINI_DEVICE_ID];
+    posReq.userInfo = [NSMutableDictionary dictionaryWithObject:deviceSN forKey:POSMINI_DEVICE_ID];
     [posReq onRespondTarget:self selector:@selector(posTradeSignInDidFinished:)];
     [posReq execute];
 }

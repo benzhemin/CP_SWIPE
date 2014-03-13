@@ -47,12 +47,15 @@
     
     
     /*Add_S 启明 费凯峰 功能点:强制商户配置*/
+    //取消编辑商户信息功能
+    /*
     if (![PosMiniDevice sharedInstance].isSetedMerTel)
     {
         MerchantConfigurationViewController *mc = [[MerchantConfigurationViewController alloc]init];
         [self.navigationController pushViewController:mc animated:YES];
         [mc release];
     }
+     */
     /*Add_E 启明 费凯峰 功能点:强制商户配置*/
 }
 
@@ -101,7 +104,7 @@
 {
     //return 4;
     /* Mod_S 启明 费凯峰 功能点:商户信息配置*/
-    return 5;
+    return 4;
     /* Mod_E 启明 费凯峰 功能点:商户信息配置*/
 }
 

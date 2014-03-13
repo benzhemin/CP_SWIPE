@@ -28,6 +28,9 @@
     
     CPNavigationController *loginNaviController;
     
+    //修改为我的业务
+    CPNavigationController *businessNaviController;
+    
     CPNavigationController *receiptNaviController;
     CPNavigationController *orderNaviController;
     CPNavigationController *acctNaviController;
@@ -53,7 +56,7 @@
 @property (nonatomic, retain) CPNavigationController *acctNaviController;
 @property (nonatomic, retain) CPNavigationController *helpNaviController;
 /* Add_S 启明 费凯峰 功能点:新增我的业务*/
-@property (nonatomic,retain)CPNavigationController *businessNaviController;
+@property (nonatomic, retain) CPNavigationController *businessNaviController;
 /* Add_E 启明 费凯峰 功能点:新增我的业务*/
 @property (nonatomic, retain) NSArray *naviArray;
 

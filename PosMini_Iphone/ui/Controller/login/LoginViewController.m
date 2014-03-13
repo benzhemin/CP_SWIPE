@@ -280,7 +280,12 @@
 
 -(void) login:(id)sender
 {
-
+    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized ){
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请打开定位服务" message:@"" delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
+        return;
+    }
     
     //判断用户名是否为空
     if ([Helper StringIsNullOrEmpty:accountTextField.text]) {
@@ -311,9 +316,11 @@
         return;
     }
     
+    [[LocationService sharedInstance] startToLocateWithAuthentication:NO];
     self.logService = [[[LoginService alloc] init] autorelease];
     [logService onRespondTarget:self selector:@selector(loginDidFinished)];
     [logService loginRequest:accountTextField.text withSecret:pwdTextField.text];
+    
 }
 
 //登录成功

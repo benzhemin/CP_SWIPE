@@ -47,6 +47,7 @@ typedef enum _AlertViewType{
     //POS mini设备 是否合法
     BOOL isDeviceLegal;
 }
+
 /*Add_S 启明 费凯峰 功能点:全局变量*/
 /**
  *  商户简称

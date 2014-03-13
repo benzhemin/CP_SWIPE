@@ -87,12 +87,14 @@
     CGPoint tapPoint = [tapGesuture locationInView:self];//触摸点
     if (self.delegate!=nil) {
         /* Mod_S 启明 费凯峰 功能点:强制商户配置*/
+        /*
         if (![PosMiniDevice sharedInstance].isSetedMerTel)
         {
             [[NSNotificationCenter defaultCenter] postAutoSysPromptNotification:@"请完成商户配置!"];
             return;
         }
         else
+         */
         {
             int tab_index = tapPoint.x / DEFAULT_TAB_WIDTH;
             [self.delegate changeToIndex:tab_index];
@@ -106,7 +108,7 @@
     UIImageView *preTabView = (UIImageView *)[tabViewList objectAtIndex:index];
     preTabView.image = [UIImage imageNamed:@"menu-bg.png"];
     
-    //将之前选中的Tab里面的图片修改成普通状态
+    //将之前选中的Tab里面的图片修改成普通r
     for(UIView *subView in preTabView.subviews) {
         if ([subView isKindOfClass:[UIImageView class]]) {
             UIImageView *preIconView = (UIImageView *)subView;

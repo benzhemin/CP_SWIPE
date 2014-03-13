@@ -274,19 +274,24 @@
         merchantAreaCode = areaCode;
         merchantTelephone = telephone;
         if ([_merchantInfoDic valueForKey:@"MerTel"] != nil &&
-            ![[_merchantInfoDic valueForKey:@"MerTel"]isKindOfClass:[NSNull class]] &&
-            ![[_merchantInfoDic valueForKey:@"MerTel"]isEqualToString:@""])
+            ![[_merchantInfoDic valueForKey:@"MerTel"] isKindOfClass:[NSNull class]] &&
+            ![[_merchantInfoDic valueForKey:@"MerTel"] isEqualToString:@""])
         {
-            NSRange range = [[_merchantInfoDic valueForKey:@"MerTel"]rangeOfString:@"-"];
-            if (![[[_merchantInfoDic valueForKey:@"MerTel"]substringToIndex:1]isEqualToString:@"0"]) {
-                merchantAreaCode.text =[NSString stringWithFormat:@"0%@",[[_merchantInfoDic valueForKey:@"MerTel"]substringToIndex:range.location]];
-            }
-            else
-            {
-                merchantAreaCode.text =[[_merchantInfoDic valueForKey:@"MerTel"]substringToIndex:range.location];
-            }
+            NSRange range = [[_merchantInfoDic valueForKey:@"MerTel"] rangeOfString:@"-"];
             
-            merchantTelephone.text = [[_merchantInfoDic valueForKey:@"MerTel"]substringFromIndex:range.location + 1];
+            if (range.location != NSNotFound) {
+                if (![[[_merchantInfoDic valueForKey:@"MerTel"] substringToIndex:1] isEqualToString:@"0"]) {
+                    merchantAreaCode.text =[NSString stringWithFormat:@"0%@",[[_merchantInfoDic valueForKey:@"MerTel"] substringToIndex:range.location]];
+                }
+                else
+                {
+                    merchantAreaCode.text =[[_merchantInfoDic valueForKey:@"MerTel"]substringToIndex:range.location];
+                }
+                
+                merchantTelephone.text = [[_merchantInfoDic valueForKey:@"MerTel"] substringFromIndex:range.location + 1];
+            }else{
+                merchantTelephone.text = [_merchantInfoDic valueForKey:@"MerTel"];
+            }
         }
         else
         {

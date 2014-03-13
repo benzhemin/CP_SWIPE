@@ -67,7 +67,7 @@
 #pragma mark UITableViewDataSource Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 6;
 }
 
 //返回Table每行的Cell
@@ -88,20 +88,22 @@
             [cell setQuestion:@"如何使用POSmini刷卡器进行收款？" setAnswer:@"账户登录成功后，插入POSmini刷卡器，点击进入商户收款模块即可开始收款。"];
             break;
         case 2:
-            [cell setQuestion:@"如何更换POSmini刷卡器？" setAnswer:@"一个账户只可以与一台POSmini刷卡器绑定，如需更换请先联系客服人员解除绑定后再完成绑定。"];
+            [cell setQuestion:@"如何更换POSmini刷卡器？" setAnswer:@"一个账户只可以与一台POSmini刷卡器绑定，如需更换请先解除绑定后再绑定新的POSmini刷卡器。"];
             break;
         case 3:
             [cell setQuestion:@"交易失败的原因有哪些？" setAnswer:@"银行卡余额不足、密码输入错误等原因会导致交易失败。此外，超过交易限额也会导致交易失败。"];
             break;
         case 4:
-            [cell setQuestion:@"如何进行退款？" setAnswer:@"当日支付成功的订单可以在APP上进行消费撤销，隔日的订单可以登陆商户控台进行退款操作。"];
+            [cell setQuestion:@"如何进行退款？" setAnswer:@"当日支付成功的订单可以在APP上进行消费撤销，隔日的订单不支持退款。"];
             break;
         case 5:
-            [cell setQuestion:@"APP提示交易失败，但是消费者已收到银行扣款通知时，商户该怎么处理？" setAnswer:@"商户可告知消费者，第二天银行会做退款处理。"];
+            [cell setQuestion:@"APP提示交易失败，但是持卡人已收到银行扣款通知时，商户该怎么处理？" setAnswer:@"商户可告知持卡人，第二天银行会做退款处理。"];
             break;
+        /*
         case 6:
             [cell setQuestion:@"使用手机充值、电影票、交通违章三项服务出现问题，应该怎么办？" setAnswer:@"这三项服务由上海银杏树网络公司提供业务支持，如果有任何疑问请拨打对方的客服电话：4006889915。"];
             break;
+        */
     }
     return cell;
 }
